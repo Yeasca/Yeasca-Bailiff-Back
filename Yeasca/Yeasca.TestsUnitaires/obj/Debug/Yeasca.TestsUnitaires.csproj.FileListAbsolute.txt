@@ -1,0 +1,7 @@
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.TestsUnitaires.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.TestsUnitaires.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.csprojResolveAssemblyReference.cache
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.pdb

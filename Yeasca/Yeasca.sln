@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca", "Yeasca\Yeasca.csproj", "{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domaine", "Domaine", "{0C5BF25D-48E7-4C93-9C59-0534A125E8F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F57CCE21-13AD-4D96-A876-A8BCB5EC242F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.TestsUnitaires", "Yeasca.TestsUnitaires\Yeasca.TestsUnitaires.csproj", "{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C3D80EA-5996-4679-AF5B-98A5D2E58F52} = {0C5BF25D-48E7-4C93-9C59-0534A125E8F4}
+		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7} = {F57CCE21-13AD-4D96-A876-A8BCB5EC242F}
+	EndGlobalSection
+EndGlobal
