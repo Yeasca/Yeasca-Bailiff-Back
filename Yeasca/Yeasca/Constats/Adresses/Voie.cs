@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Yeasca.Ressources;
 
-namespace Yeasca
+namespace Yeasca.Metier
 {
     public class Voie
     {
@@ -28,7 +27,7 @@ namespace Yeasca
         private bool aUnTypeDeVoieCorrect()
         {
             return TypeVoie == null
-                || TypeVoie.Length <= RessourceValidation.LONGUEUR_MAX_TYPE_VOIE;
+                || TypeVoie.Length <= Ressource.Validation.LONGUEUR_MAX_TYPE_VOIE;
         }
 
         private bool aUnTypeDeVoieSiRequis()
@@ -55,13 +54,13 @@ namespace Yeasca
 
         private bool aUnNomDeVoieCorrect()
         {
-            return NomVoie.Length <= RessourceValidation.LONGUEUR_MAX_NOM_VOIE;
+            return NomVoie.Length <= Ressource.Validation.LONGUEUR_MAX_NOM_VOIE;
         }
 
         private bool aUnComplémentDeVoieCorrect()
         {
             return ComplémentVoie == null 
-                || ComplémentVoie.Length <= RessourceValidation.LONGUEUR_MAX_COMPLÉMENT_VOIE;
+                || ComplémentVoie.Length <= Ressource.Validation.LONGUEUR_MAX_COMPLÉMENT_VOIE;
         }
 
         private bool aUnComplémentDeVoieRenseigné()
@@ -88,23 +87,23 @@ namespace Yeasca
         private void validerLeTypeDeVoie(List<string> message)
         {
             if (!aUnTypeDeVoieCorrect())
-                message.Add(RessourceValidation.TYPE_VOIE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.TYPE_VOIE_LONGUEUR_MAX);
             else if (!aUnTypeDeVoieSiRequis())
-                message.Add(RessourceValidation.TYPE_VOIE_REQUIS);
+                message.Add(Ressource.Validation.TYPE_VOIE_REQUIS);
         }
 
         private void validerLeNomDeVoie(List<string> message)
         {
             if (!aUnNomDeVoieRenseigné())
-                message.Add(RessourceValidation.NOM_VOIE_REQUIS);
+                message.Add(Ressource.Validation.NOM_VOIE_REQUIS);
             else if (!aUnNomDeVoieCorrect())
-                message.Add(RessourceValidation.NOM_VOIE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.NOM_VOIE_LONGUEUR_MAX);
         }
 
         private void validerLeComplémentDeVoie(List<string> message)
         {
             if (!aUnComplémentDeVoieCorrect())
-                message.Add(RessourceValidation.COMPLÉMENT_VOIE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.COMPLÉMENT_VOIE_LONGUEUR_MAX);
         }
 
         public string enChaine()

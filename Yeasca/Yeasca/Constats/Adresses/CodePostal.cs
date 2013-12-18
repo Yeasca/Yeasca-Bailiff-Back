@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Yeasca.Ressources;
 
-namespace Yeasca
+namespace Yeasca.Metier
 {
     public class CodePostal
     {
@@ -37,9 +36,9 @@ namespace Yeasca
         private void validerLeCodePostal(List<string> message)
         {
             if (estVide())
-                message.Add(RessourceValidation.CODE_POSTAL_REQUIS);
+                message.Add(Ressource.Validation.CODE_POSTAL_REQUIS);
             else if (!estValide())
-                message.Add(RessourceValidation.CODE_POSTAL_INVALIDE);
+                message.Add(Ressource.Validation.CODE_POSTAL_INVALIDE);
         }
 
         public string enChaine()

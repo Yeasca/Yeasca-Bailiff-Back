@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,18 +52,29 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConstantesTest.cs" />
     <Compile Include="Constats\TestHuissier.cs" />
     <Compile Include="Constats\TestAdresse.cs" />
     <Compile Include="Constats\TestSociete.cs" />
+    <Compile Include="Constats\TestSIRET.cs" />
+    <Compile Include="Constats\TestPartie.cs" />
+    <Compile Include="Constats\TestPartieAvecSociete.cs" />
+    <Compile Include="Constats\TestClientParticulier.cs" />
+    <Compile Include="Constats\TestClientSociete.cs" />
+    <Compile Include="Outils\Chiffrement\TestChiffrementAES.cs" />
+    <Compile Include="Outils\Injection\TestInjecteur.cs" />
+    <Compile Include="Outils\Injection\TestModuleInjection.cs" />
+    <Compile Include="Outils\Sessions\TestSessions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilisateurs\TestEmail.cs" />
+    <Compile Include="Utilisateurs\TestMotDePasse.cs" />
+    <Compile Include="Utilisateurs\TestUtilisateur.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Utilisateurs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Yeasca\Yeasca.csproj">
+    <ProjectReference Include="..\Yeasca\Yeasca.Metier.csproj">
       <Project>{2c3d80ea-5996-4679-af5b-98a5d2e58f52}</Project>
-      <Name>Yeasca</Name>
+      <Name>Yeasca.Metier</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

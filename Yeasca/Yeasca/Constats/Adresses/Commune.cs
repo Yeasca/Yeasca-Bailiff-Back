@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Yeasca.Ressources;
 
-namespace Yeasca
+namespace Yeasca.Metier
 {
     public class Commune
     {
@@ -42,9 +41,9 @@ namespace Yeasca
         private void validerLeLibelléCommune(List<string> message)
         {
             if (!aUneCommuneRenseignée())
-                message.Add(RessourceValidation.LIBELLÉ_COMMUNE_REQUIS);
-            else if (LibelléCommune.Length > RessourceValidation.LONGUEUR_MAX_COMMUNE)
-                message.Add(RessourceValidation.LIBELLÉ_COMMUNE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.LIBELLÉ_COMMUNE_REQUIS);
+            else if (LibelléCommune.Length > Ressource.Validation.LONGUEUR_MAX_COMMUNE)
+                message.Add(Ressource.Validation.LIBELLÉ_COMMUNE_LONGUEUR_MAX);
         }
 
         public string enChaine()

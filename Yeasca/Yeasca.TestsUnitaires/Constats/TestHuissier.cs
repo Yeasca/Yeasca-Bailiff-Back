@@ -1,8 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Yeasca;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Yeasca.Metier;
 
 namespace Yeasca.TestsUnitaires.Constats
 {
@@ -14,7 +11,18 @@ namespace Yeasca.TestsUnitaires.Constats
     {
         private string _nomHuissier = "MORANE";
         private string _prénomHuissier = "Bob";
-        private Adresse _adresse = new Adresse("10", "Bis", "rue", "Bol l'éponge", "dit le marrant", "33520", "Bruges");
+        private string _nomCabinet = "poulou";
+
+        private Huissier générerUnHuissierComplet()
+        {
+            Huissier unHuissier = new Huissier();
+            unHuissier.Abréviation = Abreviation.Monsieur;
+            unHuissier.Nom = _nomHuissier;
+            unHuissier.Prénom = _prénomHuissier;
+            unHuissier.Société.Dénomination = _nomCabinet;
+            unHuissier.Société.Adresse = ConstantesTest.ADRESSE_VALIDE;
+            return unHuissier;
+        }
 
         [TestMethod]
         public void TestHuissuier_unHuissierVideRenvoieUneDescriptionVide()
@@ -35,21 +43,11 @@ namespace Yeasca.TestsUnitaires.Constats
             Assert.AreEqual(descriptionAttendue, description);
         }
 
-        private Huissier générerUnHuissierComplet()
-        {
-            Huissier unHuissier = new Huissier();
-            unHuissier.Nom = _nomHuissier;
-            unHuissier.Prénom = _prénomHuissier;
-            return unHuissier;
-        }
-
         private string générerLaDescriptionAttendue()
         {
-        //    return string.Concat(
-        //        "Je ", _nomHuissier, " ", _prénomHuissier, ",\n",
-        //        "Huissier de justice domicilié ", _adresse.enChaineAvecUnSéparateur("-"));
-            return null;
+            return string.Concat(
+                "Je, M. " , _nomHuissier, " ", _prénomHuissier, ",\n",
+                "Huissier de justice du cabinet ", _nomCabinet, " domicilié à l'adresse ", ConstantesTest.ADRESSE_VALIDE.enChaineAvecUnSéparateur("-"));
         }
-        //TODO : inclure la société quand testée
     }
 }

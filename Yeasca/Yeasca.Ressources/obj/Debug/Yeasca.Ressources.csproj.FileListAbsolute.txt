@@ -1,0 +1,5 @@
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Ressources\bin\Debug\Yeasca.Ressources.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Ressources\bin\Debug\Yeasca.Ressources.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Ressources\obj\Debug\Yeasca.Ressources.csprojResolveAssemblyReference.cache
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Ressources\obj\Debug\Yeasca.Ressources.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Ressources\obj\Debug\Yeasca.Ressources.pdb

@@ -1,0 +1,5 @@
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca\bin\Debug\Yeasca.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca\bin\Debug\Yeasca.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca\obj\Debug\Yeasca.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca\obj\Debug\Yeasca.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca\obj\Debug\Yeasca.Metier.csprojResolveAssemblyReference.cache

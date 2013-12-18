@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Yeasca;
-using Yeasca.Ressources;
+using Yeasca.Metier;
 
 namespace Yeasca.TestsUnitaires.Constats
 {
@@ -142,9 +140,9 @@ namespace Yeasca.TestsUnitaires.Constats
             List<string> messagesDErreur = uneAdresseVide.obtenirLesErreurs();
 
             Assert.AreEqual(3, messagesDErreur.Count);
-            Assert.AreEqual(RessourceValidation.NOM_VOIE_REQUIS, messagesDErreur[0]);
-            Assert.AreEqual(RessourceValidation.CODE_POSTAL_REQUIS, messagesDErreur[1]);
-            Assert.AreEqual(RessourceValidation.LIBELLÉ_COMMUNE_REQUIS, messagesDErreur[2]);
+            Assert.AreEqual(Ressource.Validation.NOM_VOIE_REQUIS, messagesDErreur[0]);
+            Assert.AreEqual(Ressource.Validation.CODE_POSTAL_REQUIS, messagesDErreur[1]);
+            Assert.AreEqual(Ressource.Validation.LIBELLÉ_COMMUNE_REQUIS, messagesDErreur[2]);
         }
 
         [TestMethod]
@@ -152,13 +150,13 @@ namespace Yeasca.TestsUnitaires.Constats
         {
             validerLesChaînesDeRéférence();
             Adresse uneAdresseAvecValeursTropLongues = new Adresse(
-                CHAINE_DE_6, 
-                CHAINE_DE_10, 
-                CHAINE_DE_256, 
-                CHAINE_DE_256, 
-                CHAINE_DE_256, 
-                CHAINE_DE_6,
-                CHAINE_DE_256);
+                ConstantesTest.CHAINE_DE_6,
+                ConstantesTest.CHAINE_DE_10,
+                ConstantesTest.CHAINE_DE_256,
+                ConstantesTest.CHAINE_DE_256,
+                ConstantesTest.CHAINE_DE_256,
+                ConstantesTest.CHAINE_DE_6,
+                ConstantesTest.CHAINE_DE_256);
             List<string> messagesDErreur = uneAdresseAvecValeursTropLongues.obtenirLesErreurs();
 
             testerLesMessagesDErreurPourLesValeursTropLongues(messagesDErreur);
@@ -167,25 +165,21 @@ namespace Yeasca.TestsUnitaires.Constats
         private void testerLesMessagesDErreurPourLesValeursTropLongues(List<string> messagesDErreur)
         {
             Assert.AreEqual(7, messagesDErreur.Count);
-            Assert.AreEqual(RessourceValidation.NUMÉRO_VOIE_LONGUEUR_MAX, messagesDErreur[0]);
-            Assert.AreEqual(RessourceValidation.RÉPÉTITION_VOIE_LONGUEUR_MAX, messagesDErreur[1]);
-            Assert.AreEqual(RessourceValidation.TYPE_VOIE_LONGUEUR_MAX, messagesDErreur[2]);
-            Assert.AreEqual(RessourceValidation.NOM_VOIE_LONGUEUR_MAX, messagesDErreur[3]);
-            Assert.AreEqual(RessourceValidation.COMPLÉMENT_VOIE_LONGUEUR_MAX, messagesDErreur[4]);
-            Assert.AreEqual(RessourceValidation.CODE_POSTAL_INVALIDE, messagesDErreur[5]);
-            Assert.AreEqual(RessourceValidation.LIBELLÉ_COMMUNE_LONGUEUR_MAX, messagesDErreur[6]);
+            Assert.AreEqual(Ressource.Validation.NUMÉRO_VOIE_LONGUEUR_MAX, messagesDErreur[0]);
+            Assert.AreEqual(Ressource.Validation.RÉPÉTITION_VOIE_LONGUEUR_MAX, messagesDErreur[1]);
+            Assert.AreEqual(Ressource.Validation.TYPE_VOIE_LONGUEUR_MAX, messagesDErreur[2]);
+            Assert.AreEqual(Ressource.Validation.NOM_VOIE_LONGUEUR_MAX, messagesDErreur[3]);
+            Assert.AreEqual(Ressource.Validation.COMPLÉMENT_VOIE_LONGUEUR_MAX, messagesDErreur[4]);
+            Assert.AreEqual(Ressource.Validation.CODE_POSTAL_INVALIDE, messagesDErreur[5]);
+            Assert.AreEqual(Ressource.Validation.LIBELLÉ_COMMUNE_LONGUEUR_MAX, messagesDErreur[6]);
         }
 
         private void validerLesChaînesDeRéférence()
         {
-            Assert.AreEqual(6, CHAINE_DE_6.Length);
-            Assert.AreEqual(10, CHAINE_DE_10.Length);
-            Assert.AreEqual(256, CHAINE_DE_256.Length);
+            Assert.AreEqual(6, ConstantesTest.CHAINE_DE_6.Length);
+            Assert.AreEqual(10, ConstantesTest.CHAINE_DE_10.Length);
+            Assert.AreEqual(256, ConstantesTest.CHAINE_DE_256.Length);
         }
-
-        private const string CHAINE_DE_6 = "111111";
-        private const string CHAINE_DE_10 = "aaaaaaaaaa";
-        private const string CHAINE_DE_256 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
         [TestMethod]
         public void TestAdresse_uneAdresseAvecDesDonnéesInvalidesRenvoieLesBonsMessagesDErreur()
@@ -194,8 +188,8 @@ namespace Yeasca.TestsUnitaires.Constats
             List<string> messagesDErreur = uneAdresseAvecDonnéesInvalide.obtenirLesErreurs();
 
             Assert.AreEqual(2, messagesDErreur.Count);
-            Assert.AreEqual(RessourceValidation.NUMÉRO_VOIE_INVALIDE, messagesDErreur[0]);
-            Assert.AreEqual(RessourceValidation.CODE_POSTAL_INVALIDE, messagesDErreur[1]);
+            Assert.AreEqual(Ressource.Validation.NUMÉRO_VOIE_INVALIDE, messagesDErreur[0]);
+            Assert.AreEqual(Ressource.Validation.CODE_POSTAL_INVALIDE, messagesDErreur[1]);
         }
 
         [TestMethod]
@@ -211,7 +205,7 @@ namespace Yeasca.TestsUnitaires.Constats
             List<string> messagesDErreur = uneAdresseAvecDonnéeOptionnelleRequise.obtenirLesErreurs();
 
             Assert.AreEqual(1, messagesDErreur.Count);
-            Assert.AreEqual(RessourceValidation.NUMÉRO_VOIE_REQUIS, messagesDErreur[0]);
+            Assert.AreEqual(Ressource.Validation.NUMÉRO_VOIE_REQUIS, messagesDErreur[0]);
         }
 
         private void testLaValeurOptionnelleRequisePourLeTypeDeVoie()
@@ -220,7 +214,7 @@ namespace Yeasca.TestsUnitaires.Constats
             List<string> messagesDErreur = uneAdresseAvecDonnéeOptionnelleRequise.obtenirLesErreurs();
 
             Assert.AreEqual(1, messagesDErreur.Count);
-            Assert.AreEqual(RessourceValidation.TYPE_VOIE_REQUIS, messagesDErreur[0]);
+            Assert.AreEqual(Ressource.Validation.TYPE_VOIE_REQUIS, messagesDErreur[0]);
         }
 
         #endregion

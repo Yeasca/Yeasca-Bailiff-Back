@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Yeasca.Ressources;
 
-namespace Yeasca
+namespace Yeasca.Metier
 {
     public class NumeroVoie
     {
@@ -28,7 +27,7 @@ namespace Yeasca
 
         private bool leNuméroALaBonneLongueur()
         {
-            return Numéro.Length <= RessourceValidation.LONGUEUR_MAX_NUMÉRO_VOIE;
+            return Numéro.Length <= Ressource.Validation.LONGUEUR_MAX_NUMÉRO_VOIE;
         }
 
         private bool leNuméroEstConstituéDeChiffres()
@@ -40,7 +39,7 @@ namespace Yeasca
         private bool aUneRépétitionDeVoieCorrect()
         {
             return Répétition == null
-                || Répétition.Length <= RessourceValidation.LONGUEUR_MAX_RÉPÉTITION;
+                || Répétition.Length <= Ressource.Validation.LONGUEUR_MAX_RÉPÉTITION;
         }
 
         private bool aUnNuméroDeVoieSiRequis()
@@ -71,17 +70,17 @@ namespace Yeasca
         private void validerLeNuméroDeVoie(List<string> message)
         {
             if (!leNuméroEstConstituéDeChiffres())
-                message.Add(RessourceValidation.NUMÉRO_VOIE_INVALIDE);
+                message.Add(Ressource.Validation.NUMÉRO_VOIE_INVALIDE);
             else if (!leNuméroALaBonneLongueur())
-                message.Add(RessourceValidation.NUMÉRO_VOIE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.NUMÉRO_VOIE_LONGUEUR_MAX);
         }
 
         private void validerLaRépétitionDeVoie(List<string> message)
         {
             if (!aUneRépétitionDeVoieCorrect())
-                message.Add(RessourceValidation.RÉPÉTITION_VOIE_LONGUEUR_MAX);
+                message.Add(Ressource.Validation.RÉPÉTITION_VOIE_LONGUEUR_MAX);
             else if (!aUnNuméroDeVoieSiRequis())
-                message.Add(RessourceValidation.NUMÉRO_VOIE_REQUIS);
+                message.Add(Ressource.Validation.NUMÉRO_VOIE_REQUIS);
         }
 
         public string enChaine()

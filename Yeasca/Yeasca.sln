@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca", "Yeasca\Yeasca.csproj", "{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Metier", "Yeasca\Yeasca.Metier.csproj", "{2C3D80EA-5996-4679-AF5B-98A5D2E58F52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domaine", "Domaine", "{0C5BF25D-48E7-4C93-9C59-0534A125E8F4}"
 EndProject

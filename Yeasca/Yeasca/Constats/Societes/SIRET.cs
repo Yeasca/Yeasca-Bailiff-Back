@@ -1,5 +1,5 @@
 ﻿
-namespace Yeasca
+namespace Yeasca.Metier
 {
     public class SIRET
     {
@@ -10,24 +10,18 @@ namespace Yeasca
             Valeur = valeur;
         }
 
-        public virtual string Valeur { get; set; }
+        public string Valeur { get; set; }
 
-        public bool EstValide
+        public bool estValide()
         {
-            get
-            {
-                if (!string.IsNullOrEmpty(Valeur))
-                    return validerLeNuméroSIRET();
-                return false;
-            }
+            if (!string.IsNullOrEmpty(Valeur))
+                return validerLeNuméroSIRET();
+            return false;
         }
 
-        public bool EstVide
+        public bool estVide()
         {
-            get
-            {
-                return string.IsNullOrEmpty(Valeur);
-            }
+            return string.IsNullOrEmpty(Valeur);
         }
 
         private bool validerLeNuméroSIRET()
