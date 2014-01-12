@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Yeasca.Metier
 {
-    public class Utilisateur
+    public class Utilisateur : IAgregat
     {
         public Utilisateur()
         {
@@ -12,11 +12,12 @@ namespace Yeasca.Metier
             TypeUtilisateur = TypeUtilisateur.Inconnu;
         }
 
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public string Login { get; set; }
         public MotDePasse MotDePasse { get; set; }
         public Email Email { get; set; }
         public TypeUtilisateur TypeUtilisateur { get; set; }
+        public Partie Profile { get; set; }
 
         public bool estValide()
         {
@@ -70,7 +71,7 @@ namespace Yeasca.Metier
             SessionUtilisateur session = CacheUtilisateur.Sessions.récupérerLaSession();
             if (session != null)
             {
-                ID = session.Utilisateur.ID;
+                Id = session.Utilisateur.Id;
                 Login = session.Utilisateur.Login;
                 MotDePasse = session.Utilisateur.MotDePasse;
                 Email = session.Utilisateur.Email;

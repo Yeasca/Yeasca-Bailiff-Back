@@ -54,6 +54,16 @@
     <Compile Include="Constats\Societes\SIRET.cs" />
     <Compile Include="Constats\Societes\Societe.cs" />
     <Compile Include="Constats\Parties\PartieAvecSociete.cs" />
+    <Compile Include="Entrepots\IAgregat.cs" />
+    <Compile Include="Entrepots\IEntrepot.cs" />
+    <Compile Include="Entrepots\IEntrepotConstat.cs" />
+    <Compile Include="Entrepots\IEntrepotPartie.cs" />
+    <Compile Include="Entrepots\IEntrepotUtilisateur.cs" />
+    <Compile Include="Entrepots\IFournisseur.cs" />
+    <Compile Include="Entrepots\Recherche\IRecherche.cs" />
+    <Compile Include="Entrepots\Recherche\IRechercheConstat.cs" />
+    <Compile Include="Entrepots\Recherche\IRechercheGlobale.cs" />
+    <Compile Include="Entrepots\Recherche\IRechercheUtilisateur.cs" />
     <Compile Include="Outils\Chiffrement\ChiffrementAES.cs" />
     <Compile Include="Outils\Injection\InjecterAttribute.cs" />
     <Compile Include="Outils\Injection\Injecteur.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Yeasca.Metier
 {
-    public abstract class Partie
+    public abstract class Partie : IAgregat
     {
         protected Dictionary<Abreviation, string> _chaineParAbréviation = new Dictionary<Abreviation, string>()
         {
@@ -22,7 +22,7 @@ namespace Yeasca.Metier
             Prénom = prénom;
         }
 
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public Abreviation Abréviation { get; set; }
         public string Nom { get; set; }
         public string Prénom { get; set; }

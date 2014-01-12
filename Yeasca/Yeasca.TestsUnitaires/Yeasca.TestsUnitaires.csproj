@@ -53,25 +53,33 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConstantesTest.cs" />
-    <Compile Include="Constats\TestHuissier.cs" />
-    <Compile Include="Constats\TestAdresse.cs" />
-    <Compile Include="Constats\TestSociete.cs" />
-    <Compile Include="Constats\TestSIRET.cs" />
-    <Compile Include="Constats\TestPartie.cs" />
-    <Compile Include="Constats\TestPartieAvecSociete.cs" />
-    <Compile Include="Constats\TestClientParticulier.cs" />
-    <Compile Include="Constats\TestClientSociete.cs" />
-    <Compile Include="Outils\Chiffrement\TestChiffrementAES.cs" />
-    <Compile Include="Outils\Injection\TestInjecteur.cs" />
-    <Compile Include="Outils\Injection\TestModuleInjection.cs" />
-    <Compile Include="Outils\Sessions\TestSessions.cs" />
+    <Compile Include="Metier\Constats\TestHuissier.cs" />
+    <Compile Include="Metier\Constats\TestAdresse.cs" />
+    <Compile Include="Metier\Constats\TestSociete.cs" />
+    <Compile Include="Metier\Constats\TestSIRET.cs" />
+    <Compile Include="Metier\Constats\TestPartie.cs" />
+    <Compile Include="Metier\Constats\TestPartieAvecSociete.cs" />
+    <Compile Include="Metier\Constats\TestClientParticulier.cs" />
+    <Compile Include="Metier\Constats\TestClientSociete.cs" />
+    <Compile Include="Metier\Outils\Chiffrement\TestChiffrementAES.cs" />
+    <Compile Include="Metier\Outils\Injection\TestInjecteur.cs" />
+    <Compile Include="Metier\Outils\Injection\TestModuleInjection.cs" />
+    <Compile Include="Metier\Outils\Sessions\TestSessions.cs" />
+    <Compile Include="Persistance\Entrepots\TestEntrepotConstat.cs" />
+    <Compile Include="Persistance\FournisseurTest.cs" />
+    <Compile Include="Persistance\TestFournisseur.cs" />
+    <Compile Include="Persistance\TestEntrepotMongo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilisateurs\TestEmail.cs" />
-    <Compile Include="Utilisateurs\TestMotDePasse.cs" />
-    <Compile Include="Utilisateurs\TestUtilisateur.cs" />
+    <Compile Include="Metier\Utilisateurs\TestEmail.cs" />
+    <Compile Include="Metier\Utilisateurs\TestMotDePasse.cs" />
+    <Compile Include="Metier\Utilisateurs\TestUtilisateur.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Yeasca.Mongo\Yeasca.Mongo.csproj">
+      <Project>{fa0cd6a5-171b-4ef6-8688-7d12464f928f}</Project>
+      <Name>Yeasca.Mongo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yeasca\Yeasca.Metier.csproj">
       <Project>{2c3d80ea-5996-4679-af5b-98a5d2e58f52}</Project>
       <Name>Yeasca.Metier</Name>
