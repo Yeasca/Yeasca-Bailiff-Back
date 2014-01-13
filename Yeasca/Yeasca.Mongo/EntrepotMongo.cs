@@ -1,6 +1,4 @@
-﻿
-
-using Yeasca.Metier;
+﻿using Yeasca.Metier;
 
 namespace Yeasca.Mongo
 {
@@ -12,6 +10,10 @@ namespace Yeasca.Mongo
         {
             ModuleInjection paramètresParDéfaut = new ModuleInjection();
             paramètresParDéfaut.lier<IEntrepotConstat>().à<EntrepotConstat>();
+            paramètresParDéfaut.lier<IEntrepotProfile>().à<EntrepotProfile>();
+            paramètresParDéfaut.lier<IEntrepotUtilisateur>().à<EntrepotUtilisateur>();
+            paramètresParDéfaut.lier<IEntrepotParametrage>().à<EntrepotParametrage>();
+            paramètresParDéfaut.lier<IEntrepotJeton>().à<EntrepotJeton>();
             return paramètresParDéfaut;
         }
 
@@ -20,7 +22,7 @@ namespace Yeasca.Mongo
             _injecteurEntrepot = new Injecteur(paramètres);
         }
 
-        public EntrepotMongo()
+        private static void initialiser()
         {
             if (_injecteurEntrepot == null)
             {
@@ -30,8 +32,11 @@ namespace Yeasca.Mongo
             }
         }
 
-        public T fabriquerEntrepot<T>() where T : IEntrepot
+        private EntrepotMongo() { }
+
+        public static T fabriquerEntrepot<T>() where T : IEntrepot
         {
+            initialiser();
             return _injecteurEntrepot.construire<T>();
         }
     }

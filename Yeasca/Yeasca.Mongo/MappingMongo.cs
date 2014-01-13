@@ -11,42 +11,35 @@ namespace Yeasca.Mongo
             mapperLesUtilisateurs();
             mapperLesParties();
             mapperLesConstats();
+            mapperLesJetons();
         }
 
         private void mapperLesUtilisateurs()
         {
             if (!BsonClassMap.IsClassMapRegistered(typeof(Utilisateur)))
             {
-                BsonClassMap.RegisterClassMap<Utilisateur>(x =>
-                {
-                    x.AutoMap();
-                    x.UnmapMember(utilisateur => utilisateur.Profile);
-                });
+                BsonClassMap.RegisterClassMap<Utilisateur>();
             }
         }
 
         private void mapperLesParties()
         {
-            if (!BsonClassMap.IsClassMapRegistered(typeof (Partie)))
+            if (!BsonClassMap.IsClassMapRegistered(typeof (Profile)))
             {
-                BsonClassMap.RegisterClassMap<Partie>();
+                BsonClassMap.RegisterClassMap<Profile>();
             }
-            if (!BsonClassMap.IsClassMapRegistered(typeof(PartieAvecSociete)))
-            {
-                BsonClassMap.RegisterClassMap<PartieAvecSociete>();
-            } 
             if (!BsonClassMap.IsClassMapRegistered(typeof(Huissier)))
             {
                 BsonClassMap.RegisterClassMap<Huissier>();
             }
-            if (!BsonClassMap.IsClassMapRegistered(typeof(ClientParticulier)))
+            if (!BsonClassMap.IsClassMapRegistered(typeof(Client)))
             {
-                BsonClassMap.RegisterClassMap<ClientParticulier>();
+                BsonClassMap.RegisterClassMap<Client>();
             }
-            if (!BsonClassMap.IsClassMapRegistered(typeof(ClientSociete)))
+            if (!BsonClassMap.IsClassMapRegistered(typeof(Secretaire)))
             {
-                BsonClassMap.RegisterClassMap<ClientSociete>();
-            }
+                BsonClassMap.RegisterClassMap<Secretaire>();
+            } 
         }
 
         private void mapperLesConstats()
@@ -59,6 +52,14 @@ namespace Yeasca.Mongo
                     x.GetMemberMap(constat => constat.Date).SetSerializationOptions(DateTimeSerializationOptions.LocalInstance);
                 });
             }
+        }
+
+        private void mapperLesJetons()
+        {
+            if (!BsonClassMap.IsClassMapRegistered(typeof(Jeton)))
+            {
+                BsonClassMap.RegisterClassMap<Jeton>();
+            } 
         }
     }
 }

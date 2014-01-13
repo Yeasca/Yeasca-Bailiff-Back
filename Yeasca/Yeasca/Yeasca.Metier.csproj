@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
@@ -41,23 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constats\Adresses\Adresse.cs" />
-    <Compile Include="Constats\Adresses\CodePostal.cs" />
-    <Compile Include="Constats\Adresses\Commune.cs" />
-    <Compile Include="Constats\Adresses\NumeroVoie.cs" />
-    <Compile Include="Constats\Adresses\Voie.cs" />
+    <Compile Include="Adresses\Adresse.cs" />
+    <Compile Include="Adresses\CodePostal.cs" />
+    <Compile Include="Adresses\Commune.cs" />
+    <Compile Include="Adresses\NumeroVoie.cs" />
+    <Compile Include="Adresses\Voie.cs" />
     <Compile Include="Constats\Constat.cs" />
-    <Compile Include="Constats\Parties\ClientParticulier.cs" />
-    <Compile Include="Constats\Parties\ClientSociete.cs" />
-    <Compile Include="Constats\Parties\Huissier.cs" />
-    <Compile Include="Constats\Parties\Partie.cs" />
-    <Compile Include="Constats\Societes\SIRET.cs" />
-    <Compile Include="Constats\Societes\Societe.cs" />
-    <Compile Include="Constats\Parties\PartieAvecSociete.cs" />
+    <Compile Include="Constats\Fichier.cs" />
+    <Compile Include="Entrepots\IEntrepotJeton.cs" />
+    <Compile Include="Entrepots\IEntrepotParametrage.cs" />
+    <Compile Include="Outils\Erreurs\Erreur.cs" />
+    <Compile Include="Profiles\Client.cs" />
+    <Compile Include="Profiles\Huissier.cs" />
+    <Compile Include="Profiles\Profile.cs" />
+    <Compile Include="Profiles\Secretaire.cs" />
     <Compile Include="Entrepots\IAgregat.cs" />
     <Compile Include="Entrepots\IEntrepot.cs" />
     <Compile Include="Entrepots\IEntrepotConstat.cs" />
-    <Compile Include="Entrepots\IEntrepotPartie.cs" />
+    <Compile Include="Entrepots\IEntrepotProfile.cs" />
     <Compile Include="Entrepots\IEntrepotUtilisateur.cs" />
     <Compile Include="Entrepots\IFournisseur.cs" />
     <Compile Include="Entrepots\Recherche\IRecherche.cs" />
@@ -71,14 +73,19 @@
     <Compile Include="Outils\Injection\ModuleInjection.cs" />
     <Compile Include="Outils\Sessions\ISession.cs" />
     <Compile Include="Outils\Sessions\Sessions.cs" />
+    <Compile Include="Ressources\IRessourceCommande.cs" />
+    <Compile Include="Ressources\IRessourceParametre.cs" />
     <Compile Include="Ressources\Ressource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressources\IRessourceValidation.cs" />
-    <Compile Include="Ressources\RessourceValidationDefaut.cs" />
-    <Compile Include="Utilisateurs\CacheUtilisateur.cs" />
+    <Compile Include="Ressources\RessourceCommandeFrance.cs" />
+    <Compile Include="Ressources\RessourceParametreFrance.cs" />
+    <Compile Include="Ressources\RessourceValidationFrance.cs" />
+    <Compile Include="Utilisateurs\Sessions\CacheUtilisateur.cs" />
     <Compile Include="Utilisateurs\Email.cs" />
     <Compile Include="Utilisateurs\MotDePasse.cs" />
-    <Compile Include="Utilisateurs\SessionUtilisateur.cs" />
+    <Compile Include="Utilisateurs\Sessions\Jeton.cs" />
+    <Compile Include="Utilisateurs\Sessions\SessionUtilisateur.cs" />
     <Compile Include="Utilisateurs\TypeUtilisateur.cs" />
     <Compile Include="Utilisateurs\Utilisateur.cs" />
   </ItemGroup>

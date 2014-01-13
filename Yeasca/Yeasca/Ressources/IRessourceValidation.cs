@@ -51,8 +51,6 @@ namespace Yeasca.Metier
         int LONGUEUR_MAX_MOT_DE_PASSE { get; }
         int LONGUEUR_MAX_EMAIL { get; }
         
-        string LOGIN_REQUIS { get; }
-        string LOGIN_LONGUEUR_MAX { get; }
         string MOT_DE_PASSE_REQUIS { get; }
         string MOT_DE_PASSE_LONGUEUR_MIN { get; }
         string MOT_DE_PASSE_LONGUEUR_MAX { get; }

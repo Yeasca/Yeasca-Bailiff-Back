@@ -8,6 +8,7 @@ namespace Yeasca.Metier
     public class Injecteur
     {
         private ModuleInjection _dépendances;
+        private static Dictionary<Type, object> _magasin = new Dictionary<Type, object>(); 
 
         public Injecteur(ModuleInjection module)
         {
@@ -21,11 +22,25 @@ namespace Yeasca.Metier
 
         public object construire(Type unType)
         {
-            Type typeRésolu = résoudreLeType(unType);
-            ConstructorInfo constructeurÀUtiliser = trouverLeConstructeur(typeRésolu);
+            Injection injectionRésolue = résoudreLInjection(unType);
+            if (injectionRésolue.TypeInjection == TypeInjection.Singleton)
+                return prendreLInstanceDuMagasin(injectionRésolue);
+            return créerUneInstance(injectionRésolue);
+        }
+
+        private object prendreLInstanceDuMagasin(Injection injectionRésolue)
+        {
+            if (!_magasin.ContainsKey(injectionRésolue.Type))
+                _magasin.Add(injectionRésolue.Type, créerUneInstance(injectionRésolue));
+            return _magasin[injectionRésolue.Type];
+        }
+
+        private object créerUneInstance(Injection injectionRésolue)
+        {
+            ConstructorInfo constructeurÀUtiliser = trouverLeConstructeur(injectionRésolue.Type);
             ParameterInfo[] paramètres = constructeurÀUtiliser.GetParameters();
             if (!paramètres.Any())
-                return Activator.CreateInstance(typeRésolu);
+                return Activator.CreateInstance(injectionRésolue.Type);
             return constructeurÀUtiliser.Invoke(paramètres.Select(paramètre => construire(paramètre.ParameterType)).ToArray());
         }
 
@@ -42,12 +57,12 @@ namespace Yeasca.Metier
             return attributs.Any(attribut => attribut.AttributeType.Equals(typeof(InjecterAttribute)));
         }
 
-        private Type résoudreLeType(Type unType)
+        private Injection résoudreLInjection(Type unType)
         {
-            Type typeRésolu = _dépendances.résoudre(unType);
-            if (typeRésolu == null)
+            Injection injectionRésolue = _dépendances.résoudre(unType);
+            if (injectionRésolue == null)
                 throw new InjectionException();
-            return typeRésolu;
+            return injectionRésolue;
         }
     }
 }

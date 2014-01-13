@@ -9,7 +9,6 @@ namespace Yeasca.TestsUnitaires.Outils.Sessions
     [TestClass]
     public class TestSessions
     {
-        private HttpContext _contexte = new HttpContext(new HttpRequest("poulou", "http://www.pouet.com/poulou?&test=1", "&test=1"), new HttpResponse(new StringWriter()));
         private readonly SessionMock _session = new SessionMock() {Message = "poulou"};
 
         [TestCleanup]
@@ -21,7 +20,7 @@ namespace Yeasca.TestsUnitaires.Outils.Sessions
         [TestMethod]
         public void TestSessions_peutSauvegarderUneSession()
         {
-            HttpContext.Current = _contexte;
+            HttpContext.Current = ConstantesTest.CONTEXTE_HTTP;
             Sessions<SessionMock> sessions = new Sessions<SessionMock>();
             SessionMock nouvelleSession = _session;
             string idSession = sessions.ajouterUneSession(nouvelleSession);
@@ -36,7 +35,7 @@ namespace Yeasca.TestsUnitaires.Outils.Sessions
         [TestMethod]
         public void TestSessions_peutRécupérerUneSession()
         {
-            HttpContext.Current = _contexte;
+            HttpContext.Current = ConstantesTest.CONTEXTE_HTTP;
             Sessions<SessionMock> sessions = new Sessions<SessionMock>();
             SessionMock nouvelleSession = _session;
             string idSession = sessions.ajouterUneSession(nouvelleSession);

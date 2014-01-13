@@ -5,6 +5,7 @@ namespace Yeasca.Metier
 {
     public class MotDePasse
     {
+        private const string SEL = "@apidbnçhbapçbzd";
         private readonly ChiffrementAES _chiffrement = new ChiffrementAES();
 
         public MotDePasse() { }
@@ -20,13 +21,17 @@ namespace Yeasca.Metier
         {
             get
             {
-                if(aUnMotDePasse())
-                    return _chiffrement.décrypter(Valeur);
+                if (aUnMotDePasse())
+                {
+                    string valeurSalée = _chiffrement.décrypter(Valeur);
+                    return valeurSalée.Replace(SEL, "");
+                }
                 return string.Empty;
             }
             set
             {
-                Valeur = _chiffrement.crypter(value);
+                string valeurSalée = string.Concat(value, SEL);
+                Valeur = _chiffrement.crypter(valeurSalée);
             }
         }
 
@@ -76,6 +81,11 @@ namespace Yeasca.Metier
             if (!aUnMotDePasseComplexe())
                 return Ressource.Validation.MOT_DE_PASSE_COMPLEXE;
             return message;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is MotDePasse && Valeur.Equals((obj as MotDePasse).Valeur);
         }
     }
 }

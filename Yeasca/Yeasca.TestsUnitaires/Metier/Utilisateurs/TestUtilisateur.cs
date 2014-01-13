@@ -27,27 +27,24 @@ namespace Yeasca.TestsUnitaires.Utilisateurs
         public void TestUtilisateur_unUtilisateurVideRenvoieLesBonsMessagesDErreur()
         {
             Utilisateur unUtilisateurVide = new Utilisateur();
-            List<string> messagesDErreur = unUtilisateurVide.obtenirLesErreurs();
+            Erreur messagesDErreur = unUtilisateurVide.obtenirLesErreurs();
 
-            Assert.AreEqual(3, messagesDErreur.Count);
-            Assert.AreEqual(Ressource.Validation.LOGIN_REQUIS, messagesDErreur[0]);
-            Assert.AreEqual(Ressource.Validation.MOT_DE_PASSE_REQUIS, messagesDErreur[1]);
-            Assert.AreEqual(Ressource.Validation.EMAIL_REQUIS, messagesDErreur[2]);
+            Assert.AreEqual(2, messagesDErreur.Nombre);
+            Assert.AreEqual(Ressource.Validation.MOT_DE_PASSE_REQUIS, messagesDErreur.donnerLaListeDesErreurs()[0]);
+            Assert.AreEqual(Ressource.Validation.EMAIL_REQUIS, messagesDErreur.donnerLaListeDesErreurs()[1]);
         }
 
         [TestMethod]
         public void TestUtilisateur_unUtilisateurAvecDesChampsTropLongsRenvoieLesBonsMessagesDErreur()
         {
             Utilisateur unUtilisateurAvecChampsTropLongs = new Utilisateur();
-            unUtilisateurAvecChampsTropLongs.Login = ConstantesTest.CHAINE_DE_256;
             unUtilisateurAvecChampsTropLongs.MotDePasse = new MotDePasse(ConstantesTest.CHAINE_DE_256);
             unUtilisateurAvecChampsTropLongs.Email = new Email(ConstantesTest.CHAINE_DE_256);
-            List<string> messagesDErreurs = unUtilisateurAvecChampsTropLongs.obtenirLesErreurs();
+            Erreur messagesDErreurs = unUtilisateurAvecChampsTropLongs.obtenirLesErreurs();
 
-            Assert.AreEqual(3, messagesDErreurs.Count);
-            Assert.AreEqual(Ressource.Validation.LOGIN_LONGUEUR_MAX, messagesDErreurs[0]);
-            Assert.AreEqual(Ressource.Validation.MOT_DE_PASSE_LONGUEUR_MAX, messagesDErreurs[1]);
-            Assert.AreEqual(Ressource.Validation.EMAIL_LONGUEUR_MAX, messagesDErreurs[2]);
+            Assert.AreEqual(2, messagesDErreurs.Nombre);
+            Assert.AreEqual(Ressource.Validation.MOT_DE_PASSE_LONGUEUR_MAX, messagesDErreurs.donnerLaListeDesErreurs()[0]);
+            Assert.AreEqual(Ressource.Validation.EMAIL_LONGUEUR_MAX, messagesDErreurs.donnerLaListeDesErreurs()[1]);
         }
     }
 }

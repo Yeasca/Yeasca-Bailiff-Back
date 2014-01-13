@@ -20,18 +20,18 @@ namespace Yeasca.Metier
 
         public string ajouterUneSession(T session)
         {
-            Guid nouvelID = new Guid();
+            Guid nouvelID = Guid.NewGuid();
             session.ID = nouvelID;
             session.DateConnexion = DateTime.Now;
             string nouvelIDEnChaine = nouvelID.ToString();
             _sessions.Add(nouvelIDEnChaine, session);
-            modifierLeCookieAvecLIDSession(nouvelIDEnChaine);
+            modifierLeCookieAvecLIDSession(nouvelIDEnChaine, HttpContext.Current.Request.Cookies);
+            modifierLeCookieAvecLIDSession(nouvelIDEnChaine, HttpContext.Current.Response.Cookies);
             return nouvelIDEnChaine;
         }
 
-        private void modifierLeCookieAvecLIDSession(string idSession)
+        private void modifierLeCookieAvecLIDSession(string idSession, HttpCookieCollection cookies)
         {
-            HttpCookieCollection cookies = HttpContext.Current.Response.Cookies;
             if (unDesCookiesContientUneSession(cookies))
                 cookies[INDEX_SESSION_COOKIE].Value = idSession;
             else

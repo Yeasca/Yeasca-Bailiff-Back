@@ -13,8 +13,7 @@ namespace Yeasca.TestsUnitaires.Persistance
             ModuleInjection paramètresDeTest = EntrepotMongo.obtenirLesParamètresParDéfaut();
             paramètresDeTest.lier<IFournisseur>().à<FournisseurTest>();
             EntrepotMongo.paramétrer(paramètresDeTest);
-
-            IEntrepotConstat entrepotDemandé = new EntrepotMongo().fabriquerEntrepot<IEntrepotConstat>();
+            IEntrepotConstat entrepotDemandé = EntrepotMongo.fabriquerEntrepot<IEntrepotConstat>();
 
             Assert.IsNotNull(entrepotDemandé);
             
@@ -22,6 +21,25 @@ namespace Yeasca.TestsUnitaires.Persistance
             entrepotDemandé.ajouter(unConstat);
 
             Assert.IsNotNull(unConstat.Id);
+        }
+
+        [TestMethod]
+        public void TestEntrepotMongo_tousLesEntrepotsSontFabricables()
+        {
+            ModuleInjection paramètresDeTest = EntrepotMongo.obtenirLesParamètresParDéfaut();
+            paramètresDeTest.lier<IFournisseur>().à<FournisseurTest>();
+            EntrepotMongo.paramétrer(paramètresDeTest);
+            IEntrepotConstat entrepotConstat = EntrepotMongo.fabriquerEntrepot<IEntrepotConstat>();
+            IEntrepotProfile entrepotPartie = EntrepotMongo.fabriquerEntrepot<IEntrepotProfile>();
+            IEntrepotUtilisateur entrepotUtilisateur = EntrepotMongo.fabriquerEntrepot<IEntrepotUtilisateur>();
+            IEntrepotParametrage entrepotParametrage = EntrepotMongo.fabriquerEntrepot<IEntrepotParametrage>();
+            IEntrepotJeton entrepotJeton = EntrepotMongo.fabriquerEntrepot<IEntrepotJeton>();
+
+            Assert.IsNotNull(entrepotConstat);
+            Assert.IsNotNull(entrepotPartie);
+            Assert.IsNotNull(entrepotUtilisateur);
+            Assert.IsNotNull(entrepotParametrage);
+            Assert.IsNotNull(entrepotJeton);
         }
     }
 }

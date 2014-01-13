@@ -79,11 +79,11 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         [TestMethod]
         public void TestFournisseurMongo_peutAjouterUnElementDansLaCollectionPartie()
         {
-            int nombreDeConstatInitial = _fournisseur.obtenirLaCollection<Partie>().Count();
-            Partie unePartie = new ClientParticulier();
+            int nombreDeConstatInitial = _fournisseur.obtenirLaCollection<Profile>().Count();
+            Profile unePartie = new Client();
 
-            bool ajout = _fournisseur.insérer<Partie>(unePartie);
-            int nombreDeConstatFinal = _fournisseur.obtenirLaCollection<Partie>().Count();
+            bool ajout = _fournisseur.insérer<Profile>(unePartie);
+            int nombreDeConstatFinal = _fournisseur.obtenirLaCollection<Profile>().Count();
 
             Assert.IsTrue(ajout);
             Assert.AreEqual(nombreDeConstatInitial + 1, nombreDeConstatFinal);
@@ -93,12 +93,12 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         [TestMethod]
         public void TestFournisseurMongo_peutRécupérerUnElémentDansLaCollectionPartie()
         {
-            Partie unePartie = new ClientSociete();
-            _fournisseur.insérer<Partie>(unePartie);
-            Partie partieRécupérée = _fournisseur.obtenirLaCollection<Partie>().SingleOrDefault(x => x.Id == unePartie.Id);
+            Profile unePartie = new Client();
+            _fournisseur.insérer<Profile>(unePartie);
+            Profile partieRécupérée = _fournisseur.obtenirLaCollection<Profile>().SingleOrDefault(x => x.Id == unePartie.Id);
 
             Assert.IsNotNull(partieRécupérée);
-            Assert.IsInstanceOfType(unePartie, typeof(ClientSociete));
+            Assert.IsInstanceOfType(unePartie, typeof(Client));
         }
 
         [TestMethod]
@@ -106,14 +106,14 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         {
             string nomInitial = "Morane";
             string nomFinal = "Marley";
-            Partie unePartie = new Huissier();
+            Profile unePartie = new Huissier();
             unePartie.Nom = nomInitial;
-            _fournisseur.insérer<Partie>(unePartie);
+            _fournisseur.insérer<Profile>(unePartie);
             unePartie.Nom = nomFinal;
-            int nombreDeConstatInitial = _fournisseur.obtenirLaCollection<Partie>().Count();
-            _fournisseur.modifier<Partie>(unePartie);
-            Partie partieRécupérée = _fournisseur.obtenirLaCollection<Partie>().SingleOrDefault(x => x.Id == unePartie.Id);
-            int nombreDeConstatFinal = _fournisseur.obtenirLaCollection<Partie>().Count();
+            int nombreDeConstatInitial = _fournisseur.obtenirLaCollection<Profile>().Count();
+            _fournisseur.modifier<Profile>(unePartie);
+            Profile partieRécupérée = _fournisseur.obtenirLaCollection<Profile>().SingleOrDefault(x => x.Id == unePartie.Id);
+            int nombreDeConstatFinal = _fournisseur.obtenirLaCollection<Profile>().Count();
 
             Assert.IsNotNull(partieRécupérée);
             Assert.AreEqual(nombreDeConstatInitial, nombreDeConstatFinal);
@@ -175,14 +175,14 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         public void TestFournisseurMongo_peutRécupérerLeConstatEtLesPartiesAssociées()
         {
             Huissier unHuissier = créerUnHuissierVide();
-            ClientParticulier unClient = créerUnClientParticulierVide();
+            Client unClient = créerUnClientParticulierVide();
             Constat unConstat = créerUnConstatAvecHuissierEtClient(unHuissier, unClient);
             Constat constatRécupéré = _fournisseur.obtenirLaCollection<Constat>().SingleOrDefault(x => x.Id == unConstat.Id);
 
             Assert.IsNotNull(constatRécupéré);
             Assert.AreEqual(unHuissier.Id, constatRécupéré.Huissier.Id);
             Assert.IsInstanceOfType(constatRécupéré.Huissier, typeof(Huissier));
-            Assert.IsInstanceOfType(constatRécupéré.Client, typeof(ClientParticulier));
+            Assert.IsInstanceOfType(constatRécupéré.Client, typeof(Client));
             Assert.AreEqual(unClient.Id, constatRécupéré.Client.Id);
         }
 
@@ -191,11 +191,11 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         {
             string nomFinal = "Sinclar";
             Huissier unHuissier = créerUnHuissierVide();
-            ClientParticulier unClient = créerUnClientParticulierVide();
+            Client unClient = créerUnClientParticulierVide();
             Constat unConstat = créerUnConstatAvecHuissierEtClient(unHuissier, unClient);
             unConstat.Huissier.Nom = nomFinal;
             _fournisseur.modifier<Constat>(unConstat);
-            Huissier huissierRécupéré = _fournisseur.obtenirLaCollection<Partie>().SingleOrDefault(x => x.Id == unHuissier.Id) as Huissier;
+            Huissier huissierRécupéré = _fournisseur.obtenirLaCollection<Profile>().SingleOrDefault(x => x.Id == unHuissier.Id) as Huissier;
             Constat constatRécupéré = _fournisseur.obtenirLaCollection<Constat>().SingleOrDefault(x => x.Id == unConstat.Id);
 
             Assert.AreNotEqual(nomFinal, huissierRécupéré.Nom);
@@ -205,18 +205,18 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
         private Huissier créerUnHuissierVide()
         {
             Huissier unHuissier = new Huissier();
-            _fournisseur.insérer<Partie>(unHuissier);
+            _fournisseur.insérer<Profile>(unHuissier);
             return unHuissier;
         }
 
-        private ClientParticulier créerUnClientParticulierVide()
+        private Client créerUnClientParticulierVide()
         {
-            ClientParticulier unClient = new ClientParticulier();
-            _fournisseur.insérer<Partie>(unClient);
+            Client unClient = new Client();
+            _fournisseur.insérer<Profile>(unClient);
             return unClient;
         }
 
-        private Constat créerUnConstatAvecHuissierEtClient(Partie huissier, Partie client)
+        private Constat créerUnConstatAvecHuissierEtClient(Profile huissier, Profile client)
         {
             Constat unConstat = new Constat();
             unConstat.Huissier = huissier;
@@ -236,18 +236,6 @@ namespace Yeasca.TestsIntegration.Persistance.Mongo
 
             Assert.IsTrue(ajout);
             Assert.IsNotNull(constatRécupéré);
-        }
-
-        [TestMethod]
-        public void TestFournisseurMongo_nePeutPasAjouterUnProfilAUnUtilisateur()
-        {
-            Utilisateur unUtilisateur = new Utilisateur();
-            unUtilisateur.Profile = new Huissier() { Nom = "Léponge"};
-            _fournisseur.insérer<Utilisateur>(unUtilisateur);
-            Utilisateur utilisateurRécupéré = _fournisseur.obtenirLaCollection<Utilisateur>().SingleOrDefault(x => x.Id == unUtilisateur.Id);
-
-            Assert.IsNotNull(utilisateurRécupéré);
-            Assert.IsNull(utilisateurRécupéré.Profile);
         }
 
         #endregion

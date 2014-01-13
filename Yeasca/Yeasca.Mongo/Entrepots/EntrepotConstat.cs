@@ -5,7 +5,7 @@ using Yeasca.Metier;
 
 namespace Yeasca.Mongo
 {
-    public class EntrepotConstat : IEntrepotConstat
+    public class EntrepotConstat : Entrepot, IEntrepotConstat
     {
         private IFournisseur _fournisseur;
 
@@ -39,33 +39,34 @@ namespace Yeasca.Mongo
 
         private IQueryable<Constat> filtrerLaRecherche(IRechercheConstat recherche, IQueryable<Constat> résultats)
         {
-            if (faitUneRechercheSurLeParamètre(recherche.nomClient))
+            if (faitUneRechercheSurLeParamètre(recherche.NomClient))
                 résultats =
-                    résultats.Where(
-                        x => x.Client.Nom.Contains(recherche.nomClient) || x.Client.Prénom.Contains(recherche.nomClient));
-            if (faitUneRechercheSurLaDate(recherche.dateDébut))
-                résultats = résultats.Where(x => x.Date >= recherche.dateDébut.Value);
-            if (faitUneRechercheSurLaDate(recherche.dateFin))
-                résultats = résultats.Where(x => x.Date <= recherche.dateFin.Value);
+                    résultats.Where(x =>
+                        x.Client.Nom != null && x.Client.Nom.IndexOf(recherche.NomClient, StringComparison.OrdinalIgnoreCase) > -1 ||
+                        x.Client.Prénom != null && x.Client.Prénom.IndexOf(recherche.NomClient, StringComparison.OrdinalIgnoreCase) > -1);
+            if (faitUneRechercheSurLaDate(recherche.DateDébut))
+                résultats = résultats.Where(x => x.Date >= recherche.DateDébut.Value);
+            if (faitUneRechercheSurLaDate(recherche.DateFin))
+                résultats = résultats.Where(x => x.Date <= recherche.DateFin.Value);
             return résultats;
         }
 
-        private static IQueryable<Constat> paginerLaRecherche(IRechercheConstat recherche, IQueryable<Constat> résultats)
+        public IList<Constat> récupérerLaListeDesConstats(IRechercheGlobale recherche)
         {
-            int nombreDElémentsAPasser = (recherche.NuméroPage - 1) * recherche.NombreDElémentsParPage;
-            résultats = résultats.Skip(nombreDElémentsAPasser);
-            résultats = résultats.Take(recherche.NombreDElémentsParPage);
+            IQueryable<Constat> résultats = _fournisseur.obtenirLaCollection<Constat>().OrderByDescending(x => x.Date);
+            résultats = filtrerLaRecherche(recherche, résultats);
+            résultats = paginerLaRecherche(recherche, résultats);
+            return résultats.ToList();
+        }
+
+        private IQueryable<Constat> filtrerLaRecherche(IRechercheGlobale recherche, IQueryable<Constat> résultats)
+        {
+            if (faitUneRechercheSurLeParamètre(recherche.Texte))
+                résultats =
+                    résultats.Where(x =>
+                        x.Client.Nom != null && x.Client.Nom.IndexOf(recherche.Texte, StringComparison.OrdinalIgnoreCase) > -1 ||
+                        x.Client.Prénom != null && x.Client.Prénom.IndexOf(recherche.Texte, StringComparison.OrdinalIgnoreCase) > -1);
             return résultats;
-        }
-
-        private bool faitUneRechercheSurLeParamètre(string nom)
-        {
-            return !string.IsNullOrEmpty(nom);
-        }
-
-        private bool faitUneRechercheSurLaDate(DateTime? uneDate)
-        {
-            return uneDate != null && uneDate.HasValue;
         }
     }
 }

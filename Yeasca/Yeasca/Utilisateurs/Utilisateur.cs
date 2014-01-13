@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Caching;
 
 namespace Yeasca.Metier
 {
@@ -9,74 +10,63 @@ namespace Yeasca.Metier
         {
             MotDePasse = new MotDePasse();
             Email = new Email();
+            Profile = new Huissier();
             TypeUtilisateur = TypeUtilisateur.Inconnu;
+            EstActivé = true;
         }
 
         public Guid Id { get; set; }
-        public string Login { get; set; }
         public MotDePasse MotDePasse { get; set; }
         public Email Email { get; set; }
         public TypeUtilisateur TypeUtilisateur { get; set; }
-        public Partie Profile { get; set; }
+        public bool EstActivé { get; set; }
+        public Profile Profile { get; set; }
 
         public bool estValide()
         {
-            return aUnLogin()
-                && aUnLoginDeLaBonneLongueur()
-                && MotDePasse.estValide()
-                && Email.estValide();
+            return aUnEmail()
+                   && Email.estValide()
+                   && MotDePasse.estValide();
         }
 
-        private bool aUnLogin()
+        private bool aUnEmail()
         {
-            return !string.IsNullOrEmpty(Login);
+            return Email != null;
         }
 
-        private bool aUnLoginDeLaBonneLongueur()
+        public Erreur obtenirLesErreurs()
         {
-            return Login != null && Login.Length <= Ressource.Validation.LONGUEUR_MAX_LOGIN;
-        }
-
-        public List<string> obtenirLesErreurs()
-        {
-            List<string> messages = new List<string>();
-            validerLeLogin(messages);
+            Erreur messages = new Erreur();
             validerLeMotDePasse(messages);
             validerLEmail(messages);
             return messages;
         }
 
-        private void validerLeLogin(List<string> messages)
-        {
-            if (!aUnLogin())
-                messages.Add(Ressource.Validation.LOGIN_REQUIS);
-            else if (!aUnLoginDeLaBonneLongueur())
-                messages.Add(Ressource.Validation.LOGIN_LONGUEUR_MAX);
-        }
-
-        private void validerLeMotDePasse(List<string> messages)
+        private void validerLeMotDePasse(Erreur messages)
         {
             if (!MotDePasse.estValide())
-                messages.Add(MotDePasse.obtenirLErreur());
+                messages.ajouterUneErreur(MotDePasse.obtenirLErreur());
         }
 
-        private void validerLEmail(List<string> messages)
+        private void validerLEmail(Erreur messages)
         {
             if (!Email.estValide())
-                messages.Add(Email.obtenirLErreur());
+                messages.ajouterUneErreur(Email.obtenirLErreur());
         }
 
-        public void chargerDepuisLaSession(string idSession)
+        public static Utilisateur chargerDepuisLaSession()
         {
             SessionUtilisateur session = CacheUtilisateur.Sessions.récupérerLaSession();
             if (session != null)
             {
-                Id = session.Utilisateur.Id;
-                Login = session.Utilisateur.Login;
-                MotDePasse = session.Utilisateur.MotDePasse;
-                Email = session.Utilisateur.Email;
-                TypeUtilisateur = session.Utilisateur.TypeUtilisateur;
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.Id = session.Utilisateur.Id;
+                utilisateur.MotDePasse = session.Utilisateur.MotDePasse;
+                utilisateur.Email = session.Utilisateur.Email;
+                utilisateur.TypeUtilisateur = session.Utilisateur.TypeUtilisateur;
+                return utilisateur;
             }
+            return null;
         }
 
         public void mettreEnSession()

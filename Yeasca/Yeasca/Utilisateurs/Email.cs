@@ -4,7 +4,10 @@ namespace Yeasca.Metier
 {
     public class Email
     {
-        public Email() { }
+        public Email()
+        {
+            Valeur = string.Empty;
+        }
 
         public Email(string valeur)
         {
@@ -57,6 +60,12 @@ namespace Yeasca.Metier
             if (!aLeBonFormat())
                 return Ressource.Validation.EMAIL_INVALIDE;
             return message;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Email 
+                && this.Valeur.Equals((obj as Email).Valeur);
         }
     }
 }

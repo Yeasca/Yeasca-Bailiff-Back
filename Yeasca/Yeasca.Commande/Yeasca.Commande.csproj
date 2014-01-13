@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B869BE03-9ED0-4DAA-9823-E888DC3FD4E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yeasca.Commande</RootNamespace>
+    <AssemblyName>Yeasca.Commande</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusCommande.cs" />
+    <Compile Include="Commandes\Commande.cs" />
+    <Compile Include="Commandes\Constats\AjouterFichierCommande.cs" />
+    <Compile Include="Commandes\Constats\CreerConstatCommande.cs" />
+    <Compile Include="Commandes\Constats\ValiderConstatCommande.cs" />
+    <Compile Include="Commandes\ICommande.cs" />
+    <Compile Include="Commandes\Profiles\CreerClientCommande.cs" />
+    <Compile Include="Commandes\Profiles\ModifierClientCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\CreerAdministrateurCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\CreerHuissierCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\CreerSecretaireCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\ModifierHuissierCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\ModifierSecretaireCommande.cs" />
+    <Compile Include="Messages\Constats\IAjouterFichierMessage.cs" />
+    <Compile Include="Messages\Constats\ICreerConstatMessage.cs" />
+    <Compile Include="Messages\Constats\IValiderConstatMessage.cs" />
+    <Compile Include="Messages\IMessageCommande.cs" />
+    <Compile Include="Messages\Profiles\ICreerClientMessage.cs" />
+    <Compile Include="Messages\Profiles\IModifierClientMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\ICreerAdministrateurMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\ICreerHuissierMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\ICreerSecretaireMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IModifierHuissierMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IModifierSecretaireMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReponseCommande.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yeasca.Mongo\Yeasca.Mongo.csproj">
+      <Project>{FA0CD6A5-171B-4EF6-8688-7D12464F928F}</Project>
+      <Name>Yeasca.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yeasca\Yeasca.Metier.csproj">
+      <Project>{2c3d80ea-5996-4679-af5b-98a5d2e58f52}</Project>
+      <Name>Yeasca.Metier</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

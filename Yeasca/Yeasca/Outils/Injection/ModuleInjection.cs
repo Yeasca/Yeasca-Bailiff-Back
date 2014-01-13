@@ -6,7 +6,7 @@ namespace Yeasca.Metier
 {
     public class ModuleInjection
     {
-        private Dictionary<Type, Type> _dépendances = new Dictionary<Type, Type>();
+        private Dictionary<Type, Injection> _dépendances = new Dictionary<Type, Injection>();
 
         public int NombreDeDépendances
         {
@@ -16,23 +16,23 @@ namespace Yeasca.Metier
             }
         }
 
-        public Type résoudre<T>()
+        public Injection résoudre<T>()
         {
             if (aLiéLeType<T>())
                 return _dépendances[typeof(T)];
             return null;
         }
 
-        public Type résoudre(Type unType)
+        public Injection résoudre(Type unType)
         {
             if (aLiéLeType(unType))
                 return _dépendances[unType];
             return null;
         }
 
-        public Injection lier<T>()
+        public LiaisonInjection lier<T>()
         {
-            Injection liaison = new Injection(this, typeof(T));
+            LiaisonInjection liaison = new LiaisonInjection(this, typeof(T));
             return liaison;
         }
 
@@ -46,23 +46,24 @@ namespace Yeasca.Metier
             return _dépendances.Keys.Any(clé => clé.Equals(unType));
         }
 
-        public class Injection
+        public class LiaisonInjection
         {
             private ModuleInjection _module;
             private Type _typeÀLier;
-            internal Injection(ModuleInjection module, Type typeÀLier)
+            internal LiaisonInjection(ModuleInjection module, Type typeÀLier)
             {
                 _module = module;
                 _typeÀLier = typeÀLier;
             }
 
 
-            public void à<T>()
+            public ParametreLiaisonInjection à<T>()
             {
                 validerLaLiaison<T>();
                 if (_module.aLiéLeType<T>())
-                    _module._dépendances[_typeÀLier] = typeof(T);
-                _module._dépendances.Add(_typeÀLier, typeof(T));
+                    _module._dépendances[_typeÀLier] = new Injection() {Type = typeof (T)};
+                _module._dépendances.Add(_typeÀLier, new Injection() { Type = typeof(T) });
+                return new ParametreLiaisonInjection(_module._dépendances[_typeÀLier]); 
             }
 
             private void validerLaLiaison<T>()
@@ -73,10 +74,11 @@ namespace Yeasca.Metier
                     throw new InjectionException();
             }
 
-            public void àLuiMême()
+            public ParametreLiaisonInjection àLuiMême()
             {
                 validerLaRéflexion();
-                _module._dépendances.Add(_typeÀLier, _typeÀLier);
+                _module._dépendances.Add(_typeÀLier, new Injection() { Type = _typeÀLier });
+                return new ParametreLiaisonInjection(_module._dépendances[_typeÀLier]); 
             }
 
             private void validerLaRéflexion()
@@ -84,6 +86,43 @@ namespace Yeasca.Metier
                 if (_typeÀLier.IsInterface)
                     throw new InjectionException();
             }
+
+            public class ParametreLiaisonInjection
+            {
+                private Injection _injection;
+
+                public ParametreLiaisonInjection(Injection injection)
+                {
+                    _injection = injection;
+                }
+
+                public void enTransient()
+                {
+                    _injection.TypeInjection = TypeInjection.Transient;
+                }
+
+                public void enSingleton()
+                {
+                    _injection.TypeInjection = TypeInjection.Singleton;
+                }
+            }
         }
+    }
+
+    public class Injection
+    {
+        public Injection()
+        {
+            TypeInjection = TypeInjection.Transient;
+        }
+
+        public Type Type { get; set; }
+        public TypeInjection TypeInjection { get; set; }
+    }
+
+    public enum TypeInjection
+    {
+        Transient,
+        Singleton
     }
 }

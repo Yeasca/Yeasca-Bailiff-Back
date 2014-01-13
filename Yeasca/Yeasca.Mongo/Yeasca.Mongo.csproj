@@ -47,7 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntrepotMongo.cs" />
+    <Compile Include="Entrepots\Entrepot.cs" />
     <Compile Include="Entrepots\EntrepotConstat.cs" />
+    <Compile Include="Entrepots\EntrepotJeton.cs" />
+    <Compile Include="Entrepots\EntrepotParametrage.cs" />
+    <Compile Include="Entrepots\EntrepotProfile.cs" />
+    <Compile Include="Entrepots\EntrepotUtilisateur.cs" />
     <Compile Include="FournisseurMongo.cs" />
     <Compile Include="MappingMongo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -48,8 +48,23 @@ namespace Yeasca.TestsUnitaires.Outils.Injection
             Assert.IsInstanceOfType(objet.Service, typeof(Implementation1));
         }
 
+        [TestMethod]
+        public void TestInjecteur_peutInjecterEnSingleton()
+        {
+            string chaineDeTest = "Pouet";
+            ModuleInjection module = new ModuleInjection();
+            module.lier<Interface1>().à<Implementation1>().enSingleton();
+            Injecteur injecteur = new Injecteur(module);
+            Interface1 objet = injecteur.construire<Interface1>();
+            objet.Test = chaineDeTest;
+            Interface1 objetRappelé = injecteur.construire<Interface1>();
+
+            Assert.AreEqual(chaineDeTest, objetRappelé.Test);
+        }
+
         interface Interface1
         {
+            string Test { get; set; }
         }
 
         interface Interface2
@@ -69,7 +84,10 @@ namespace Yeasca.TestsUnitaires.Outils.Injection
             }
         }
 
-        class Implementation1 : Interface1 { }
+        class Implementation1 : Interface1
+        {
+            public string Test { get; set; }
+        }
 
         class Implementation2 : Interface2
         {

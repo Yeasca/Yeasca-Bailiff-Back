@@ -2,6 +2,6 @@
 {
     public interface IRechercheGlobale : IRecherche
     {
-        string texte { get; set; }
+        string Texte { get; set; }
     }
 }
