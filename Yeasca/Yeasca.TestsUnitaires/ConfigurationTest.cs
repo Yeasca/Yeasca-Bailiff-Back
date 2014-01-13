@@ -24,6 +24,8 @@ namespace Yeasca.TestsUnitaires
         private static void initialiserLUtilisateur(TypeUtilisateur typeUtilisateur)
         {
             Utilisateur huissier = new Utilisateur() { TypeUtilisateur = typeUtilisateur };
+            huissier.Email = ConstantesTest.EMAIL_VALIDE;
+            huissier.MotDePasse = ConstantesTest.MOT_DE_PASSE_VALIDE;
             IEntrepotUtilisateur entrepotUtilisateur = EntrepotMongo.fabriquerEntrepot<IEntrepotUtilisateur>();
             entrepotUtilisateur.ajouter(huissier);
             Huissier profileHuissier = new Huissier();

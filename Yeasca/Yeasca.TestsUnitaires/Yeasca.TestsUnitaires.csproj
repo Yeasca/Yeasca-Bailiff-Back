@@ -90,6 +90,17 @@
     <Compile Include="Metier\Utilisateurs\TestMotDePasse.cs" />
     <Compile Include="Metier\Utilisateurs\TestUtilisateur.cs" />
     <Compile Include="ConfigurationTest.cs" />
+    <Compile Include="Requete\Constats\TestRechercheGeneraleConstatRequete.cs" />
+    <Compile Include="Requete\Constats\TestRechercheAvanceConstatRequete.cs" />
+    <Compile Include="Requete\Constats\TestDetailConstatRequete.cs" />
+    <Compile Include="Requete\Profiles\TestRechercheClientRequete.cs" />
+    <Compile Include="Requete\Profiles\TestDetailClientRequete.cs" />
+    <Compile Include="Requete\TestRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestAuthentificationRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestRechercheUtilisateurRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestDetailUtilisateurRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestParametrageRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestGenererJetonRequete.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -100,6 +111,10 @@
     <ProjectReference Include="..\Yeasca.Mongo\Yeasca.Mongo.csproj">
       <Project>{fa0cd6a5-171b-4ef6-8688-7d12464f928f}</Project>
       <Name>Yeasca.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yeasca.Requete\Yeasca.Requete.csproj">
+      <Project>{871f8917-ea38-41bd-8bdd-5bab8fd4c90d}</Project>
+      <Name>Yeasca.Requete</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yeasca\Yeasca.Metier.csproj">
       <Project>{2c3d80ea-5996-4679-af5b-98a5d2e58f52}</Project>

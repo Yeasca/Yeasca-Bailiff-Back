@@ -153,5 +153,21 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
             Assert.AreEqual(3, résultats3.Count);
             Assert.IsTrue(résultats3.All(constat => constat.Client.Nom.IndexOf(texteRecherche3, StringComparison.OrdinalIgnoreCase) >= 0 || constat.Client.Prénom.IndexOf(texteRecherche3, StringComparison.OrdinalIgnoreCase) >= 0));
         }
+
+        [TestMethod]
+        public void TestEntrepotConstat_peutLesConstatsDUnClient()
+        {
+            IList<Constat> résultats = _entrepot.récupérerLaListeDesConstatsDuClient(_client1.Id);
+
+            Assert.AreEqual(2, résultats.Count);
+        }
+
+        [TestMethod]
+        public void TestEntrepotConstat_peutTrouverLeNombreDeConstatDUnClient()
+        {
+            int nombre = _entrepot.nombreDeConstatPourLeClient(_client1.Id);
+
+            Assert.AreEqual(2, nombre);
+        }
     }
 }

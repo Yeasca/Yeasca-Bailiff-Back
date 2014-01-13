@@ -10,5 +10,8 @@
         string MADEMOISELLE { get; }
         string MADAME { get; }
         string MONSIEUR { get; }
+
+        //Autre
+        string FORMAT_DATE { get; }
     }
 }

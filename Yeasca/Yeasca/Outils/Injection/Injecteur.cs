@@ -12,6 +12,7 @@ namespace Yeasca.Metier
 
         public Injecteur(ModuleInjection module)
         {
+            _magasin = new Dictionary<Type, object>();
             _dépendances = module;
         }
 

@@ -1,0 +1,13 @@
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.Requete.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.Requete.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.Mongo.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\MongoDB.Driver.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\MongoDB.Bson.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.Mongo.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\Yeasca.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\MongoDB.Driver.xml
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\bin\Debug\MongoDB.Bson.xml
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\obj\Debug\Yeasca.Requete.csprojResolveAssemblyReference.cache
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\obj\Debug\Yeasca.Requete.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Requete\obj\Debug\Yeasca.Requete.pdb

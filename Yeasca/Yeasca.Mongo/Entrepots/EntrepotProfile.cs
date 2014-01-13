@@ -24,7 +24,7 @@ namespace Yeasca.Mongo
             return _fournisseur.modifier<Profile>(agrégat);
         }
 
-        public Profile récupérerLeClient(Guid id)
+        public Client récupérerLeClient(Guid id)
         {
             return _fournisseur.obtenirLaCollection<Profile>().SingleOrDefault(x => x is Client && x.Id == id) as Client;
         }

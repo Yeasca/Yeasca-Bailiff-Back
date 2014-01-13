@@ -13,3 +13,5 @@ C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaire
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\MongoDB.Bson.xml
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.Commande.dll
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.Commande.pdb
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.Requete.dll
+C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.Requete.pdb

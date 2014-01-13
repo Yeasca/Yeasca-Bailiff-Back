@@ -68,5 +68,15 @@ namespace Yeasca.Mongo
                         x.Client.Prénom != null && x.Client.Prénom.IndexOf(recherche.Texte, StringComparison.OrdinalIgnoreCase) > -1);
             return résultats;
         }
+
+        public IList<Constat> récupérerLaListeDesConstatsDuClient(Guid idClient)
+        {
+            return _fournisseur.obtenirLaCollection<Constat>().Where(x => x.Client.Id == idClient).ToList();
+        }
+
+        public int nombreDeConstatPourLeClient(Guid idClient)
+        {
+            return _fournisseur.obtenirLaCollection<Constat>().Where(x => x.Client.Id == idClient).Count();
+        }
     }
 }

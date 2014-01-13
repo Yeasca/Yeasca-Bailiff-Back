@@ -8,5 +8,7 @@ namespace Yeasca.Metier
         Constat récupérerLeConstat(Guid id);
         IList<Constat> récupérerLaListeDesConstats(IRechercheConstat recherche);
         IList<Constat> récupérerLaListeDesConstats(IRechercheGlobale recherche);
+        IList<Constat> récupérerLaListeDesConstatsDuClient(Guid idClient);
+        int nombreDeConstatPourLeClient(Guid idClient);
     }
 }

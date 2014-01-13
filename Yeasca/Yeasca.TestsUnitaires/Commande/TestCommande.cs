@@ -9,17 +9,15 @@ namespace Yeasca.TestsUnitaires.Commande
     public class TestCommande
     {
         [TestInitialize]
-        public void initialiserLaSessionHTTP()
+        public void initialiser()
         {
-            HttpContext.Current = ConstantesTest.CONTEXTE_HTTP;
-            CacheUtilisateur.réinitialiserLeCacheUtilisateur();
+            ConfigurationTest.initialiserLesEntrepotsMongo();    
         }
 
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourHuissierEchoueSiPasHuissier()
         {
-            Utilisateur unUtilisateurInconnu = new Utilisateur();
-            unUtilisateurInconnu.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Inconnu);
             ReponseCommande réponse = new CommandeTestHuissier().exécuter(null);
 
             Assert.IsFalse(réponse.Réussite);
@@ -28,9 +26,7 @@ namespace Yeasca.TestsUnitaires.Commande
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourHuissierRéussitSiHuissier()
         {
-            Utilisateur unUtilisateurHuissier = new Utilisateur();
-            unUtilisateurHuissier.TypeUtilisateur = TypeUtilisateur.Huissier;
-            unUtilisateurHuissier.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Huissier);
             ReponseCommande réponse = new CommandeTestHuissier().exécuter(null);
 
             Assert.IsTrue(réponse.Réussite);
@@ -39,8 +35,7 @@ namespace Yeasca.TestsUnitaires.Commande
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourAdministrateurEchoueSiPasAdministrateur()
         {
-            Utilisateur unUtilisateurInconnu = new Utilisateur();
-            unUtilisateurInconnu.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Inconnu);
             ReponseCommande réponse = new CommandeTestAdministrateur().exécuter(null);
 
             Assert.IsFalse(réponse.Réussite);
@@ -49,9 +44,7 @@ namespace Yeasca.TestsUnitaires.Commande
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourAdministrateurRéussitSiAdministrateur()
         {
-            Utilisateur unUtilisateurHuissier = new Utilisateur();
-            unUtilisateurHuissier.TypeUtilisateur = TypeUtilisateur.Administrateur;
-            unUtilisateurHuissier.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Administrateur);
             ReponseCommande réponse = new CommandeTestAdministrateur().exécuter(null);
 
             Assert.IsTrue(réponse.Réussite);
@@ -59,8 +52,7 @@ namespace Yeasca.TestsUnitaires.Commande
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourSuperviseurEchoueSiPasSuperviseur()
         {
-            Utilisateur unUtilisateurInconnu = new Utilisateur();
-            unUtilisateurInconnu.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Inconnu);
             ReponseCommande réponse = new CommandeTestSuperviseur().exécuter(null);
 
             Assert.IsFalse(réponse.Réussite);
@@ -69,9 +61,7 @@ namespace Yeasca.TestsUnitaires.Commande
         [TestMethod]
         public void TestCommande_exécuterUneCommandePourSuperviseurRéussitSiSuperviseur()
         {
-            Utilisateur unUtilisateurHuissier = new Utilisateur();
-            unUtilisateurHuissier.TypeUtilisateur = TypeUtilisateur.Superviseur;
-            unUtilisateurHuissier.mettreEnSession();
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Superviseur);
             ReponseCommande réponse = new CommandeTestSuperviseur().exécuter(null);
 
             Assert.IsTrue(réponse.Réussite);

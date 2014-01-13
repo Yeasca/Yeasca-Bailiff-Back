@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Yeasca.Metier;
@@ -33,9 +34,11 @@ namespace Yeasca.Mongo
         {
             if(email != null && motDePasse != null)
                 return _fournisseur.obtenirLaCollection<Utilisateur>()
-                    .SingleOrDefault(x => 
+                    .FirstOrDefault(x => 
                         x.Email != null 
-                        && x.MotDePasse != null 
+                        && x.MotDePasse != null
+                        && x.Email.Valeur != null
+                        && x.MotDePasse.Valeur != null
                         && x.Email.Equals(email) 
                         && x.MotDePasse.Equals(motDePasse));
             return null;

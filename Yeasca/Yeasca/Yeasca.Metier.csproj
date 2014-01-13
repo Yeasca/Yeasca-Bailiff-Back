@@ -75,11 +75,13 @@
     <Compile Include="Outils\Sessions\Sessions.cs" />
     <Compile Include="Ressources\IRessourceCommande.cs" />
     <Compile Include="Ressources\IRessourceParametre.cs" />
+    <Compile Include="Ressources\IRessourceRequete.cs" />
     <Compile Include="Ressources\Ressource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressources\IRessourceValidation.cs" />
     <Compile Include="Ressources\RessourceCommandeFrance.cs" />
     <Compile Include="Ressources\RessourceParametreFrance.cs" />
+    <Compile Include="Ressources\RessourceRequeteFrance.cs" />
     <Compile Include="Ressources\RessourceValidationFrance.cs" />
     <Compile Include="Utilisateurs\Sessions\CacheUtilisateur.cs" />
     <Compile Include="Utilisateurs\Email.cs" />

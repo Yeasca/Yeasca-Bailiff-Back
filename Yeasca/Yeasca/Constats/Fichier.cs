@@ -11,6 +11,7 @@ namespace Yeasca.Metier
         public const string DOSSIER_FICHIER_INDEX = "DossierFichiers";
         public const string DOSSIER_MAITRE_DEFAUT = "Yeasca";
         public const string DOSSIER_FICHIER_DEFAUT = "\\Fichiers";
+        public const string RACINE = "RacineWeb";
 
         public Fichier(string nom, string extension)
         {
@@ -37,6 +38,23 @@ namespace Yeasca.Metier
                     return string.Concat(dossierFichier, "\\", Id.ToString(), Extension);
                 }
                 return null;
+            }
+        }
+
+        public string URLFichier
+        {
+            get
+            {
+                string racine = ConfigurationManager.AppSettings[RACINE];
+                return string.Concat(racine, Nom, Extension);
+            }
+        }
+
+        public string NomComplet
+        {
+            get
+            {
+                return string.Concat(Nom, Extension);
             }
         }
 

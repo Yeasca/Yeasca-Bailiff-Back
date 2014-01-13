@@ -5,7 +5,7 @@ namespace Yeasca.Metier
 {
     public interface IEntrepotProfile : IEntrepot
     {
-        Profile récupérerLeClient(Guid id);
+        Client récupérerLeClient(Guid id);
         Huissier récupérerLHuissier(Guid id);
         Secretaire récupérerLaSecrétaire(Guid id);
         IList<Client> récupérerLaListeDesClients(IRechercheGlobale recherche);

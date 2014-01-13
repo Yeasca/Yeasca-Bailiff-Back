@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace Yeasca.Metier
@@ -85,7 +86,8 @@ namespace Yeasca.Metier
 
         public override bool Equals(object obj)
         {
-            return obj is MotDePasse && Valeur.Equals((obj as MotDePasse).Valeur);
+            IStructuralEquatable valeur = Valeur;
+            return obj is MotDePasse && valeur.Equals((obj as MotDePasse).Valeur, StructuralComparisons.StructuralEqualityComparer);
         }
     }
 }
