@@ -96,7 +96,7 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
         public void TestEntrepotUtilisateur_peutRechercherUnUtilisateurSpécifiqueSurLeType()
         {
             RechercheUtilisateurTest recherche = new RechercheUtilisateurTest();
-            recherche.Type = TypeUtilisateur.Secrétaire;
+            recherche.Type = (int)TypeUtilisateur.Secrétaire;
             IList<Utilisateur> résultats = _entrepot.récupérerLaListeDesUtilisateurs(recherche);
 
             Assert.AreEqual(2, résultats.Count);
@@ -107,7 +107,7 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
         public void TestEntrepotUtilisateur_peutRechercheUnUtilisateurSpécifiqueSurTousLesCritères()
         {
             RechercheUtilisateurTest recherche = new RechercheUtilisateurTest();
-            recherche.Type = TypeUtilisateur.Secrétaire;
+            recherche.Type = (int)TypeUtilisateur.Secrétaire;
             recherche.NomUtilisateur = _prénomSecrétaire;
             IList<Utilisateur> résultats = _entrepot.récupérerLaListeDesUtilisateurs(recherche);
 

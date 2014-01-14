@@ -1,0 +1,657 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Yeasca API</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <style>
+        body{ font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif; }
+        #resultat { width: 100%;height: 200px;border: 1px solid black;margin-bottom: 20px;}
+        #catalogue { width: 100%;height: 600px;overflow: scroll;}
+        #catalogue table { width: 100%;border: 1px solid black;border-collapse: collapse;}
+        #catalogue tr { border: 1px solid black;}
+        #catalogue th { border: 1px solid black;}
+        #catalogue td { border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <h1>
+        Yeasca API
+    </h1>
+    <section >
+        <div id="resultat">
+            
+        </div>
+    </section>
+    <section id="catalogue">
+        <h2>Utilisateurs</h2>
+        <table>
+            <tr>
+                <th>URI</th>
+                <th>Méthode</th>
+                <th>Paramètres</th>
+                <th>Description</th>
+                <th>Essai</th>
+            </tr>
+            <tr>
+                <td>/Authentifier</td>
+                <td>GET</td>
+                <td>Email(string), MotDePasse(string)</td>
+                <td>Authentification d'un utilisateur</td>
+                <td>
+                    <label>E-mail : </label><input id="auth-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="auth-pass"/><br/>
+                    <input id="auth-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Jeton</td>
+                <td>GET</td>
+                <td>Email(string), Login(string), MotDePasse(string)</td>
+                <td>Génération d'un jeton pour authoriser la création d'un admin</td>
+                <td>
+                    <label>E-mail : </label><input id="creer-jeton-email"/><br/>
+                    <label>Login : </label><input id="creer-jeton-login"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="creer-jeton-pass"/><br/>
+                    <input id="creer-jeton-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Creer</td>
+                <td>POST</td>
+                <td>Jeton(string), Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string), NomCabinet(string), NuméroVoie(string)
+                    RépétitionVoie(string), TypeVoie(string), NomVoie(string), ComplémentVoie(string), CodePostal(string), Ville(string)
+                </td>
+                <td>Création d'un compte administrateur</td>
+                <td>
+                    <label>Jeton : </label><input id="admin-creer-jeton"/><br/>
+                    <label>E-mail : </label><input id="admin-creer-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="admin-creer-pass"/><br/>
+                    <label>Civilité : </label><input id="admin-creer-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="admin-creer-nom"/><br/>
+                    <label>Prénom : </label><input id="admin-creer-pre"/><br/>
+                    <label>Cabinet : </label><input id="admin-creer-cab"/><br/>
+                    <label>Numéro : </label><input id="admin-creer-numv"/><br/>
+                    <label>Répétition : </label><input id="admin-creer-repv"/><br/>
+                    <label>Type voie : </label><input id="admin-creer-typv"/><br/>
+                    <label>Nom voie : </label><input id="admin-creer-nomv"/><br/>
+                    <label>Complément voie : </label><input id="admin-creer-cmpv"/><br/>
+                    <label>Code postat : </label><input id="admin-creer-cp"/><br/>
+                    <label>Ville : </label><input id="admin-creer-vil"/><br/>
+                    <input id="admin-creer-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Utilisateur/Rechercher</td>
+                <td>GET</td>
+                <td>NomUtilisateur(string), Type(string), NuméroPage(int), NombreDElémentsParPage(string)</td>
+                <td>Recherche d'un utilisateur (authentification admin requise)</td>
+                <td>
+                    <label>Nom Utilisateur : </label><input id="uti-rech-nom"/><br/>
+                    <label>Type : </label><input id="uti-rech-typ" type="number" value="1"/><br/>
+                    <label>Numéro Page : </label><input id="uti-rech-np" type="number" value="1"/><br/>
+                    <label>Nombre D'Eléments Par Page : </label><input id="uti-rech-nep" type="number" value="10"/><br/>
+                    <input id="uti-rech-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Utilisateur</td>
+                <td>GET</td>
+                <td>IdUtilisateur(string)</td>
+                <td>Détails d'un utilisateur</td>
+                <td>
+                    <label>Id utilisateur : </label><input id="uti-det-id"/><br/>
+                    <input id="uti-det-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Creer/Huissier</td>
+                <td>POST</td>
+                <td>Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string)</td>
+                <td>Création d'un compte huissier</td>
+                <td>
+                    <label>E-mail : </label><input id="creer-huis-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="creer-huis-pass"/><br/>
+                    <label>Civilité : </label><input id="creer-huis-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="creer-huis-nom"/><br/>
+                    <label>Prénom : </label><input id="creer-huis-pre"/><br/>
+                    <input id="creer-huis-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Modifier/Huissier</td>
+                <td>POST</td>
+                <td>IdHuissier(string), Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string)</td>
+                <td>Modification d'un compte huissier (si aucun mot de passe est fourni, le mot de passe actuel sera conservé</td>
+                <td>
+                    <label>Id : </label><input id="mod-huis-id"/><br/>
+                    <label>E-mail : </label><input id="mod-huis-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="mod-huis-pass"/><br/>
+                    <label>Civilité : </label><input id="mod-huis-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="mod-huis-nom"/><br/>
+                    <label>Prénom : </label><input id="mod-huis-pre"/><br/>
+                    <input id="mod-huis-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Creer/Secretaire</td>
+                <td>POST</td>
+                <td>Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string)</td>
+                <td>Création d'un compte secrétaire</td>
+                <td>
+                    <label>E-mail : </label><input id="creer-sec-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="creer-sec-pass"/><br/>
+                    <label>Civilité : </label><input id="creer-sec-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="creer-sec-nom"/><br/>
+                    <label>Prénom : </label><input id="creer-sec-pre"/><br/>
+                    <input id="creer-sec-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Admin/Modifier/Secretaire</td>
+                <td>POST</td>
+                <td>IdSecrétaire(string), Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string)</td>
+                <td>Modification d'un compte secrétaire (si aucun mot de passe est fourni, le mot de passe actuel sera conservé</td>
+                <td>
+                    <label>Id : </label><input id="mod-sec-id"/><br/>
+                    <label>E-mail : </label><input id="mod-sec-email"/><br/>
+                    <label>Mot de passe : </label><input type="password" id="mod-sec-pass"/><br/>
+                    <label>Civilité : </label><input id="mod-sec-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="mod-sec-nom"/><br/>
+                    <label>Prénom : </label><input id="mod-sec-pre"/><br/>
+                    <input id="mod-sec-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Parametrage</td>
+                <td>GET</td>
+                <td></td>
+                <td>Récupérer tout les paramètres du site pour alimenter les listes</td>
+                <td>
+                    <input id="param-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+        </table>
+        <h2>Clients</h2>
+        <table>
+            <tr>
+                <th>URI</th>
+                <th>Méthode</th>
+                <th>Paramètres</th>
+                <th>Description</th>
+                <th>Essai</th>
+            </tr>
+            <tr>
+                <td>/Client/Recherche</td>
+                <td>GET</td>
+                <td>Texte(string), NuméroPage(int), NombreDElémentsParPage(int)</td>
+                <td>Rechercher un client. Texte vide renvoie tous les clients</td>
+                <td>
+                    <label>Texte : </label><input id="cli-rech-txt"/><br/>
+                    <label>Numéro Page : </label><input id="cli-rech-np" type="number" value="1"/><br/>
+                    <label>Nombre D'Eléments Par Page : </label><input id="cli-rech-nep" type="number" value="10"/><br/>
+                    <input id="cli-rech-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Client</td>
+                <td>GET</td>
+                <td>IdClient(string)</td>
+                <td>Détails d'un client</td>
+                <td>
+                    <label>IdClient : </label><input id="cli-det-id"/><br/>
+                    <input id="cli-det-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Client/Creer</td>
+                <td>POST</td>
+                <td>Civilité(int), Nom(string), Prénom(string), DénominationSociété(string), NuméroVoie(string)
+                    RépétitionVoie(string), TypeVoie(string), NomVoie(string), ComplémentVoie(string), CodePostal(string), Ville(string)</td>
+                <td>Créer un client</td>
+                <td>
+                    <label>Civilité : </label><input id="cli-creer-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="cli-creer-nom"/><br/>
+                    <label>Prénom : </label><input id="cli-creer-pre"/><br/>
+                    <label>Société : </label><input id="cli-creer-soc"/><br/>
+                    <label>Numéro : </label><input id="cli-creer-numv"/><br/>
+                    <label>Répétition : </label><input id="cli-creer-repv"/><br/>
+                    <label>Type voie : </label><input id="cli-creer-typv"/><br/>
+                    <label>Nom voie : </label><input id="cli-creer-nomv"/><br/>
+                    <label>Complément voie : </label><input id="cli-creer-cplv"/><br/>
+                    <label>Code postat : </label><input id="cli-creer-cp"/><br/>
+                    <label>Ville : </label><input id="cli-creer-vil"/><br/>
+                    <input id="cli-creer-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Client/Modifier</td>
+                <td>POST</td>
+                <td>IdClient(string), Civilité(int), Nom(string), Prénom(string), DénominationSociété(string), NuméroVoie(string)
+                    RépétitionVoie(string), TypeVoie(string), NomVoie(string), ComplémentVoie(string), CodePostal(string), Ville(string)</td>
+                <td>Créer un client</td>
+                <td>
+                    <label>IdClient : </label><input id="cli-mod-id"/><br/>
+                    <label>Civilité : </label><input id="cli-mod-civ" type="number" value="1"/><br/>
+                    <label>Nom : </label><input id="cli-mod-nom"/><br/>
+                    <label>Prénom : </label><input id="cli-mod-pre"/><br/>
+                    <label>Société : </label><input id="cli-mod-soc"/><br/>
+                    <label>Numéro : </label><input id="cli-mod-numv"/><br/>
+                    <label>Répétition : </label><input id="cli-mod-repv"/><br/>
+                    <label>Type voie : </label><input id="cli-mod-typv"/><br/>
+                    <label>Nom voie : </label><input id="cli-mod-nomv"/><br/>
+                    <label>Complément voie : </label><input id="cli-mod-cplv"/><br/>
+                    <label>Code postat : </label><input id="cli-mod-cp"/><br/>
+                    <label>Ville : </label><input id="cli-mod-vil"/><br/>
+                    <input id="cli-mod-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+        </table>
+        <h2>Constats</h2>
+        <table>
+            <tr>
+                <th>URI</th>
+                <th>Méthode</th>
+                <th>Paramètres</th>
+                <th>Description</th>
+                <th>Essai</th>
+            </tr>
+            <tr>
+                <td>/Constat/Recherche</td>
+                <td>GET</td>
+                <td>Texte(string), NuméroPage(int), NombreDElémentsParPage(int)</td>
+                <td>Rechercher un constat. Texte vide renvoie tous les constats</td>
+                <td>
+                    <label>Texte : </label><input id="con-rech-txt"/><br/>
+                    <label>Numéro Page : </label><input id="con-rech-np" type="number" value="1"/><br/>
+                    <label>Nombre D'Eléments Par Page : </label><input id="con-rech-nep" type="number" value="10"/><br/>
+                    <input id="con-rech-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Constat/Recherche/Avance</td>
+                <td>GET</td>
+                <td>NomClient(string), DateDébut(string), DateFin(string), NuméroPage(int), NombreDElémentsParPage(int)</td>
+                <td>Rechercher un constat. Le format de la date doit être dd/MM/yyyy</td>
+                <td>
+                    <label>Nom Client : </label><input id="con-recha-nom"/><br/>
+                    <label>Date début : </label><input id="con-recha-dd"/><br/>
+                    <label>Date fin : </label><input id="con-recha-df"/><br/>
+                    <label>Numéro Page : </label><input id="con-recha-np" type="number" value="1"/><br/>
+                    <label>Nombre D'Eléments Par Page : </label><input id="con-recha-nep" type="number" value="10"/><br/>
+                    <input id="con-recha-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Constat</td>
+                <td>GET</td>
+                <td>IdConstat(string)</td>
+                <td>Détails d'un constat</td>
+                <td>
+                    <label>IdConstat : </label><input id="con-det-id"/><br/>
+                    <input id="con-det-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Constat/Creer</td>
+                <td>POST</td>
+                <td>IdClient(string)</td>
+                <td>Créer un constat vide</td>
+                <td>
+                    <label>IdClient : </label><input id="con-creer-id"/><br/>
+                    <input id="con-creer-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Constat/Ajouter/Fichier</td>
+                <td>POST</td>
+                <td>IdConstat(string), Fichier(file)</td>
+                <td>Ajouter un fichier à un constat</td>
+                <td>
+                    <form id="form-con-add">
+                        <label>IdConstat : </label><input name="IdConstat"/><br/>
+                        <label>Fichier : </label><input name="Fichier" type="file"/><br/>
+                    </form>
+                    <progress id="prog-con-add"></progress>
+                    <input id="con-add-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Constat/Valider</td>
+                <td>POST</td>
+                <td>IdConstat(string), Fichier(file)</td>
+                <td>Ajouter le word complet du constat et le met à l'état validé</td>
+                <td>
+                    <form id="form-con-val">
+                        <label>IdConstat : </label><input name="IdConstat"/><br/>
+                        <label>Fichier : </label><input name="Fichier" type="file"/><br/>
+                    </form>
+                    <progress id="prog-con-val"></progress>
+                    <input id="con-val-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <script type="text/javascript">
+        function chargement() {
+            $('body').css('cursor', 'progress');
+        }
+        function finChargement() {
+            $('body').css('cursor', 'auto');
+        }
+
+        $('#auth-envoi').click(function() {
+            chargement();
+            var données = {};
+            données.Email = $('#auth-email').val();
+            données.MotDePasse = $('#auth-pass').val();
+            $.get('/Authentifier', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#creer-jeton-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Email = $('#creer-jeton-envoi').val();
+            données.Login = $('#creer-jeton-login').val();
+            données.MotDePasse = $('#creer-jeton-envoi').val();
+            $.get('/Admin/Jeton', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#admin-creer-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Jeton = $('#admin-creer-jeton').val();
+            données.Email = $('#admin-creer-email').val();
+            données.MotDePasse = $('#admin-creer-pass').val();
+            données.Civilité = $('#admin-creer-civ').val();
+            données.Nom = $('#admin-creer-nom').val();
+            données.Prénom = $('#admin-creer-pre').val();
+            données.NomCabinet = $('#admin-creer-cab').val();
+            données.NuméroVoie = $('#admin-creer-numv').val();
+            données.RépétitionVoie = $('#admin-creer-repv').val();
+            données.TypeVoie = $('#admin-creer-typv').val();
+            données.NomVoie = $('#admin-creer-nomv').val();
+            données.ComplémentVoie = $('#admin-creer-cmpv').val();
+            données.CodePostal = $('#admin-creer-cp').val();
+            données.Ville = $('#admin-creer-vil').val();
+            $.post('/Admin/Creer', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#uti-rech-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Nom = $('#uti-rech-nom').val();
+            données.Type = $('#uti-rech-typ').val();
+            données.NuméroPage = $('#uti-rech-np').val();
+            données.NombreDElémentsParPage = $('#uti-rech-nep').val();
+            $.get('/Utilisateur/Rechercher', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#uti-det-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdUtilisateur = $('#uti-det-id').val();
+            $.get('/Utilisateur', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#creer-huis-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Email = $('#creer-huis-email').val();
+            données.MotDePasse = $('#creer-huis-pass').val();
+            données.Civilité = $('#creer-huis-civ').val();
+            données.Nom = $('#creer-huis-nom').val();
+            données.Prénom = $('#creer-huis-pre').val();
+            $.post('/Admin/Creer/Huissier', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#creer-sec-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Email = $('#creer-sec-email').val();
+            données.MotDePasse = $('#creer-sec-pass').val();
+            données.Civilité = $('#creer-sec-civ').val();
+            données.Nom = $('#creer-sec-nom').val();
+            données.Prénom = $('#creer-sec-pre').val();
+            $.post('/Admin/Creer/Secretaire', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#mod-huis-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdHuissier = $('#mod-huis-id').val();
+            données.Email = $('#mod-huis-email').val();
+            données.MotDePasse = $('#mod-huis-pass').val();
+            données.Civilité = $('#mod-huis-civ').val();
+            données.Nom = $('#mod-huis-nom').val();
+            données.Prénom = $('#mod-huis-pre').val();
+            $.post('/Admin/Modifier/Huissier', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#mod-sec-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdSecrétaire = $('#mod-sec-id').val();
+            données.Email = $('#mod-sec-email').val();
+            données.MotDePasse = $('#mod-sec-pass').val();
+            données.Civilité = $('#mod-sec-civ').val();
+            données.Nom = $('#mod-sec-nom').val();
+            données.Prénom = $('#mod-sec-pre').val();
+            $.post('/Admin/Modifier/Secretaire', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#param-envoi').click(function () {
+            chargement();
+            $.get('/Parametrage', function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#cli-rech-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Texte = $('#cli-rech-txt').val();
+            données.NuméroPage = $('#cli-rech-np').val();
+            données.NombreDElémentsParPage = $('#cli-rech-nep').val();
+            $.get('/Client/Recherche', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#cli-det-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdClient = $('#cli-det-id').val();
+            $.get('/Client', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#cli-creer-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Civilité = $('#cli-creer-civ').val();
+            données.Nom = $('#cli-creer-nom').val();
+            données.Prénom = $('#cli-creer-pre').val();
+            données.DénominationSociété = $('#cli-creer-soc').val();
+            données.NuméroVoie = $('#cli-creer-numv').val();
+            données.RépétitionVoie = $('#cli-creer-repv').val();
+            données.TypeVoie = $('#cli-creer-typv').val();
+            données.NomVoie = $('#cli-creer-nomv').val();
+            données.ComplémentVoie = $('#cli-creer-cplv').val();
+            données.CodePostal = $('#cli-creer-cp').val();
+            données.Ville = $('#cli-creer-vil').val();
+            $.post('/Client/Creer', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#cli-mod-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdClient = $('#cli-mod-id').val();
+            données.Civilité = $('#cli-mod-civ').val();
+            données.Nom = $('#cli-mod-nom').val();
+            données.Prénom = $('#cli-mod-pre').val();
+            données.DénominationSociété = $('#cli-mod-soc').val();
+            données.NuméroVoie = $('#cli-mod-numv').val();
+            données.RépétitionVoie = $('#cli-mod-repv').val();
+            données.TypeVoie = $('#cli-mod-typv').val();
+            données.NomVoie = $('#cli-mod-nomv').val();
+            données.ComplémentVoie = $('#cli-mod-cplv').val();
+            données.CodePostal = $('#cli-mod-cp').val();
+            données.Ville = $('#cli-mod-vil').val();
+            $.post('/Client/Modifier', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#con-rech-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.Texte = $('#con-rech-txt').val();
+            données.NuméroPage = $('#con-rech-np').val();
+            données.NombreDElémentsParPage = $('#con-rech-nep').val();
+            $.get('/Constat/Recherche', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#con-recha-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.NomClient = $('#con-recha-nom').val();
+            données.DateDébut = $('#con-recha-dd').val();
+            données.DateFin = $('#con-recha-df').val();
+            données.NuméroPage = $('#con-recha-np').val();
+            données.NombreDElémentsParPage = $('#con-recha-nep').val();
+            $.get('/Constat/Recherche/Avance', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+
+        $('#con-det-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdConstat = $('#con-det-id').val();
+            $.get('/Constat', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#con-creer-envoi').click(function () {
+            chargement();
+            var données = {};
+            données.IdClient = $('#con-creer-id').val();
+            $.post('/Constat/Creer', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+
+        var progressBar;
+        $('#con-add-envoi').click(function () {
+            chargement();
+            var formData = new FormData($('#form-con-add')[0]);
+            progressBar = $('#prog-con-add');
+            $.ajax({
+                url: '/Constat/Ajouter/Fichier',  
+                type: 'POST',
+                xhr: function () {  
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) { 
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    }
+                    return myXhr;
+                },
+                success: function (réponse) {
+                    progressBar.attr({ value: 0 });
+                    finChargement();
+                    $('#resultat').html(JSON.stringify(réponse));
+                },
+                error: function () {
+                    progressBar.attr({ value: 0 });
+                    finChargement();
+                    $('#resultat').html('Erreur upload');
+                },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+        
+        $('#con-val-envoi').click(function () {
+            chargement();
+            var formData = new FormData($('#form-con-val')[0]);
+            progressBar = $('#prog-con-val');
+            $.ajax({
+                url: '/Constat/Valider',
+                type: 'POST',
+                xhr: function () {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    }
+                    return myXhr;
+                },
+                success: function (réponse) {
+                    progressBar.attr({ value: 0 });
+                    finChargement();
+                    $('#resultat').html(JSON.stringify(réponse));
+                },
+                error: function () {
+                    progressBar.attr({ value: 0 });
+                    finChargement();
+                    $('#resultat').html('Erreur upload');
+                },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+        
+        function progressHandlingFunction(e) {
+            if (e.lengthComputable) {
+                progressBar.attr({ value: e.loaded, max: e.total });
+            }
+        }
+    </script>
+</body>
+</html>

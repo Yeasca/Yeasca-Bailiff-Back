@@ -41,7 +41,7 @@ namespace Yeasca.Mongo
 
         public IList<Client> récupérerLaListeDesClients(IRechercheGlobale recherche)
         {
-            IQueryable<Client> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Client).OrderBy(x => x.Nom).Cast<Client>();
+            IQueryable<Client> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Client).OrderBy(x => x.Nom).OfType<Client>();
             résultats = filtrerLaRecherche(recherche, résultats);
             résultats = paginerLaRecherche(recherche, résultats);
             return résultats.ToList();
@@ -62,7 +62,7 @@ namespace Yeasca.Mongo
 
         public IList<Huissier> récupérerLaListeDesHuissier(IRechercheGlobale recherche)
         {
-            IQueryable<Huissier> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Huissier).OrderBy(x => x.Nom).Cast<Huissier>();
+            IQueryable<Huissier> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Huissier).OrderBy(x => x.Nom).OfType<Huissier>();
             résultats = filtrerLaRecherche(recherche, résultats);
             résultats = paginerLaRecherche(recherche, résultats);
             return résultats.ToList();
@@ -83,7 +83,7 @@ namespace Yeasca.Mongo
 
         public IList<Secretaire> récupérerLaListeDesSecrétaires(IRechercheGlobale recherche)
         {
-            IQueryable<Secretaire> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Secretaire).OrderBy(x => x.Nom).Cast<Secretaire>();
+            IQueryable<Secretaire> résultats = _fournisseur.obtenirLaCollection<Profile>().Where(x => x is Secretaire).OrderBy(x => x.Nom).OfType<Secretaire>();
             résultats = filtrerLaRecherche(recherche, résultats);
             résultats = paginerLaRecherche(recherche, résultats);
             return résultats.ToList();

@@ -56,6 +56,7 @@ namespace Yeasca.Metier
 
         public static Utilisateur chargerDepuisLaSession()
         {
+            CacheUtilisateur.initialiserLeCacheUtilisateur();
             SessionUtilisateur session = CacheUtilisateur.Sessions.récupérerLaSession();
             if (session != null)
             {
@@ -71,6 +72,7 @@ namespace Yeasca.Metier
 
         public void mettreEnSession()
         {
+            CacheUtilisateur.initialiserLeCacheUtilisateur();
             SessionUtilisateur nouvelleSession = new SessionUtilisateur();
             nouvelleSession.Utilisateur = this;
             CacheUtilisateur.Sessions.ajouterUneSession(nouvelleSession);

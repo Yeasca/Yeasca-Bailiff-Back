@@ -32,15 +32,16 @@ namespace Yeasca.Mongo
 
         public Utilisateur authentifier(Email email, MotDePasse motDePasse)
         {
-            if(email != null && motDePasse != null)
-                return _fournisseur.obtenirLaCollection<Utilisateur>()
-                    .FirstOrDefault(x => 
-                        x.Email != null 
-                        && x.MotDePasse != null
-                        && x.Email.Valeur != null
+            if (email != null && motDePasse != null)
+            {
+                Utilisateur utilisateurAuthentifié = _fournisseur.obtenirLaCollection<Utilisateur>()
+                    .FirstOrDefault(x =>
+                        x.Email.Valeur != null
                         && x.MotDePasse.Valeur != null
-                        && x.Email.Equals(email) 
+                        && x.Email.Equals(email)
                         && x.MotDePasse.Equals(motDePasse));
+                return utilisateurAuthentifié;
+            }
             return null;
         }
 
@@ -68,14 +69,14 @@ namespace Yeasca.Mongo
             }
             if (faitUneRechercheSurLeTypeDUtilisateur(recherche))
             {
-                résultats = résultats.Where(x => x.TypeUtilisateur == recherche.Type);
+                résultats = résultats.Where(x => x.TypeUtilisateur == (TypeUtilisateur)recherche.Type);
             }
             return résultats;
         }
 
         private bool faitUneRechercheSurLeTypeDUtilisateur(IRechercheUtilisateur recherche)
         {
-            return recherche.Type != TypeUtilisateur.Inconnu;
+            return (TypeUtilisateur)(recherche.Type) != TypeUtilisateur.Inconnu;
         }
     }
 }

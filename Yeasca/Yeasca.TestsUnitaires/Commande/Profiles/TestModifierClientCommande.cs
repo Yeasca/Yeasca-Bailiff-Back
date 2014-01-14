@@ -52,7 +52,7 @@ namespace Yeasca.TestsUnitaires.Commande.Profiles
         private IModifierClientMessage créerUnMessageValide(string idClient)
         {
             IModifierClientMessage message = new ModifierClientMessageTest();
-            message.idClient = idClient;
+            message.IdClient = idClient;
             message.Civilité = 0;
             message.Nom = "Johanson";
             message.Prénom = "Scarlett";
@@ -65,7 +65,7 @@ namespace Yeasca.TestsUnitaires.Commande.Profiles
 
     public class ModifierClientMessageTest : IModifierClientMessage
     {
-        public string idClient { get; set; }
+        public string IdClient { get; set; }
         public int Civilité { get; set; }
         public string Nom { get; set; }
         public string Prénom { get; set; }

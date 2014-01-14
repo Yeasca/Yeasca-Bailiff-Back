@@ -80,6 +80,7 @@ namespace Yeasca.TestsUnitaires.Commande.Utilisateurs
         public string NomCabinet { get; set; }
         public string NuméroVoie { get; set; }
         public string RépétitionVoie { get; set; }
+        public string TypeVoie { get; set; }
         public string NomVoie { get; set; }
         public string ComplémentVoie { get; set; }
         public string CodePostal { get; set; }

@@ -2,7 +2,7 @@
 {
     public interface IModifierClientMessage : IMessageCommande
     {
-        string idClient { get; set; }
+        string IdClient { get; set; }
         int Civilité { get; set; }
         string Nom { get; set; }
         string Prénom { get; set; }

@@ -23,6 +23,7 @@ namespace Yeasca.Commande
             Adresse nouvelleAdresse = new Adresse();
             nouvelleAdresse.Voie.NuméroVoie.Numéro = message.NuméroVoie;
             nouvelleAdresse.Voie.NuméroVoie.Répétition = message.RépétitionVoie;
+            nouvelleAdresse.Voie.TypeVoie = message.TypeVoie;
             nouvelleAdresse.Voie.NomVoie = message.NomVoie;
             nouvelleAdresse.Voie.ComplémentVoie = message.ComplémentVoie;
             nouvelleAdresse.Ville.CodePostal.Code = message.CodePostal;

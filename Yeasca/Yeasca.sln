@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Commande", "Yeasca.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Requete", "Yeasca.Requete\Yeasca.Requete.csproj", "{871F8917-EA38-41BD-8BDD-5BAB8FD4C90D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{60B1AF7A-B9AF-473E-A2E8-9F00D6742EEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Api", "Yeasca.Api\Yeasca.Api.csproj", "{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{871F8917-EA38-41BD-8BDD-5BAB8FD4C90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{871F8917-EA38-41BD-8BDD-5BAB8FD4C90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{871F8917-EA38-41BD-8BDD-5BAB8FD4C90D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +68,6 @@ Global
 		{FF2ECE95-4FE8-4503-BFB5-6CC5BB0D9AA7} = {F57CCE21-13AD-4D96-A876-A8BCB5EC242F}
 		{517DBC75-43D2-41DE-8454-98301699D417} = {F57CCE21-13AD-4D96-A876-A8BCB5EC242F}
 		{FA0CD6A5-171B-4EF6-8688-7D12464F928F} = {EE307B53-9634-4732-8A9F-322580C9B234}
+		{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E} = {60B1AF7A-B9AF-473E-A2E8-9F00D6742EEE}
 	EndGlobalSection
 EndGlobal

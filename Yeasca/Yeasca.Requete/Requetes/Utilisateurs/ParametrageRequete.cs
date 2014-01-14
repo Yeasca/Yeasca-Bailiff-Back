@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Yeasca.Metier;
 using Yeasca.Mongo;
@@ -16,8 +15,8 @@ namespace Yeasca.Requete
                 ParametrageReponse résultat = new ParametrageReponse();
                 résultat.Répétition = paramètres.récupérerLesRépétitionDeVoie() as List<string>;
                 résultat.TypeVoie = paramètres.récupérerLesTypesDeVoie() as List<string>;
-                résultat.Civilités = paramètres.récupérerLesCivilités() as Dictionary<int, string>;
-                résultat.TypeUtilisateur = paramètres.récupérerLesCivilités() as Dictionary<int, string>;
+                résultat.Civilités = paramètres.récupérerLesCivilités().ToDictionary(x => x.Key.ToString(), x => x.Value);
+                résultat.TypeUtilisateur = paramètres.récupérerLesCivilités().ToDictionary(x => x.Key.ToString(), x => x.Value);
                 return ReponseRequete.générerUnSuccès(résultat);
             }
             return ReponseRequete.générerUnEchec(Ressource.Requetes.AUTH_REQUISE);
@@ -28,7 +27,7 @@ namespace Yeasca.Requete
     {
         public List<string> Répétition { get; set; }
         public List<string> TypeVoie { get; set; }
-        public Dictionary<int, string> Civilités { get; set; }
-        public Dictionary<int, string> TypeUtilisateur { get; set; }
+        public Dictionary<string, string> Civilités { get; set; }
+        public Dictionary<string, string> TypeUtilisateur { get; set; }
     }
 }

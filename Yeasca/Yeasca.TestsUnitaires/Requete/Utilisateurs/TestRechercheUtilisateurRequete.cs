@@ -23,7 +23,7 @@ namespace Yeasca.TestsUnitaires.Requete.Utilisateurs
         public void TestRechercheUtilisateurRequete_peutRécupérerLeRésultatDeLaRecherche()
         {
             IRechercheUtilisateurMessage message = new RechercheUtilisateurMessageTest();
-            message.Type = TypeUtilisateur.Huissier;
+            message.Type = (int)TypeUtilisateur.Huissier;
             message.NuméroPage = 1;
             message.NombreDElémentsParPage = 10;
             ReponseRequete réponse = BusRequete.exécuter(message);
@@ -42,6 +42,6 @@ namespace Yeasca.TestsUnitaires.Requete.Utilisateurs
         public int NuméroPage { get; set; }
         public int NombreDElémentsParPage { get; set; }
         public string NomUtilisateur { get; set; }
-        public TypeUtilisateur Type { get; set; }
+        public int Type { get; set; }
     }
 }

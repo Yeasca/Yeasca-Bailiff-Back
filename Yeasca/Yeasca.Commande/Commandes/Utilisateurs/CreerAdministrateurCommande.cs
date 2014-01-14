@@ -9,9 +9,15 @@ namespace Yeasca.Commande
         {
             IEntrepotJeton entrepotJeton = EntrepotMongo.fabriquerEntrepot<IEntrepotJeton>();
             Jeton jeton = new Jeton(message.Jeton);
-            if (jeton.estValide(message.Email) && !entrepotJeton.aEtéUtilisé(message.Jeton))
+            if (peutCréerUnAdmin(message, jeton, entrepotJeton))
                 return créerLeProfileEtLeCompte(message, entrepotJeton, jeton);
             return ReponseCommande.générerUnEchec(Ressource.Commandes.JETON_INVALIDE);
+        }
+
+        private bool peutCréerUnAdmin(ICreerAdministrateurMessage message, Jeton jeton, IEntrepotJeton entrepotJeton)
+        {
+            return jeton.estValide(message.Email) && !entrepotJeton.aEtéUtilisé(message.Jeton)
+                || estSuperviseur();
         }
 
         private ReponseCommande créerLeProfileEtLeCompte(ICreerAdministrateurMessage message, IEntrepotJeton entrepotJeton,
@@ -45,11 +51,15 @@ namespace Yeasca.Commande
                 return ReponseCommande.générerUnEchec(erreursDuCompte.donnerLaListeEnHTML());
             IEntrepotUtilisateur entrepotUtilisateur = EntrepotMongo.fabriquerEntrepot<IEntrepotUtilisateur>();
             if (entrepotUtilisateur.ajouter(compte))
-            {
-                entrepotJeton.ajouter(jeton);
-                return ReponseCommande.générerUnSuccès(compte.Id.ToString());
-            }
+                return créer(entrepotJeton, jeton, compte);
             return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_CRÉATION_COMPTE_ADMIN);
+        }
+
+        private ReponseCommande créer(IEntrepotJeton entrepotJeton, Jeton jeton, Utilisateur compte)
+        {
+            if (!string.IsNullOrEmpty(jeton.Valeur))
+                entrepotJeton.ajouter(jeton);
+            return ReponseCommande.générerUnSuccès(compte.Id.ToString());
         }
 
         private Adresse initialiserLAdresse(ICreerAdministrateurMessage message)
@@ -57,6 +67,7 @@ namespace Yeasca.Commande
             Adresse nouvelleAdresse = new Adresse();
             nouvelleAdresse.Voie.NuméroVoie.Numéro = message.NuméroVoie;
             nouvelleAdresse.Voie.NuméroVoie.Répétition = message.RépétitionVoie;
+            nouvelleAdresse.Voie.TypeVoie = message.TypeVoie;
             nouvelleAdresse.Voie.NomVoie = message.NomVoie;
             nouvelleAdresse.Voie.ComplémentVoie = message.ComplémentVoie;
             nouvelleAdresse.Ville.CodePostal.Code = message.CodePostal;

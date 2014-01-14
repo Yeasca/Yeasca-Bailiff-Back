@@ -44,7 +44,7 @@ namespace Yeasca.Requete
 
         private void ajouterLesInfosDeLAdmin(DetailUtilisateurReponse résultat, Utilisateur utilisateur)
         {
-            if (estAdministrateur())
+            if (estAdministrateur() && utilisateur.TypeUtilisateur == TypeUtilisateur.Administrateur)
             {
                 résultat.Email = utilisateur.Email.Valeur;
                 résultat.MotDePasse = utilisateur.MotDePasse.ValeurDéchiffrée;

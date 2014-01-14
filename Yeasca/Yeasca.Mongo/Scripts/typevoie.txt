@@ -1,0 +1,610 @@
+conn = new Mongo();
+db = conn.getDB(“test);
+typevoie={"Valeur" : "abbaye abe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "agglomeration agl"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "aire aire"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "aires aire"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "allee all"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "allees all"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancien chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancien-chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancienne montee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancienne route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancienne-montee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ancienne-route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "anciennesroutes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "anciennes-routes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "anciens chemins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "anciens-chemins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "anse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "arcade"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "arcades"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "autoroute"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "avenue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "barriere"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "barrieres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bas chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bas-chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bastide"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bastion"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "beguinage"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "beguinages"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "berge"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "berges"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bois"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "boucle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "boulevard"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bourg"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "butte"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "bvd"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cale"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "camp"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "campagne"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "camping"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "carre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "carreau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "carrefour"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "carriere"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "carrieres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "castel"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cavee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "central"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "centre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "centre cial"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "centre com"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "centre comm"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "centre commercial"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chalet"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chapelle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "charmille"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chateau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chaussee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chaussees"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chem"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemin vicinal"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cheminement"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cheminements"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemins vicinaux"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemins-vicinaux"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chemin-vicinal"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "chez"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cite"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cites"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cloitre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "clos"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "col"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "colline"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "collines"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "contour"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "corniche"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "corniches"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cote"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "coteau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "coteaux"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cottage"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cottages"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cour"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "cours"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ctre cial"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ctre com"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ctre comm"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ctre commercial"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "darse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "degre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "degres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "descente"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "descentes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "digue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "digues"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "domaine"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "domaines"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ecluse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ecluses"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "eglise"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "enceinte"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "enclave"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "enclos"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "escalier"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "escaliers"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "espace"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "esplanade"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "esplanades"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "etang"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fbg"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "faubourg"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ferme"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fermes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fontaine"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fort"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "forum"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fosse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "fosses"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "foyer"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "galerie"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "galeries"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "gare"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "garenne"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grand boulevard"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grand ensemble"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grandrue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grand-boulevard"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grande rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grand-ensemble"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grande-rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grandes rues"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grandes-rues"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grand-rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grands ensembles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grands-ensembles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grille"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "grimpette"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "groupe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "groupement"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "groupes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "halle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "halles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hameau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hameaux"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "haut chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "haut-chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hauts chemins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hauts-chemins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hippodrome"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "hlm"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ile"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "immeuble"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "immeubles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "impasse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "impasses"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "jardin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "jardins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "jetee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "jetees"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "levee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "lieudit"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "lieu-dit"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "lotissement"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "lotissements"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "mail"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "maison forestiere"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "maison-forestiere"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "manoir"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "marche"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "marches"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "mas"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "metro"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "montee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "montees"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "moulin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "moulins"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "musee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "nouvelle route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "palais"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "parc"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "parcs"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "parking"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "parvis"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passage"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passage a niveau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passage-a-niveau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passerelle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passerelles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "passes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "patio"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "pavillon"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "pavillons"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "peripherique"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "peristyle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petit chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petit degre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petit-chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petit-degre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite allee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite avenue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite impasse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite-allee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite-avenue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite-impasse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite-route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petite-rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petites allees"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petites-allees"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petits degres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "petits-degres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "place"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "placis"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plage"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plages"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plaine"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plan"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plateau"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "plateaux"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "pont"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ponts"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "porche"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "port"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "porte"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "portique"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "portiques"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "poterne"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "pourtour"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "pre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "presqu ile"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "presqu'ile"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "presqu-ile"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "promenade"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "qrt"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "quai"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "quartier"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "raccourci"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "raidillon"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rampe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rempart"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rpr"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "residence"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "residences"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "roc"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rocade"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rond point"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rond-point"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "roquet"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rotonde"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "routes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rue"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ruelle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "ruelles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "rues"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "sente"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "sentes"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "sentier"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "sentiers"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "square"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "stade"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "station"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "str"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "terrain"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "terrasse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "terrasses"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "terre plein"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "terre-plein"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "tertre"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "tertres"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "traverse"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "val"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vallee"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vallon"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "venelle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "venelles"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "via"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vieille route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vieille-route"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vieux chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "vieux-chemin"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "villa"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "village"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "villages"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "villas"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "voie"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "voie communale"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "voie-communale"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "voies"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone a urbaniser en priorite"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone artisanale"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone d amenagement concerte"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone d amenagement differe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone d'amenagement concerte"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone d'amenagement differe"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone indus"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone industrielle"}
+db.ParametreMongo.save{typevoie};
+typevoie={"Valeur" : "zone-artisanale"}
+db.ParametreMongo.save{typevoie};

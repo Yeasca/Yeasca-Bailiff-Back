@@ -9,7 +9,8 @@ namespace Yeasca.Metier
     {
         public const string DOSSIER_MAITRE_INDEX = "DossierMaitre";
         public const string DOSSIER_FICHIER_INDEX = "DossierFichiers";
-        public const string DOSSIER_MAITRE_DEFAUT = "Yeasca";
+        public const string DOSSIER_MAITRE_DEFAUT_1 = "Yeasca";
+        public const string DOSSIER_MAITRE_DEFAUT_2 = "Yeasca.Api";
         public const string DOSSIER_FICHIER_DEFAUT = "\\Fichiers";
         public const string RACINE = "RacineWeb";
 
@@ -107,12 +108,12 @@ namespace Yeasca.Metier
         {
             try
             {
-                string dossierMaitre = ConfigurationManager.AppSettings[DOSSIER_MAITRE_INDEX] ?? DOSSIER_MAITRE_DEFAUT;
+                string dossierMaitre = ConfigurationManager.AppSettings[DOSSIER_MAITRE_INDEX] ?? DOSSIER_MAITRE_DEFAUT_1;
                 string dossierFichier = ConfigurationManager.AppSettings[DOSSIER_FICHIER_INDEX] ?? DOSSIER_FICHIER_DEFAUT;
-                string dossierCourant = Environment.CurrentDirectory;
-                for (int i = 0; i < 4 && !dossierCourant.EndsWith(dossierMaitre); i++)
+                string dossierCourant = AppDomain.CurrentDomain.BaseDirectory;
+                for (int i = 0; i < 4 && !dossierCourant.EndsWith(dossierMaitre) && !dossierCourant.EndsWith(DOSSIER_MAITRE_DEFAUT_2); i++)
                     dossierCourant = Directory.GetParent(dossierCourant).FullName;
-                if (dossierCourant.EndsWith(dossierMaitre))
+                if (dossierCourant.EndsWith(dossierMaitre) || dossierCourant.EndsWith(DOSSIER_MAITRE_DEFAUT_2))
                     return récupérerLeDossierFichier(dossierFichier, dossierCourant);
                 throw new DirectoryNotFoundException("Dossier maître introuvable après 4 itérations");
             }

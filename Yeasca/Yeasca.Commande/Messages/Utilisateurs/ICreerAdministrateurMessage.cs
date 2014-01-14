@@ -12,6 +12,7 @@ namespace Yeasca.Commande
         string NomCabinet { get; set; }
         string NuméroVoie { get; set; }
         string RépétitionVoie { get; set; }
+        string TypeVoie { get; set; }
         string NomVoie { get; set; }
         string ComplémentVoie { get; set; }
         string CodePostal { get; set; }

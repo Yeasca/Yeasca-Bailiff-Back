@@ -37,11 +37,11 @@ namespace Yeasca.TestsUnitaires.Persistance
         {
             NuméroPage = 1;
             NombreDElémentsParPage = 10;
-            Type = TypeUtilisateur.Inconnu;
+            Type = (int)TypeUtilisateur.Inconnu;
         }
 
         public string NomUtilisateur { get; set; }
-        public TypeUtilisateur Type { get; set; }
+        public int Type { get; set; }
         public int NuméroPage { get; set; }
         public int NombreDElémentsParPage { get; set; }
     }
