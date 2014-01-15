@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <!--<script type="text/javascript" src="../Content/Script/bootstrap-datepicker.js"></script>-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="../Content/Css/main.css">
+    <script src="../Content/Script/main.js"></script>
+    <script src="../Content/Script/jquery-1.10.2.min.js"></script>
+    <script src="../Content/Script/jquery-ui.min.js"></script>
+    <script src="../Content/Script/angular1.2.4.min.js"></script>
+    <script src="../Content/Script/underscore-min.js"></script>
+    <link rel="stylesheet" href="../Content/Css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Yeasca Inc</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Accueil</a></li>
+                <li class="active"><a href="constats">Mes constats</a></li>
+                <li><a href="Application">Administration du bureau</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <h2>Rechercher un constat</h2>
+            <div style="display:inline-flex;margin-left: -30px;" class="row col-xs-10 col-md-10 col-lg-10">
+                <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+                    <input type="text" id="constat-id" class="form-control" placeholder="Rechercher un constat(ID)" >
+                </div>
+                <button class="btn btn-default  col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-search"></i></button>
+                <button type="button" class="hidden-xs btn btn-default col-xs-3 col-sm-4 col-md-3 col-lg-3" onclick="openMoreFilter()">
+                    <span class="glyphicon glyphicon-circle-arrow-down"></span> Recherche avancée
+                </button>
+                <a href="creationConstats.html"><button class="hidden-xs btn btn-default col-xs-0 col-sm-0 col-md-0 col-lg-0"><span class="glyphicon glyphicon-pencil"></span></button></a>
+            </div>
+        </div>
+            <div class="row">
+                <div id="filtreplus" style="display:none;margin-top:15px;">
+                    <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-5" >
+                        <input type="text" class="form-control " placeholder="Entrez le nom">
+                        <select class="form-control">
+                            <option>Secrétaire 1</option>
+                            <option>Secrétaire 2</option>
+                            <option>Secrétaire 3</option>
+                            <option>Secrétaire 4</option>
+                        </select>
+                    </div>
+                    <div class="row-reverse col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        <input type="text" id="datepickerdebut" class="form-control" placeholder="Date début">
+                        <input type="text" id="datepickerfin" class="form-control " placeholder="Date fin">
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div id="lesconstats"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+
+    $(function() {
+        $('#datepickerdebut').datepicker({
+            language: 'fr'
+        });
+    });
+    $(function() {
+        $('#datepickerfin').datepicker({
+            language: 'fr'
+        });
+    });
+
+    var offsetconstat = $('.constatgeneral:last').offset();
+    var load=false;
+    $(window).scroll(function(){
+        offsetconstat= $('.constatgeneral:last').offset();
+        if((offsetconstat.top-$(window).height()<= $(window).scrollTop())&& load==false)
+        {
+            load=true;
+            $('.loadmore').show();
+            $.ajax({
+                success:function(data){
+                    ChargerListeConstats();
+
+                    $('.loadmore').fadeOut(500);
+                }
+
+            });
+            load=false;
+        }
+    });
+</script>
+
+
+
+</body>
+</html>

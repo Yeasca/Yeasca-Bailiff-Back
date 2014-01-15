@@ -9,3 +9,14 @@ C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Deb
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.csprojResolveAssemblyReference.cache
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.dll
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\Yeasca.Mongo.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\Yeasca.Mongo.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\MongoDB.Bson.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\MongoDB.Driver.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\Yeasca.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\Yeasca.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\MongoDB.Bson.xml
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\bin\Debug\MongoDB.Driver.xml
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.csprojResolveAssemblyReference.cache
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Mongo\obj\Debug\Yeasca.Mongo.pdb

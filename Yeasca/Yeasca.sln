@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Requete", "Yeasca.Re
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{60B1AF7A-B9AF-473E-A2E8-9F00D6742EEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Api", "Yeasca.Api\Yeasca.Api.csproj", "{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yeasca.Web", "Yeasca.Api\Yeasca.Web.csproj", "{F2C632BA-CBC2-4F9A-8FBF-8C95A4876C4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

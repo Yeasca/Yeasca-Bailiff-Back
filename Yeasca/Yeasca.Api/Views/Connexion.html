@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <!--<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="../Content/Css/main.css">
+    <script src="../Content/Script/main.js"></script>
+    <script src="../Content/Script/jquery-1.10.2.min.js"></script>
+    <script src="../Content/Script/jquery-ui.min.js"></script>
+    <script src="../Content/Script/angular1.2.4.min.js"></script>
+    <script src="../Content/Script/underscore-min.js"></script>
+    <link rel="stylesheet" href="../Content/Css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Yeasca Inc</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Accueil</a></li>
+                <li><a href="Constat">Mes constats</a></li>
+                <li><a href="Application">Administration du bureau</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h2>Connexion</h2>
+        <form role="form">
+            <div class="form-group">
+                <input id="auth-email" type="email" class="form-control" placeholder="Mail">
+            </div>
+            <div class="form-group">
+                <input id="auth-pass" type="password" class="form-control"  placeholder="Password">
+            </div>
+            <button type="submit" id="auth-envoi" class="btn btn-default">Connexion</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#auth-envoi').click(function() {
+        var données = {};
+        données.Email = $('#auth-email').val();
+        données.MotDePasse = $('#auth-pass').val();
+        $.get('/Api/Authentifier', données, function (réponse) {
+            console.log(réponse);
+            window.location = "/Application";
+        });
+    });
+
+</script>
+</body>
+</html>

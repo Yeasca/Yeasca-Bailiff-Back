@@ -12,3 +12,17 @@ C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegrat
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Bson.dll
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Driver.xml
 C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Bson.xml
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.TestsIntegration.dll.config
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.TestsIntegration.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.TestsIntegration.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.Mongo.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Driver.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Bson.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.Mongo.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\Yeasca.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Driver.xml
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\bin\Debug\MongoDB.Bson.xml
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\obj\Debug\Yeasca.TestsIntegration.csprojResolveAssemblyReference.cache
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\obj\Debug\Yeasca.TestsIntegration.dll
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsIntegration\obj\Debug\Yeasca.TestsIntegration.pdb
