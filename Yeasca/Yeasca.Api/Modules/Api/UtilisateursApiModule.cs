@@ -1,5 +1,6 @@
 ﻿using Nancy;
 using Nancy.Json;
+using Yeasca.Api;
 using Yeasca.Commande;
 using Yeasca.Requete;
 
@@ -11,12 +12,26 @@ namespace Yeasca.Web.Api
 
         public UtilisateursApiModule()
         {
-            Get["/Api/Authentifier"] = _ =>
+            Get["/Api/Authentification/Courante"] = _ =>
             {
-                IAuthentificationMessage message = new AuthentifierMessage();
-                message.Email = this.Request.Query["Email"];
-                message.MotDePasse = this.Request.Query["MotDePasse"];
+                IUtilisateurConnecteMessage message = new UtilisateurConnecteMessage();
                 ReponseRequete réponse = BusRequete.exécuter(message);
+                return _json.Serialize(réponse);
+            };
+
+            Post["/Api/Authentification/Connecter"] = _ =>
+            {
+                IConnexionMessage message = new ConnexionMessage();
+                message.Email = this.Request.Form["Email"];
+                message.MotDePasse = this.Request.Form["MotDePasse"];
+                ReponseCommande réponse = BusCommande.exécuter(message);
+                return _json.Serialize(réponse);
+            }; 
+            
+            Post["/Api/Authentification/Deconnecter"] = _ =>
+            {
+                IDeconnexionMessage message = new DeconnexionMessage();
+                ReponseCommande réponse = BusCommande.exécuter(message);
                 return _json.Serialize(réponse);
             };
 

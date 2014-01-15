@@ -11,6 +11,7 @@ namespace Yeasca.Metier
         string ERREUR_AUTH_ADMIN { get; }
         string ERREUR_AUTH_HUISSIER { get; }
         string ERREUR_AUTH { get; }
+        string ERREUR_DÉCO { get; }
 
         //Commandes constat
         string REF_CONSTAT_INVALIDE { get; }

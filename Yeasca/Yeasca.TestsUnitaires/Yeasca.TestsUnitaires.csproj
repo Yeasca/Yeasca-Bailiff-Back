@@ -63,6 +63,7 @@
     <Compile Include="Commande\Utilisateurs\TestCreerSecretaireCommande.cs" />
     <Compile Include="Commande\Utilisateurs\TestModifierSecretaireCommande.cs" />
     <Compile Include="Commande\Utilisateurs\TestCreerAdministrateurCommande.cs" />
+    <Compile Include="Commande\Utilisateurs\TestDeconnexionCommande.cs" />
     <Compile Include="ConstantesTest.cs" />
     <Compile Include="Metier\Constats\TestFichier.cs" />
     <Compile Include="Metier\Profiles\TestHuissier.cs" />
@@ -96,11 +97,12 @@
     <Compile Include="Requete\Profiles\TestRechercheClientRequete.cs" />
     <Compile Include="Requete\Profiles\TestDetailClientRequete.cs" />
     <Compile Include="Requete\TestRequete.cs" />
-    <Compile Include="Requete\Utilisateurs\TestAuthentificationRequete.cs" />
+    <Compile Include="Commande\Utilisateurs\TestConnexionRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestRechercheUtilisateurRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestDetailUtilisateurRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestParametrageRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestGenererJetonRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestUtilisateurConnecteRequete.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

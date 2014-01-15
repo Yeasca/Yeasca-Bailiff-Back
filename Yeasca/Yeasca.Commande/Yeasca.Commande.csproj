@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\ConnexionCommande.cs" />
     <Compile Include="Commandes\Commande.cs" />
     <Compile Include="Commandes\Constats\AjouterFichierCommande.cs" />
     <Compile Include="Commandes\Constats\CreerConstatCommande.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Commandes\Utilisateurs\CreerAdministrateurCommande.cs" />
     <Compile Include="Commandes\Utilisateurs\CreerHuissierCommande.cs" />
     <Compile Include="Commandes\Utilisateurs\CreerSecretaireCommande.cs" />
+    <Compile Include="Commandes\Utilisateurs\DeconnexionCommande.cs" />
     <Compile Include="Commandes\Utilisateurs\ModifierHuissierCommande.cs" />
     <Compile Include="Commandes\Utilisateurs\ModifierSecretaireCommande.cs" />
     <Compile Include="Messages\Constats\IAjouterFichierMessage.cs" />
@@ -58,9 +60,11 @@
     <Compile Include="Messages\IMessageCommande.cs" />
     <Compile Include="Messages\Profiles\ICreerClientMessage.cs" />
     <Compile Include="Messages\Profiles\IModifierClientMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IConnexionMessage.cs" />
     <Compile Include="Messages\Utilisateurs\ICreerAdministrateurMessage.cs" />
     <Compile Include="Messages\Utilisateurs\ICreerHuissierMessage.cs" />
     <Compile Include="Messages\Utilisateurs\ICreerSecretaireMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IDeconnexionMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IModifierHuissierMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IModifierSecretaireMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

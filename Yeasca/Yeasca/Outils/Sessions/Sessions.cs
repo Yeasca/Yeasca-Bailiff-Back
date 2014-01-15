@@ -40,16 +40,32 @@ namespace Yeasca.Metier
 
         public T récupérerLaSession()
         {
+            supprimerLesSessionsExpirées();
             HttpContext contexte = HttpContext.Current;
             if (contexte != null && unDesCookiesContientUneSession(contexte.Request.Cookies))
                 return récupérerLaSessionDuContexteHTTP(contexte);
             return default(T);
         }
 
+        private void supprimerLesSessionsExpirées()
+        {
+            List<string> clésDesSessionsASupprimer = new List<string>();
+            foreach (KeyValuePair<string, T> paireCléValeur in _sessions)
+                récupérerUneCléDeSessionASupprimer(paireCléValeur, clésDesSessionsASupprimer);
+            foreach (string clé in clésDesSessionsASupprimer)
+                supprimerLaSession(clé);
+        }
+
+        private static void récupérerUneCléDeSessionASupprimer(KeyValuePair<string, T> paireCléValeur, List<string> clésDesSessionsASupprimer)
+        {
+            if (paireCléValeur.Value.DateConnexion > DateTime.Now.AddHours(DÉLAI_SESSION))
+                clésDesSessionsASupprimer.Add(paireCléValeur.Key);
+        }
+
         private T récupérerLaSessionDuContexteHTTP(HttpContext contexte)
         {
             string idSession = string.Empty;
-            HttpCookie cookie = contexte.Request.Cookies[INDEX_SESSION_COOKIE];
+            HttpCookie cookie = récupérerLeCookie(contexte);
             if (cookie != null)
                 idSession = cookie.Value;
             if (aLaSession(idSession))
@@ -60,6 +76,14 @@ namespace Yeasca.Metier
                 supprimerLaSession(idSession);
             }
             return default(T);
+        }
+
+        private HttpCookie récupérerLeCookie(HttpContext contexte)
+        {
+            HttpCookie cookie = contexte.Request.Cookies[INDEX_SESSION_COOKIE];
+            if (cookie != null)
+                return cookie;
+            return null;
         }
 
 
@@ -81,6 +105,14 @@ namespace Yeasca.Metier
         private void supprimerLaSession(string idSession)
         {
             _sessions.Remove(idSession);
+        }
+
+        public void déconnecter()
+        {
+            HttpContext contexte = HttpContext.Current;
+            HttpCookie cookie = récupérerLeCookie(contexte);
+            if(cookie != null && aLaSession(cookie.Value))
+                supprimerLaSession(cookie.Value);
         }
         
     }

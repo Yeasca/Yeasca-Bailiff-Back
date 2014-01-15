@@ -45,12 +45,12 @@
     <Compile Include="Messages\Constats\IRechercheAvanceConstatMessage.cs" />
     <Compile Include="Messages\IMessageRequete.cs" />
     <Compile Include="Messages\Profiles\IDetailClientMessage.cs" />
-    <Compile Include="Messages\Utilisateurs\IAuthentificationMessage.cs" />
     <Compile Include="Messages\Profiles\IRechercheClientMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IDetailUtilisateurMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IGenererJetonMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IParametrageMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IRechercheUtilisateurMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IUtilisateurConnecteMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReponseRequete.cs" />
     <Compile Include="Requetes\Constats\ConstatReponse.cs" />
@@ -60,10 +60,10 @@
     <Compile Include="Requetes\IRequete.cs" />
     <Compile Include="Requetes\Profiles\DetailClientRequete.cs" />
     <Compile Include="Requetes\Requete.cs" />
-    <Compile Include="Requetes\Utilisateurs\AuthentificationRequete.cs" />
     <Compile Include="Requetes\Profiles\RechercheClientRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\DetailUtilisateurRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\GenererJetonRequete.cs" />
+    <Compile Include="Requetes\Utilisateurs\UtilisateurConnecteRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\ParametrageRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\RechercheUtilisateurRequete.cs" />
   </ItemGroup>

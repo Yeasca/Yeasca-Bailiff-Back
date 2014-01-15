@@ -30,7 +30,9 @@ namespace Yeasca.Commande
             {typeof(IModifierHuissierMessage), typeof(ModifierHuissierCommande)},
             {typeof(ICreerSecretaireMessage), typeof(CreerSecretaireCommande)},
             {typeof(IModifierSecretaireMessage), typeof(ModifierSecretaireCommande)},
-            {typeof(ICreerAdministrateurMessage), typeof(CreerAdministrateurCommande)}
+            {typeof(ICreerAdministrateurMessage), typeof(CreerAdministrateurCommande)},
+            {typeof(IConnexionMessage), typeof(ConnexionCommande)},
+            {typeof(IDeconnexionMessage), typeof(DeconnexionCommande)}
         };
 
         private static Type trouverLeTypeDuMessage(IMessageCommande message)

@@ -9,6 +9,7 @@ namespace Yeasca.Metier
         public string ERREUR_AUTH_ADMIN { get { return "Vous devez être un administrateur authentifié"; } }
         public string ERREUR_AUTH_HUISSIER { get { return "Vous devez être un huissier authentifié"; } }
         public string ERREUR_AUTH { get { return "Vous devez être authentifié"; } }
+        public string ERREUR_DÉCO { get { return "Erreur à la déconnexion"; } }
 
         public string REF_CONSTAT_INVALIDE { get { return "Référence constat invalide"; } }
         public string ERREUR_CRÉATION_CONSTAT { get { return "Erreur lors de la création du constat"; } }

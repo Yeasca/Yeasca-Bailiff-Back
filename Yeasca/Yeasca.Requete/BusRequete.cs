@@ -21,7 +21,7 @@ namespace Yeasca.Requete
 
         private static readonly IDictionary<Type, Type> _listeDesCommandes = new Dictionary<Type, Type>()
         {
-            {typeof(IAuthentificationMessage), typeof(AuthentificationRequete)},
+            {typeof(IUtilisateurConnecteMessage), typeof(UtilisateurConnecteRequete)},
             {typeof(IRechercheGeneraleConstatMessage), typeof(RechercheGeneraleConstatRequete)},
             {typeof(IRechercheAvanceConstatMessage), typeof(RechercheAvanceConstatRequete)},
             {typeof(IDetailConstatMessage), typeof(DetailConstatRequete)},

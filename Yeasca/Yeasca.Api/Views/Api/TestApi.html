@@ -34,14 +34,32 @@
                 <th>Essai</th>
             </tr>
             <tr>
-                <td>/Api/Authentifier</td>
-                <td>GET</td>
+                <td>/Api/Authentification/Connecter</td>
+                <td>POST</td>
                 <td>Email(string), MotDePasse(string)</td>
-                <td>Authentification d'un utilisateur</td>
+                <td>Connexion d'un utilisateur</td>
                 <td>
                     <label>E-mail : </label><input id="auth-email"/><br/>
                     <label>Mot de passe : </label><input type="password" id="auth-pass"/><br/>
                     <input id="auth-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Api/Authentification/Deconnecter</td>
+                <td>POST</td>
+                <td>Aucun</td>
+                <td>Déconnexion d'un utilisateur</td>
+                <td>
+                    <input id="dec-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Api/Authentification/Courante</td>
+                <td>GET</td>
+                <td>Aucun</td>
+                <td>Récupération des informations de l'utilisateur en cours</td>
+                <td>
+                    <input id="ut-envoi" type="button" value="Go"/>
                 </td>
             </tr>
             <tr>
@@ -345,7 +363,23 @@
             var données = {};
             données.Email = $('#auth-email').val();
             données.MotDePasse = $('#auth-pass').val();
-            $.get('/Api/Authentifier', données, function (réponse) {
+            $.post('/Api/Authentification/Connecter', données, function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#dec-envoi').click(function () {
+            chargement();
+            $.post('/Api/Authentification/Deconnecter', function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+        
+        $('#ut-envoi').click(function () {
+            chargement();
+            $.get('/Api/Authentification/Courante', function (réponse) {
                 finChargement();
                 $('#resultat').html(JSON.stringify(réponse));
             });

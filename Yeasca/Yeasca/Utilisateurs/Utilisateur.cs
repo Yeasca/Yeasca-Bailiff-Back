@@ -70,6 +70,12 @@ namespace Yeasca.Metier
             return null;
         }
 
+        public static void déconnecter()
+        {
+            CacheUtilisateur.initialiserLeCacheUtilisateur();
+            CacheUtilisateur.Sessions.déconnecter();
+        }
+
         public void mettreEnSession()
         {
             CacheUtilisateur.initialiserLeCacheUtilisateur();
