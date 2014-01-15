@@ -1,5 +1,5 @@
 conn = new Mongo();
-db = conn.getDB("test");
+db = conn.getDB("Yeasca");
 typevoie={"Valeur" : "abbaye abe"}
 db.ParametreMongo.save(typevoie);
 typevoie={"Valeur" : "agglomeration agl"};
