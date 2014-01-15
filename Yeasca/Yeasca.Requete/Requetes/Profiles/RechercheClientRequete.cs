@@ -19,7 +19,11 @@ namespace Yeasca.Requete
                     IdClient = x.Id.ToString(),
                     NomClient = x.Nom,
                     PrénomClient = x.Prénom,
-                    NombreConstat = entrepotConstat.nombreDeConstatPourLeClient(x.Id)
+                    Constats = entrepotConstat.récupérerLaListeDesConstatsDuClient(x.Id).Select(y =>  new ConstatResume()
+                    {
+                        IdConstat = y.Id.ToString(),
+                        Date = y.Date.ToString(Ressource.Paramètres.FORMAT_DATE)
+                    }).ToList()
                 }).ToList();
                 return ReponseRequete.générerUnSuccès(résultat);
             }
@@ -32,6 +36,12 @@ namespace Yeasca.Requete
         public string IdClient { get; set; }
         public string NomClient { get; set; }
         public string PrénomClient { get; set; }
-        public int NombreConstat { get; set; }
+        public List<ConstatResume> Constats { get; set; }
+    }
+
+    public class ConstatResume
+    {
+        public string IdConstat { get; set; }
+        public string Date { get; set; }
     }
 }
