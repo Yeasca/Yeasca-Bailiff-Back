@@ -52,9 +52,9 @@ namespace Yeasca.Commande
                 object réponse = methodInfo.Invoke(commande, paramètres);
                 return (ReponseCommande)réponse;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //TODO : log
+                Log.loguer("Erreur de bus commande", e);
                 return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_EXCEPTION_BUS_COMMANDE);
             }
         }

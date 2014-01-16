@@ -35,6 +35,13 @@ namespace Yeasca.Web.Api
                 return _json.Serialize(réponse);
             };
 
+            Get["/Api/Admin/Existe"] = _ =>
+            {
+                IAdminEstCreeMessage message = new AdminEstCreeMessage();
+                ReponseRequete réponse = BusRequete.exécuter(message);
+                return _json.Serialize(réponse);
+            };
+
             Post["/Api/Admin/Creer"] = _ =>
             {
                 ICreerAdministrateurMessage message = new CreerAdministrateurMessage();

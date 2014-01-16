@@ -40,9 +40,9 @@ namespace Yeasca.Mongo
 
                 }
             }
-            catch
+            catch(Exception e)
             {
-                //TODO : log
+                Log.loguer("Erreur à la connexion de la base de données", e);
             }
         }
 

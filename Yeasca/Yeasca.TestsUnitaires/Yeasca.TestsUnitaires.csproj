@@ -66,6 +66,7 @@
     <Compile Include="Commande\Utilisateurs\TestDeconnexionCommande.cs" />
     <Compile Include="ConstantesTest.cs" />
     <Compile Include="Metier\Constats\TestFichier.cs" />
+    <Compile Include="Metier\Outils\Logs\TestLog.cs" />
     <Compile Include="Metier\Profiles\TestHuissier.cs" />
     <Compile Include="Metier\Profiles\TestAdresse.cs" />
     <Compile Include="Metier\Profiles\TestPartie.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Requete\Utilisateurs\TestParametrageRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestGenererJetonRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestUtilisateurConnecteRequete.cs" />
+    <Compile Include="Requete\Utilisateurs\TestAdminEstCreeRequete.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

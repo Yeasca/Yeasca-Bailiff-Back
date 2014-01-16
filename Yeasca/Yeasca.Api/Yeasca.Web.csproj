@@ -105,6 +105,7 @@
     <Compile Include="Modules\Api\Messages\Utilisateurs\Commande\ModifierHuissierMessage.cs" />
     <Compile Include="Modules\Api\Messages\Utilisateurs\Commande\ModifierSecretaireMessage.cs" />
     <Compile Include="Modules\Api\Messages\Utilisateurs\Commande\ConnexionMessage.cs" />
+    <Compile Include="Modules\Api\Messages\Utilisateurs\Requete\AdminEstCreeMessage.cs" />
     <Compile Include="Modules\Api\Messages\Utilisateurs\Requete\DetailUtilisateurMessage.cs" />
     <Compile Include="Modules\Api\Messages\Utilisateurs\Requete\GenererJetonMessage.cs" />
     <Compile Include="Modules\Api\Messages\Utilisateurs\Requete\ParametrageMessage.cs" />

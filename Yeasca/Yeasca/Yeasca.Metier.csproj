@@ -52,6 +52,7 @@
     <Compile Include="Entrepots\IEntrepotJeton.cs" />
     <Compile Include="Entrepots\IEntrepotParametrage.cs" />
     <Compile Include="Outils\Erreurs\Erreur.cs" />
+    <Compile Include="Outils\Logs\Log.cs" />
     <Compile Include="Profiles\Client.cs" />
     <Compile Include="Profiles\Huissier.cs" />
     <Compile Include="Profiles\Profile.cs" />

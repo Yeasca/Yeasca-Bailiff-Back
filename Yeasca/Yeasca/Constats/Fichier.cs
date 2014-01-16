@@ -130,9 +130,9 @@ namespace Yeasca.Metier
                 }
                 return null;
             }
-            catch
+            catch(Exception e)
             {
-                //TODO : log
+                Log.loguer("Erreur lors de l'enregistrement sur le disque d'un fichier", e);
                 return null;   
             }
         }
@@ -172,9 +172,9 @@ namespace Yeasca.Metier
                     return récupérerLeDossierFichier(dossierFichier, dossierCourant);
                 throw new DirectoryNotFoundException("Dossier maître introuvable après 4 itérations");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //TODO : log
+                Log.loguer("Impossible de trouer le dossier des fichiers téléchargés", e);
                 return null;
             }
         }

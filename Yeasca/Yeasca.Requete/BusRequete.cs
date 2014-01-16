@@ -31,7 +31,8 @@ namespace Yeasca.Requete
             {typeof(IDetailUtilisateurMessage), typeof(DetailUtilisateurRequete)},
             {typeof(IParametrageMessage), typeof(ParametrageRequete)},
             {typeof(IGenererJetonMessage), typeof(GenererJetonRequete)},
-            {typeof(ITelechargerFichierMessage), typeof(TelechargerFichierRequete)}
+            {typeof(ITelechargerFichierMessage), typeof(TelechargerFichierRequete)},
+            {typeof(IAdminEstCreeMessage), typeof(AdminEstCreeRequete)}
         };
 
         private static Type trouverLeTypeDuMessage(IMessageRequete message)
@@ -51,9 +52,9 @@ namespace Yeasca.Requete
                 object réponse = methodInfo.Invoke(commande, paramètres);
                 return (ReponseRequete)réponse;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //TODO : log
+                Log.loguer("Erreur de bus requête", e);
                 return ReponseRequete.générerUnEchec(Ressource.Commandes.ERREUR_EXCEPTION_BUS_COMMANDE);
             }
         }

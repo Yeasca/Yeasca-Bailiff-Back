@@ -6,7 +6,7 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <style>
         body{ font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif; }
-        #resultat { width: 100%;height: 200px;border: 1px solid black;margin-bottom: 20px;}
+        #resultat { width: 100%;height: 150px;border: 1px solid black;margin-bottom: 20px;}
         #catalogue { width: 100%;height: 600px;overflow: scroll;}
         #catalogue table { width: 100%;border: 1px solid black;border-collapse: collapse;}
         #catalogue tr { border: 1px solid black;}
@@ -29,9 +29,9 @@
             <tr>
                 <th>URI</th>
                 <th>Méthode</th>
-                <th>Paramètres</th>
+                <th style="width:20%;">Paramètres</th>
                 <th>Description</th>
-                <th>Essai</th>
+                <th style="width:30%;">Essai</th>
             </tr>
             <tr>
                 <td>/Api/Authentification/Connecter</td>
@@ -60,6 +60,15 @@
                 <td>Récupération des informations de l'utilisateur en cours</td>
                 <td>
                     <input id="ut-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Api/Admin/Existe</td>
+                <td>GET</td>
+                <td>Aucun</td>
+                <td>Vérifie si un admin est créé</td>
+                <td>
+                    <input id="admin-existe-envoi" type="button" value="Go"/>
                 </td>
             </tr>
             <tr>
@@ -182,9 +191,9 @@
             <tr>
                 <th>URI</th>
                 <th>Méthode</th>
-                <th>Paramètres</th>
+                <th style="width:20%;">Paramètres</th>
                 <th>Description</th>
-                <th>Essai</th>
+                <th style="width:30%;">Essai</th>
             </tr>
             <tr>
                 <td>/Api/Client/Recherche</td>
@@ -257,9 +266,9 @@
             <tr>
                 <th>URI</th>
                 <th>Méthode</th>
-                <th>Paramètres</th>
+                <th style="width:20%;">Paramètres</th>
                 <th>Description</th>
-                <th>Essai</th>
+                <th style="width:30%;">Essai</th>
             </tr>
             <tr>
                 <td>/Api/Constat/Recherche</td>
@@ -401,6 +410,14 @@
         $('#ut-envoi').click(function () {
             chargement();
             $.get('/Api/Authentification/Courante', function (réponse) {
+                finChargement();
+                $('#resultat').html(JSON.stringify(réponse));
+            });
+        });
+
+        $('#admin-existe-envoi').click(function() {
+            chargement();
+            $.get('/Api/Admin/Existe', function (réponse) {
                 finChargement();
                 $('#resultat').html(JSON.stringify(réponse));
             });

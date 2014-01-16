@@ -47,6 +47,7 @@
     <Compile Include="Messages\Profiles\IDetailClientMessage.cs" />
     <Compile Include="Messages\Profiles\IRechercheClientMessage.cs" />
     <Compile Include="Messages\Constats\ITelechargerFichierMessage.cs" />
+    <Compile Include="Messages\Utilisateurs\IAdminEstCreeMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IDetailUtilisateurMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IGenererJetonMessage.cs" />
     <Compile Include="Messages\Utilisateurs\IParametrageMessage.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Requetes\Profiles\DetailClientRequete.cs" />
     <Compile Include="Requetes\Requete.cs" />
     <Compile Include="Requetes\Profiles\RechercheClientRequete.cs" />
+    <Compile Include="Requetes\Utilisateurs\AdminEstCreeRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\DetailUtilisateurRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\GenererJetonRequete.cs" />
     <Compile Include="Requetes\Utilisateurs\UtilisateurConnecteRequete.cs" />
