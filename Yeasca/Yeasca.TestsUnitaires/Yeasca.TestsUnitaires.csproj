@@ -94,6 +94,7 @@
     <Compile Include="Requete\Constats\TestRechercheGeneraleConstatRequete.cs" />
     <Compile Include="Requete\Constats\TestRechercheAvanceConstatRequete.cs" />
     <Compile Include="Requete\Constats\TestDetailConstatRequete.cs" />
+    <Compile Include="Requete\Constats\TestTelechargerFichierRequete.cs" />
     <Compile Include="Requete\Profiles\TestRechercheClientRequete.cs" />
     <Compile Include="Requete\Profiles\TestDetailClientRequete.cs" />
     <Compile Include="Requete\TestRequete.cs" />
@@ -104,7 +105,9 @@
     <Compile Include="Requete\Utilisateurs\TestGenererJetonRequete.cs" />
     <Compile Include="Requete\Utilisateurs\TestUtilisateurConnecteRequete.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yeasca.Commande\Yeasca.Commande.csproj">
       <Project>{b869be03-9ed0-4daa-9823-e888dc3fd4e2}</Project>

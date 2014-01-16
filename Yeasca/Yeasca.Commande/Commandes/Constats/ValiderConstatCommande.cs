@@ -33,11 +33,9 @@ namespace Yeasca.Commande
         private static ReponseCommande ajouterLeDocumentWordAuConstat(IValiderConstatMessage message, Constat constat,
             IEntrepotConstat entrepot)
         {
-            Fichier wordDuConstat = Fichier.enregistrerLeFichier(message.Fichier, message.Nom, message.Extension);
-            if (wordDuConstat != null && wordDuConstat.EstUnDocumentWord)
-                return modifierLeConstat(constat, wordDuConstat, entrepot);
+            Fichier wordDuConstat = Fichier.enregistrerLeDocumentWord(message.Fichier, message.Nom);
             if (wordDuConstat != null)
-                wordDuConstat.supprimer();
+                return modifierLeConstat(constat, wordDuConstat, entrepot);
             return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_AJOUT_FICHIER);
         }
 

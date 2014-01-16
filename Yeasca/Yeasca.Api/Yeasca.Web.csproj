@@ -93,6 +93,7 @@
     <Compile Include="Modules\Api\Messages\Constats\Requete\DetailConstatMessage.cs" />
     <Compile Include="Modules\Api\Messages\Constats\Requete\RechercheAvanceConstatMessage.cs" />
     <Compile Include="Modules\Api\Messages\Constats\Requete\RechercheGeneraleConstatMessage.cs" />
+    <Compile Include="Modules\Api\Messages\Constats\Requete\TelechargerFichierMessage.cs" />
     <Compile Include="Modules\Api\Messages\Profiles\Commande\CreerClientMessage.cs" />
     <Compile Include="Modules\Api\Messages\Profiles\Commande\ModifierClientMessage.cs" />
     <Compile Include="Modules\Api\Messages\Profiles\Requete\DetailClientMessage.cs" />

@@ -53,8 +53,7 @@ namespace Yeasca.TestsUnitaires.Commande.Constats
             IAjouterFichierConstatMessage message = new AjouterFichierConstatMessageTest();
             message.IdConstat = constat.Id.ToString();
             message.Fichier = new MemoryStream(Encoding.Default.GetBytes("Pouet"));
-            message.Nom = "Poulou";
-            message.Extension = ".mp3";
+            message.Nom = "Poulou.mp3";
             ReponseCommande réponse = BusCommande.exécuter(message);
             constat = entrepot.récupérerLeConstat(constat.Id);
 
@@ -72,8 +71,7 @@ namespace Yeasca.TestsUnitaires.Commande.Constats
             IAjouterFichierConstatMessage message = new AjouterFichierConstatMessageTest();
             message.IdConstat = constat.Id.ToString();
             message.Fichier = new MemoryStream(Encoding.Default.GetBytes("Pouet"));
-            message.Nom = "Poulou";
-            message.Extension = ".mp3";
+            message.Nom = "Poulou.mp3";
             ReponseCommande réponse = BusCommande.exécuter(message);
 
             Assert.IsFalse(réponse.Réussite);
@@ -88,8 +86,7 @@ namespace Yeasca.TestsUnitaires.Commande.Constats
             IAjouterFichierConstatMessage message = new AjouterFichierConstatMessageTest();
             message.IdConstat = constat.Id.ToString();
             message.Fichier = null;
-            message.Nom = "Poulou";
-            message.Extension = ".mp3";
+            message.Nom = "Poulou.mp3";
             ReponseCommande réponse = BusCommande.exécuter(message);
 
             Assert.IsFalse(réponse.Réussite);
@@ -102,6 +99,5 @@ namespace Yeasca.TestsUnitaires.Commande.Constats
         public string IdConstat { get; set; }
         public MemoryStream Fichier { get; set; }
         public string Nom { get; set; }
-        public string Extension { get; set; }
     }
 }

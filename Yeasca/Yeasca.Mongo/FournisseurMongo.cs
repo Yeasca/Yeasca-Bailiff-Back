@@ -36,21 +36,33 @@ namespace Yeasca.Mongo
                     _serveur = client.GetServer();
                     _baseDeDonnées = _serveur.GetDatabase(_nomBase);
 
-                    IQueryable<Utilisateur> utilisateurs = obtenirLaCollection<Utilisateur>();
-                    if (!utilisateurs.Any(x => x.TypeUtilisateur == TypeUtilisateur.Superviseur))
-                    {
-                        Utilisateur superviseur = new Utilisateur();
-                        superviseur.Email.Valeur = "egaichet@gmail.com";
-                        superviseur.MotDePasse.ValeurDéchiffrée = "Ye@sc@##";
-                        superviseur.TypeUtilisateur = TypeUtilisateur.Superviseur;
-                        superviseur.Profile = new Client() { Abréviation = Abreviation.Monsieur, Nom = "Gaichet", Prénom = "Emeric", DénominationEntreprise = "Yeasca"};
-                        insérer<Utilisateur>(superviseur);
-                    }
+                    ajouterUnSuperviseur();
+
                 }
             }
             catch
             {
                 //TODO : log
+            }
+        }
+
+        private void ajouterUnSuperviseur()
+        {
+            IQueryable<Utilisateur> utilisateurs = obtenirLaCollection<Utilisateur>();
+            if (!utilisateurs.Any(x => x.TypeUtilisateur == TypeUtilisateur.Superviseur))
+            {
+                Utilisateur superviseur = new Utilisateur();
+                superviseur.Email.Valeur = "egaichet@gmail.com";
+                superviseur.MotDePasse.ValeurDéchiffrée = "Ye@sc@##";
+                superviseur.TypeUtilisateur = TypeUtilisateur.Superviseur;
+                superviseur.Profile = new Client()
+                {
+                    Abréviation = Abreviation.Monsieur,
+                    Nom = "Gaichet",
+                    Prénom = "Emeric",
+                    DénominationEntreprise = "Yeasca"
+                };
+                insérer<Utilisateur>(superviseur);
             }
         }
 

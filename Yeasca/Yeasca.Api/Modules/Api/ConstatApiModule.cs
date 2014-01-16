@@ -4,8 +4,11 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using Nancy;
 using Nancy.Json;
+using Nancy.Responses;
+using Yeasca.Api;
 using Yeasca.Commande;
 using Yeasca.Requete;
 
@@ -60,8 +63,7 @@ namespace Yeasca.Web.Api
                 HttpFile fichier = récupérerLeFichier(this.Request.Files);
                 IAjouterFichierConstatMessage message = new AjouterFichierConstatMessage();
                 message.IdConstat = this.Request.Form["IdConstat"];
-                message.Nom = récupérerLeNomDuFichier(fichier);
-                message.Extension = récupérerLExtensionDuFichier(fichier);
+                message.Nom = fichier.Name;
                 message.Fichier = transformerLeFichierEnMemoryStream(fichier);
                 ReponseCommande réponse = BusCommande.exécuter(message);
                 return _json.Serialize(réponse);
@@ -72,10 +74,31 @@ namespace Yeasca.Web.Api
                 HttpFile fichier = récupérerLeFichier(this.Request.Files);
                 IValiderConstatMessage message = new ValiderConstatMessage();
                 message.IdConstat = this.Request.Form["IdConstat"];
-                message.Nom = récupérerLeNomDuFichier(fichier);
-                message.Extension = récupérerLExtensionDuFichier(fichier);
+                message.Nom = fichier.Name;
                 message.Fichier = transformerLeFichierEnMemoryStream(fichier);
                 ReponseCommande réponse = BusCommande.exécuter(message);
+                return _json.Serialize(réponse);
+            };
+
+            Get["/Api/Constat/Telecharger"] = _ =>
+            {
+                ITelechargerFichierMessage message = new TelechargerFichierMessage();
+                message.IdConstat = this.Request.Query["IdConstat"];
+                message.IdFichier = this.Request.Query["IdFichier"];
+                ReponseRequete réponse = BusRequete.exécuter(message);
+                if (réponse.Réussite)
+                {
+                    FichierReponse résultat = réponse.Résultat as FichierReponse;
+                    HttpResponse response = HttpContext.Current.Response;
+                    response.ClearContent();
+                    response.Clear();
+                    response.ContentType = résultat.TypeMIME;
+                    response.AddHeader("Content-Disposition", "attachment; filename=" + résultat.Nom + ";");
+                    response.TransmitFile(résultat.Chemin);
+                    response.End();
+                    résultat.Chemin = string.Empty;
+                    réponse.Résultat = résultat;
+                }
                 return _json.Serialize(réponse);
             };
         }
@@ -91,28 +114,6 @@ namespace Yeasca.Web.Api
         private HttpFile récupérerLeFichier(IEnumerable<HttpFile> fichiers)
         {
             return fichiers.FirstOrDefault(x => x.Key == "Fichier");
-        }
-
-        private string récupérerLeNomDuFichier(HttpFile fichier)
-        {
-            if (fichier != null)
-            {
-                string nomComplet = fichier.Name;
-                string nom = nomComplet.Substring(0, nomComplet.LastIndexOf('.'));
-                return nom;
-            }
-            return null;
-        }
-
-        private string récupérerLExtensionDuFichier(HttpFile fichier)
-        {
-            if (fichier != null)
-            {
-                string nomComplet = fichier.Name;
-                string extension = nomComplet.Substring(nomComplet.LastIndexOf('.'));
-                return extension;
-            }
-            return null;
         }
 
         private MemoryStream transformerLeFichierEnMemoryStream(HttpFile fichier)

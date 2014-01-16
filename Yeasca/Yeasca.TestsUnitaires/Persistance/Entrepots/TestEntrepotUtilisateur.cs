@@ -20,7 +20,12 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
         public void initialiser()
         {
             _fournisseur = new FournisseurTest();
-            _fournisseur.insérer<Utilisateur>(new Utilisateur() {TypeUtilisateur = _typeUtilisateur});
+            _fournisseur.insérer<Utilisateur>(new Utilisateur() { TypeUtilisateur = _typeUtilisateur });
+            _fournisseur.insérer<Utilisateur>(new Utilisateur()
+            {
+                TypeUtilisateur = TypeUtilisateur.Administrateur,
+                Profile = new Huissier() { Nom = _nomHuissier }
+            });
             _fournisseur.insérer<Utilisateur>(new Utilisateur()
             {
                 TypeUtilisateur = TypeUtilisateur.Huissier,
@@ -78,7 +83,7 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
             RechercheUtilisateurTest recherche = new RechercheUtilisateurTest();
             IList<Utilisateur> résultats = _entrepot.récupérerLaListeDesUtilisateurs(recherche);
 
-            Assert.AreEqual(3, résultats.Count);
+            Assert.AreEqual(4, résultats.Count);
         }
 
         [TestMethod]
@@ -88,7 +93,7 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
             recherche.NomUtilisateur = _nomHuissier;
             IList<Utilisateur> résultats = _entrepot.récupérerLaListeDesUtilisateurs(recherche);
 
-            Assert.AreEqual(1, résultats.Count);
+            Assert.AreEqual(2, résultats.Count);
             Assert.AreEqual(_nomHuissier, résultats[0].Profile.Nom);
         }
 
@@ -113,6 +118,14 @@ namespace Yeasca.TestsUnitaires.Persistance.Entrepots
 
             Assert.AreEqual(1, résultats.Count);
             Assert.AreEqual(_prénomSecrétaire, résultats[0].Profile.Prénom);
+        }
+
+        [TestMethod]
+        public void TestEntrepotUtilisateur_peutRécupérerLAdministrateur()
+        {
+            Utilisateur admin = _entrepot.récupérerLAdministrateur();
+
+            Assert.IsNotNull(admin);
         }
     }
 }

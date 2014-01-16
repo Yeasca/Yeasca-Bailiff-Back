@@ -56,8 +56,10 @@ namespace Yeasca.Requete
             {
                 résultat.Fichiers.Add(new DetailFichierReponse()
                 {
-                    URL = fichier.URLFichier,
-                    Nom = fichier.NomComplet
+                    Id = fichier.Id.ToString(),
+                    Date = fichier.Date.ToString(Ressource.Paramètres.FORMAT_DATE),
+                    Nom = fichier.Nom,
+                    Type = fichier.TypeDuFichier
                 });
             }
         }
@@ -79,7 +81,9 @@ namespace Yeasca.Requete
 
     public class DetailFichierReponse
     {
-        public string URL { get; set; }
+        public string Id { get; set; }
         public string Nom { get; set; }
+        public string Date { get; set; }
+        public string Type { get; set; }
     }
 }

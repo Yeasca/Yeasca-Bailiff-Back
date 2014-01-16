@@ -78,5 +78,10 @@ namespace Yeasca.Mongo
         {
             return (TypeUtilisateur)(recherche.Type) != TypeUtilisateur.Inconnu;
         }
+
+        public Utilisateur récupérerLAdministrateur()
+        {
+            return _fournisseur.obtenirLaCollection<Utilisateur>().SingleOrDefault(x => x.TypeUtilisateur == TypeUtilisateur.Administrateur);
+        }
     }
 }

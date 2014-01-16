@@ -1,16 +1,3 @@
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\obj\Debug\Yeasca.Commande.csprojResolveAssemblyReference.cache
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Commande.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Commande.pdb
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Mongo.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\MongoDB.Driver.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\MongoDB.Bson.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Mongo.pdb
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.pdb
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\MongoDB.Driver.xml
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\MongoDB.Bson.xml
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\obj\Debug\Yeasca.Commande.dll
-C:\Users\Emeric\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\obj\Debug\Yeasca.Commande.pdb
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Commande.dll
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.Commande.pdb
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.Commande\bin\Debug\Yeasca.dll

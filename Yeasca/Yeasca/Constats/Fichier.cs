@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
-using System.Reflection;
 
 namespace Yeasca.Metier
 {
@@ -9,24 +8,22 @@ namespace Yeasca.Metier
     {
         public const string DOSSIER_MAITRE_INDEX = "DossierMaitre";
         public const string DOSSIER_FICHIER_INDEX = "DossierFichiers";
-        public const string DOSSIER_MAITRE_DEFAUT_1 = "Yeasca";
-        public const string DOSSIER_MAITRE_DEFAUT_2 = "Yeasca.Api";
+        public const string DOSSIER_MAITRE_DEFAUT = "Yeasca.Api";
         public const string DOSSIER_FICHIER_DEFAUT = "\\Fichiers";
-        public const string RACINE = "RacineWeb";
 
-        public Fichier(string nom, string extension)
+        public Fichier(string nom)
         {
             Id = Guid.NewGuid();
             Nom = nom;
-            Extension = extension;
+            Date = DateTime.Now;
             Utilisateur utilisateurEnCours = Utilisateur.chargerDepuisLaSession();
             if(utilisateurEnCours != null)
                 Propriétaire = utilisateurEnCours.Profile;
         }
 
         public Guid Id { get; set; }
+        public DateTime Date { get; set; }
         public string Nom { get; set; }
-        public string Extension { get; set; }
         public Profile Propriétaire { get; set; }
 
         public string PathFichier
@@ -35,27 +32,8 @@ namespace Yeasca.Metier
             {
                 string dossierFichier = trouverLeDossierFichiers();
                 if (dossierFichier != null)
-                {
-                    return string.Concat(dossierFichier, "\\", Id.ToString(), Extension);
-                }
+                    return string.Concat(dossierFichier, "\\", Id.ToString(), obtenirLExtension());
                 return null;
-            }
-        }
-
-        public string URLFichier
-        {
-            get
-            {
-                string racine = ConfigurationManager.AppSettings[RACINE];
-                return string.Concat(racine, Nom, Extension);
-            }
-        }
-
-        public string NomComplet
-        {
-            get
-            {
-                return string.Concat(Nom, Extension);
             }
         }
 
@@ -63,8 +41,69 @@ namespace Yeasca.Metier
         {
             get
             {
-                return Extension == ".doc" || Extension == ".docx";
+                string extension = obtenirLExtension();
+                return extension == ".doc" || extension == ".docx";
             }
+        }
+
+        public bool EstUnFichierAudio
+        {
+            get
+            {
+                string extension = obtenirLExtension();
+                return extension == ".wav" || extension == ".mp3" || extension == ".mp4";
+            }
+        }
+
+        public bool EstUnFichierImage
+        {
+            get
+            {
+                string extension = obtenirLExtension();
+                return extension == ".png" || extension == ".jpg" || extension == ".jpeg" || extension == ".gif";
+            }
+        }
+
+        public string TypeDuFichier
+        {
+            get
+            {
+                if (EstUnDocumentWord)
+                    return "Word";
+                if (EstUnFichierAudio)
+                    return "Audio";
+                if (EstUnFichierImage)
+                    return "Image";
+                return "Autre";
+            }
+        }
+
+        public string TypeMIMEDuFichier
+        {
+            get
+            {
+                string extension = obtenirLExtension();
+                if (extension == ".doc")
+                    return "application/msword";
+                if (extension == ".docx")
+                    return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                if (extension == ".wav")
+                    return "audio/x-wav";
+                if (extension == ".mp3" || extension == ".mp4")
+                    return "audio/mpeg";
+                if (extension == ".png")
+                    return "image/png";
+                if (extension == ".jpg" || extension == ".jpeg")
+                    return "image/jpeg";
+                if (extension == ".gif")
+                    return "image/gif";
+               return "text/html";
+            }
+        }
+
+        private string obtenirLExtension()
+        {
+            return Nom.Substring(Nom.LastIndexOf('.'));
         }
 
         public void supprimer()
@@ -74,11 +113,11 @@ namespace Yeasca.Metier
                 File.Delete(cheminDuFichier);
         }
 
-        public static Fichier enregistrerLeFichier(MemoryStream fichierAEnregistrer, string nom, string extension)
+        public static Fichier enregistrerLeFichier(MemoryStream fichierAEnregistrer, string nom)
         {
             try
             {
-                Fichier fichier = new Fichier(nom, extension);
+                Fichier fichier = new Fichier(nom);
                 string cheminFichier = fichier.PathFichier;
                 if (cheminFichier != null)
                 {
@@ -98,6 +137,22 @@ namespace Yeasca.Metier
             }
         }
 
+        public static Fichier enregistrerLeDocumentWord(MemoryStream fichierAEnregistrer, string nom)
+        {
+            Fichier fichier = new Fichier(nom);
+            if (fichier.EstUnDocumentWord)
+                return enregistrerLeFichier(fichierAEnregistrer, nom);
+            return null;
+        }
+
+        public static Fichier enregistrerLeFichierImageOuAudio(MemoryStream fichierAEnregistrer, string nom)
+        {
+            Fichier fichier = new Fichier(nom);
+            if (fichier.EstUnFichierAudio || fichier.EstUnFichierImage)
+                return enregistrerLeFichier(fichierAEnregistrer, nom);
+            return null;
+        }
+
         private static void fermerLeFlux(Stream flux)
         {
             flux.Close();
@@ -108,12 +163,12 @@ namespace Yeasca.Metier
         {
             try
             {
-                string dossierMaitre = ConfigurationManager.AppSettings[DOSSIER_MAITRE_INDEX] ?? DOSSIER_MAITRE_DEFAUT_1;
+                string dossierMaitre = ConfigurationManager.AppSettings[DOSSIER_MAITRE_INDEX] ?? DOSSIER_MAITRE_DEFAUT;
                 string dossierFichier = ConfigurationManager.AppSettings[DOSSIER_FICHIER_INDEX] ?? DOSSIER_FICHIER_DEFAUT;
                 string dossierCourant = AppDomain.CurrentDomain.BaseDirectory;
-                for (int i = 0; i < 4 && !dossierCourant.EndsWith(dossierMaitre) && !dossierCourant.EndsWith(DOSSIER_MAITRE_DEFAUT_2); i++)
+                for (int i = 0; i < 4 && !dossierCourant.EndsWith(dossierMaitre); i++)
                     dossierCourant = Directory.GetParent(dossierCourant).FullName;
-                if (dossierCourant.EndsWith(dossierMaitre) || dossierCourant.EndsWith(DOSSIER_MAITRE_DEFAUT_2))
+                if (dossierCourant.EndsWith(dossierMaitre))
                     return récupérerLeDossierFichier(dossierFichier, dossierCourant);
                 throw new DirectoryNotFoundException("Dossier maître introuvable après 4 itérations");
             }

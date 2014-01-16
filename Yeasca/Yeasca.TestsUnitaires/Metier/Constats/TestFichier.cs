@@ -30,7 +30,7 @@ namespace Yeasca.TestsUnitaires.Metier.Constats
             string texteDuFichier = "Pouet";
             byte[] buffer = Encoding.Default.GetBytes(texteDuFichier);
             MemoryStream stream = new MemoryStream(buffer);
-            Fichier enregistrement = Fichier.enregistrerLeFichier(stream, "Pouet", ".txt");
+            Fichier enregistrement = Fichier.enregistrerLeFichier(stream, "Pouet.txt");
 
             Assert.IsNotNull(enregistrement);
 

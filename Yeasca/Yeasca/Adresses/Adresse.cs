@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Yeasca.Metier
 {
     public class Adresse

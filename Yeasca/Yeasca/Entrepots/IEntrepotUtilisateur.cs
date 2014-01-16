@@ -8,5 +8,6 @@ namespace Yeasca.Metier
         Utilisateur authentifier(Email email, MotDePasse motDePasse);
         Utilisateur récupérer(Guid Id);
         IList<Utilisateur> récupérerLaListeDesUtilisateurs(IRechercheUtilisateur recherche);
+        Utilisateur récupérerLAdministrateur();
     }
 }

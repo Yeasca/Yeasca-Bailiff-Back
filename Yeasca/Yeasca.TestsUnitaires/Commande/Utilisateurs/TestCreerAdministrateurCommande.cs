@@ -42,20 +42,20 @@ namespace Yeasca.TestsUnitaires.Commande.Utilisateurs
         }
 
         [TestMethod]
-        public void TestCreerAdministrateurCommande_utilisateurDeuxFoisLeMêmeJetonFaitEchouerLaCommande()
+        public void TestCreerAdministrateurCommande_nePeutCréerUnCompteAdminSiUnAdminExiste()
         {
+            ConfigurationTest.initialiserLaSessionHTTP(TypeUtilisateur.Administrateur);
             ICreerAdministrateurMessage message = initialiserUnMessageValide();
             BusCommande.exécuter(message);
             ReponseCommande réponse = BusCommande.exécuter(message);
 
             Assert.IsFalse(réponse.Réussite);
-            Assert.AreEqual(Ressource.Commandes.JETON_INVALIDE, réponse.Message);
+            Assert.AreEqual(Ressource.Commandes.COMPTE_ADMIN_EXIST, réponse.Message);
         }
 
         private ICreerAdministrateurMessage initialiserUnMessageValide()
         {
             ICreerAdministrateurMessage message = new CreerAdministrateurMessageTest();
-            message.Jeton = Jeton.générerUnJeton(_email);
             message.Email = _email;
             message.MotDePasse = ConstantesTest.MOT_DE_PASSE_VALIDE.ValeurDéchiffrée;
             message.Civilité = 0;
@@ -71,7 +71,6 @@ namespace Yeasca.TestsUnitaires.Commande.Utilisateurs
 
     public class CreerAdministrateurMessageTest : ICreerAdministrateurMessage
     {
-        public string Jeton { get; set; }
         public string Email { get; set; }
         public string MotDePasse { get; set; }
         public int Civilité { get; set; }

@@ -35,20 +35,9 @@ namespace Yeasca.Web.Api
                 return _json.Serialize(réponse);
             };
 
-            Get["/Api/Admin/Jeton"] = _ =>
-            {
-                IGenererJetonMessage message = new GenererJetonMessage();
-                message.Email = this.Request.Query["Email"];
-                message.Login = this.Request.Query["Email"];
-                message.MotDePasse = this.Request.Query["MotDePasse"];
-                ReponseRequete réponse = BusRequete.exécuter(message);
-                return _json.Serialize(réponse);
-            };
-
             Post["/Api/Admin/Creer"] = _ =>
             {
                 ICreerAdministrateurMessage message = new CreerAdministrateurMessage();
-                message.Jeton = this.Request.Form["Jeton"];
                 message.Email = this.Request.Form["Email"];
                 message.MotDePasse = this.Request.Form["MotDePasse"];
                 message.Civilité = this.Request.Form["Civilité"];

@@ -33,7 +33,7 @@ namespace Yeasca.Commande
         private static ReponseCommande enregistrerLeFichier(IAjouterFichierConstatMessage message, Constat constat,
             IEntrepotConstat entrepot)
         {
-            Fichier fichierAAjouter = Fichier.enregistrerLeFichier(message.Fichier, message.Nom, message.Extension);
+            Fichier fichierAAjouter = Fichier.enregistrerLeFichierImageOuAudio(message.Fichier, message.Nom);
             if (fichierAAjouter != null)
                 return modifierLeConstat(constat, fichierAAjouter, entrepot);
             return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_AJOUT_FICHIER);

@@ -33,7 +33,7 @@ namespace Yeasca.Metier
         public string ERREUR_MODIFICATION_SECRETAIRE { get { return "Erreur lors de la modification du profile de la secrétaire"; } }
         public string ERREUR_MODIFICATION_COMPTE_SECRETAIRE { get { return "Erreur lors de la modification du compte de la secrétaire"; } }
 
-        public string JETON_INVALIDE { get { return "Impossible de créer le compte administrateur"; } }
+        public string COMPTE_ADMIN_EXIST { get { return "Un compte administrateur existe déjà"; } }
         public string ERREUR_CRÉATION_ADMIN { get { return "Erreur lors de la création du profile de l'administrateur"; } }
         public string ERREUR_CRÉATION_COMPTE_ADMIN { get { return "Erreur lors de la création du compte de l'administrateur"; } }
     }

@@ -40,7 +40,7 @@ namespace Yeasca.Metier
         string ERREUR_MODIFICATION_COMPTE_SECRETAIRE { get; }
 
         //Commandes administrateur
-        string JETON_INVALIDE { get; }
+        string COMPTE_ADMIN_EXIST { get; }
         string ERREUR_CRÉATION_ADMIN { get; }
         string ERREUR_CRÉATION_COMPTE_ADMIN { get; }
     }

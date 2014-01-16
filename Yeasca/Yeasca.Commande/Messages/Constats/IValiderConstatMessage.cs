@@ -7,6 +7,5 @@ namespace Yeasca.Commande
         string IdConstat { get; set; }
         MemoryStream Fichier { get; set; }
         string Nom { get; set; }
-        string Extension { get; set; }
     }
 }

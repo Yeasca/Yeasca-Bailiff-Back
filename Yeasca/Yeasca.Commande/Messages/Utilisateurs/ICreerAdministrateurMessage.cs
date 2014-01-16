@@ -3,7 +3,6 @@ namespace Yeasca.Commande
 {
     public interface ICreerAdministrateurMessage : IMessageCommande
     {
-        string Jeton { get; set; }
         string Email { get; set; }
         string MotDePasse { get; set; }
         int Civilité { get; set; }

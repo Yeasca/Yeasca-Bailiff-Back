@@ -7,21 +7,19 @@ namespace Yeasca.Commande
     {
         public override ReponseCommande exécuter(ICreerAdministrateurMessage message)
         {
-            IEntrepotJeton entrepotJeton = EntrepotMongo.fabriquerEntrepot<IEntrepotJeton>();
-            Jeton jeton = new Jeton(message.Jeton);
-            if (peutCréerUnAdmin(message, jeton, entrepotJeton))
-                return créerLeProfileEtLeCompte(message, entrepotJeton, jeton);
-            return ReponseCommande.générerUnEchec(Ressource.Commandes.JETON_INVALIDE);
+            IEntrepotUtilisateur entrepotUtilisateur = EntrepotMongo.fabriquerEntrepot<IEntrepotUtilisateur>();
+            Utilisateur adminExistant = entrepotUtilisateur.récupérerLAdministrateur();
+            if (peutCréerUnAdmin(adminExistant))
+                return créerLeProfileEtLeCompte(message);
+            return ReponseCommande.générerUnEchec(Ressource.Commandes.COMPTE_ADMIN_EXIST);
         }
 
-        private bool peutCréerUnAdmin(ICreerAdministrateurMessage message, Jeton jeton, IEntrepotJeton entrepotJeton)
+        private bool peutCréerUnAdmin(Utilisateur adminExistant)
         {
-            return jeton.estValide(message.Email) && !entrepotJeton.aEtéUtilisé(message.Jeton)
-                || estSuperviseur();
+            return adminExistant == null;
         }
 
-        private ReponseCommande créerLeProfileEtLeCompte(ICreerAdministrateurMessage message, IEntrepotJeton entrepotJeton,
-            Jeton jeton)
+        private ReponseCommande créerLeProfileEtLeCompte(ICreerAdministrateurMessage message)
         {
             Huissier huissier = new Huissier();
             huissier.Abréviation = (Abreviation) message.Civilité;
@@ -34,12 +32,11 @@ namespace Yeasca.Commande
                 return ReponseCommande.générerUnEchec(erreursDuProfile.donnerLaListeEnHTML());
             IEntrepotProfile entrepotProfile = EntrepotMongo.fabriquerEntrepot<IEntrepotProfile>();
             if (entrepotProfile.ajouter(huissier))
-                return créerLeCompte(message, huissier, entrepotJeton, jeton);
+                return créerLeCompte(message, huissier);
             return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_CRÉATION_ADMIN);
         }
 
-        private ReponseCommande créerLeCompte(ICreerAdministrateurMessage message, Huissier huissier,
-            IEntrepotJeton entrepotJeton, Jeton jeton)
+        private ReponseCommande créerLeCompte(ICreerAdministrateurMessage message, Huissier huissier)
         {
             Utilisateur compte = new Utilisateur();
             compte.Email.Valeur = message.Email;
@@ -51,15 +48,8 @@ namespace Yeasca.Commande
                 return ReponseCommande.générerUnEchec(erreursDuCompte.donnerLaListeEnHTML());
             IEntrepotUtilisateur entrepotUtilisateur = EntrepotMongo.fabriquerEntrepot<IEntrepotUtilisateur>();
             if (entrepotUtilisateur.ajouter(compte))
-                return créer(entrepotJeton, jeton, compte);
+                return ReponseCommande.générerUnSuccès(compte.Id.ToString());
             return ReponseCommande.générerUnEchec(Ressource.Commandes.ERREUR_CRÉATION_COMPTE_ADMIN);
-        }
-
-        private ReponseCommande créer(IEntrepotJeton entrepotJeton, Jeton jeton, Utilisateur compte)
-        {
-            if (!string.IsNullOrEmpty(jeton.Valeur))
-                entrepotJeton.ajouter(jeton);
-            return ReponseCommande.générerUnSuccès(compte.Id.ToString());
         }
 
         private Adresse initialiserLAdresse(ICreerAdministrateurMessage message)

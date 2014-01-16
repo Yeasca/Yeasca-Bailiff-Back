@@ -8,6 +8,5 @@ namespace Yeasca.Web.Api
         public string IdConstat { get; set; }
         public MemoryStream Fichier { get; set; }
         public string Nom { get; set; }
-        public string Extension { get; set; }
     }
 }

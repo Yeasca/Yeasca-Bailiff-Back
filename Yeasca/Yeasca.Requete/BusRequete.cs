@@ -30,7 +30,8 @@ namespace Yeasca.Requete
             {typeof(IRechercheUtilisateurMessage), typeof(RechercheUtilisateurRequete)},
             {typeof(IDetailUtilisateurMessage), typeof(DetailUtilisateurRequete)},
             {typeof(IParametrageMessage), typeof(ParametrageRequete)},
-            {typeof(IGenererJetonMessage), typeof(GenererJetonRequete)}
+            {typeof(IGenererJetonMessage), typeof(GenererJetonRequete)},
+            {typeof(ITelechargerFichierMessage), typeof(TelechargerFichierRequete)}
         };
 
         private static Type trouverLeTypeDuMessage(IMessageRequete message)

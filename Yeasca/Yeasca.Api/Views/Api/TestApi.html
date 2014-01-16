@@ -63,26 +63,13 @@
                 </td>
             </tr>
             <tr>
-                <td>/Api/Admin/Jeton</td>
-                <td>GET</td>
-                <td>Email(string), Login(string), MotDePasse(string)</td>
-                <td>Génération d'un jeton pour authoriser la création d'un admin</td>
-                <td>
-                    <label>E-mail : </label><input id="creer-jeton-email"/><br/>
-                    <label>Login : </label><input id="creer-jeton-login"/><br/>
-                    <label>Mot de passe : </label><input type="password" id="creer-jeton-pass"/><br/>
-                    <input id="creer-jeton-envoi" type="button" value="Go"/>
-                </td>
-            </tr>
-            <tr>
                 <td>/Api/Admin/Creer</td>
                 <td>POST</td>
-                <td>Jeton(string), Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string), NomCabinet(string), NuméroVoie(string)
+                <td>Email(string), MotDePasse(string), Civilité(int), Nom(string), Prénom(string), NomCabinet(string), NuméroVoie(string)
                     RépétitionVoie(string), TypeVoie(string), NomVoie(string), ComplémentVoie(string), CodePostal(string), Ville(string)
                 </td>
-                <td>Création d'un compte administrateur</td>
+                <td>Création d'un compte administrateur (possible uniquement si aucun existe)</td>
                 <td>
-                    <label>Jeton : </label><input id="admin-creer-jeton"/><br/>
                     <label>E-mail : </label><input id="admin-creer-email"/><br/>
                     <label>Mot de passe : </label><input type="password" id="admin-creer-pass"/><br/>
                     <label>Civilité : </label><input id="admin-creer-civ" type="number" value="1"/><br/>
@@ -348,7 +335,41 @@
                     <input id="con-val-envoi" type="button" value="Go"/>
                 </td>
             </tr>
+            <tr>
+                <td>/Api/Constat/Telecharger</td>
+                <td>GET</td>
+                <td>IdConstat(string), IdFichier(string)</td>
+                <td>Télécharge un fichier</td>
+                <td>
+                    <label>IdConstat : </label><input id="dl-fic-con"/><br/>
+                    <label>IdFichier : </label><input id="dl-fic-fic"/><br/>
+                    <input id="dl-fic-envoi" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Api/Constat/Telecharger</td>
+                <td>Démo</td>
+                <td>IdConstat(string), IdFichier(string)</td>
+                <td>Télécharge un fichier image : <span id="dl-img"></span></td>
+                <td>
+                    <label>IdConstat : </label><input id="dl-fic-con1"/><br/>
+                    <label>IdFichier : </label><input id="dl-fic-fic1"/><br/>
+                    <input id="dl-fic-envoi1" type="button" value="Go"/>
+                </td>
+            </tr>
+            <tr>
+                <td>/Api/Constat/Telecharger</td>
+                <td>Démo</td>
+                <td>IdConstat(string), IdFichier(string)</td>
+                <td>Télécharge un fichier audio : <span id="dl-aud"></span></td>
+                <td>
+                    <label>IdConstat : </label><input id="dl-fic-con2"/><br/>
+                    <label>IdFichier : </label><input id="dl-fic-fic2"/><br/>
+                    <input id="dl-fic-envoi2" type="button" value="Go"/>
+                </td>
+            </tr>
         </table>
+
     </section>
     <script type="text/javascript">
         function chargement() {
@@ -385,22 +406,9 @@
             });
         });
         
-        $('#creer-jeton-envoi').click(function () {
-            chargement();
-            var données = {};
-            données.Email = $('#creer-jeton-envoi').val();
-            données.Login = $('#creer-jeton-login').val();
-            données.MotDePasse = $('#creer-jeton-envoi').val();
-            $.get('/Api/Admin/Jeton', données, function (réponse) {
-                finChargement();
-                $('#resultat').html(JSON.stringify(réponse));
-            });
-        });
-        
         $('#admin-creer-envoi').click(function () {
             chargement();
             var données = {};
-            données.Jeton = $('#admin-creer-jeton').val();
             données.Email = $('#admin-creer-email').val();
             données.MotDePasse = $('#admin-creer-pass').val();
             données.Civilité = $('#admin-creer-civ').val();
@@ -679,6 +687,61 @@
                 contentType: false,
                 processData: false
             });
+        });
+
+        $('#dl-fic-envoi').click(function () {
+            var données = {};
+            données.IdConstat = $('#dl-fic-con').val();
+            données.IdFichier = $('#dl-fic-fic').val();
+            var URL = '/Api/Constat/Telecharger?IdConstat=' + données.IdConstat + '&IdFichier=' + données.IdFichier;
+            window.open(URL, '_blank');
+        });
+        
+        $('#dl-fic-envoi1').click(function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/Api/Constat/Telecharger?IdConstat=' + $('#dl-fic-con1').val() + '&IdFichier=' + $('#dl-fic-fic1').val(), true);
+            xhr.responseType = 'arraybuffer';
+
+            xhr.onload = function (e) {
+                if (this.status == 200) {;
+                    var blob = new Blob([this.response], { type: "application/octet-stream" });
+                    var url = URL.createObjectURL(blob);
+                    var img = document.createElement("img");
+                    img.src = url;
+                    img.height = 60;
+                    img.onload = function (e) {
+                        window.URL.revokeObjectURL(this.src);
+                    };
+                    document.getElementById('dl-img').appendChild(img);
+                }
+            };
+
+            xhr.send();
+        });
+        
+        $('#dl-fic-envoi2').click(function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/Api/Constat/Telecharger?IdConstat=' + $('#dl-fic-con2').val() + '&IdFichier=' + $('#dl-fic-fic2').val(), true);
+            xhr.responseType = 'arraybuffer';
+
+            xhr.onload = function (e) {
+                if (this.status == 200) {;
+                    var blob = new Blob([this.response], { type: "application/octet-stream" });
+                    var url = URL.createObjectURL(blob);
+                    var audio = document.createElement("audio");
+                    audio.id = 'audio1';
+                    audio.src = url;
+                    audio.height = 60;
+                    audio.onload = function (e) {
+                        window.URL.revokeObjectURL(this.src);
+                    };
+                    document.getElementById('dl-aud').appendChild(audio);
+                    $(audio).prop('controls', true);
+                    audio.play();
+                }
+            };
+
+            xhr.send();
         });
         
         function progressHandlingFunction(e) {
