@@ -31,9 +31,24 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Accueil</a></li>
-                <li><a href="Constat">Mes constats</a></li>
-                <li><a href="Application">Administration du bureau</a></li>
+                <script type="text/javascript">
+                    var user;
+                    $.get('/Api/Authentification/Courante', function (réponse) {
+                        user = JSON.parse(réponse);
+                        if (user.Résultat != null) {
+                            $('ul.nav').append(
+                            '<li><a href="Constat">Mes constats</a></li>'+
+                            '<li><a href="Application">Administration du bureau</a></li>'
+                            )
+                        }
+                        else {
+                            $('ul.nav').append('<li class="active"><a href="index.html">Accueil</a></li>')
+                        }
+                        
+                        });
+                </script>
+                
+
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
@@ -55,13 +70,20 @@
     </div>
 </div>
 <script type="text/javascript">
-    $('#auth-envoi').click(function() {
+    $('#auth-envoi').click(function () {
         var données = {};
+        var réponseEnJSON;
         données.Email = $('#auth-email').val();
         données.MotDePasse = $('#auth-pass').val();
-        $.get('/Api/Authentifier', données, function (réponse) {
-            console.log(réponse);
-            window.location = "/Application";
+        $.post('/Api/Authentification/Connecter', données, function (réponse) {
+            réponseEnJSON = JSON.parse(réponse);
+            if (réponseEnJSON.Réussite == true) {
+                window.location = "Application";
+            }
+            else {
+                alert("Une erreur est survenue :"+réponseEnJSON.Message);
+            }
+            $('#resultat').html(JSON.stringify(réponse));
         });
     });
 

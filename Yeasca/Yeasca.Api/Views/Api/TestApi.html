@@ -678,6 +678,7 @@
         $('#con-val-envoi').click(function () {
             chargement();
             var formData = new FormData($('#form-con-val')[0]);
+            console.log(formData);
             progressBar = $('#prog-con-val');
             $.ajax({
                 url: '/Api/Constat/Valider',

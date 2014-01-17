@@ -15,3 +15,4 @@ C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaire
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.csprojResolveAssemblyReference.cache
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.dll
 C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\obj\Debug\Yeasca.TestsUnitaires.pdb
+C:\Users\Dowmed\Documents\GitHub\Yeasca-Bailiff-Back\Yeasca\Yeasca.TestsUnitaires\bin\Debug\Yeasca.TestsUnitaires.dll.config

@@ -11,6 +11,7 @@
     <script src="../Content/Script/angular1.2.4.min.js"></script>
     <script src="../Content/Script/underscore-min.js"></script>
     <link rel="stylesheet" href="../Content/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Content/Css/main.css">
     <style>
         body {
             padding-top: 50px;
@@ -30,10 +31,24 @@
             <a class="navbar-brand" href="#">Yeasca Inc</a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Accueil</a></li>
-                <li class="active"><a href="constats">Mes constats</a></li>
-                <li><a href="Application">Administration du bureau</a></li>
+            <ul class="nav navbar-nav col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                               <script type="text/javascript">
+                                   var user;
+                                   $.get('/Api/Authentification/Courante', function (réponse) {
+                                       user = JSON.parse(réponse);
+                                       if (user.Résultat != null) {
+                                           $('ul.nav').append(
+                                           '<li class="active"><a href="Constat">Mes constats</a></li>' +
+                                           '<li ><a href="Application">Administration du bureau</a></li>' +
+                                           '<li style="float:right"><button type="button" class="btn btn-default  col-xs-0 col-sm-0 col-md-0 col-lg-0" onclick="deconnexion()"><span class="glyphicon glyphicon-off"></span></button></a></li>'
+                                           )
+                                       }
+                                       else {
+                                           window.location = "/";
+                                       }
+
+                                   });
+                </script>
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
@@ -46,24 +61,23 @@
             <h2>Rechercher un constat</h2>
             <div style="display:inline-flex;margin-left: -30px;" class="row col-xs-10 col-md-10 col-lg-10">
                 <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
-                    <input type="text" id="constat-id" class="form-control" placeholder="Rechercher un constat(ID)" >
+                    <input type="text" id="constat-text" class="form-control" placeholder="Rechercher un constat" >
                 </div>
-                <button class="btn btn-default  col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-search"></i></button>
+                <button id="con-rech-envoi" class="btn btn-default  col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-search"></i></button>
                 <button type="button" class="hidden-xs btn btn-default col-xs-3 col-sm-4 col-md-3 col-lg-3" onclick="openMoreFilter()">
                     <span class="glyphicon glyphicon-circle-arrow-down"></span> Recherche avancée
                 </button>
-                <a href="creationConstats.html"><button class="hidden-xs btn btn-default col-xs-0 col-sm-0 col-md-0 col-lg-0"><span class="glyphicon glyphicon-pencil"></span></button></a>
+                <button id="btn-cre-constat" class="hidden-xs btn btn-default col-xs-0 col-sm-0 col-md-0 col-lg-0"><span class="glyphicon glyphicon-pencil">Créer</span></button>
+                <button onclick="AfficherModifConstat(this)" class="hidden-xs btn btn-default col-xs-0 col-sm-0 col-md-0 col-lg-0"><span class="glyphicon glyphicon-pencil">Modifier</span></button>
             </div>
         </div>
             <div class="row">
                 <div id="filtreplus" style="display:none;margin-top:15px;">
                     <div class="row col-xs-5 col-sm-5 col-md-5 col-lg-5" >
                         <input type="text" class="form-control " placeholder="Entrez le nom">
-                        <select class="form-control">
-                            <option>Secrétaire 1</option>
-                            <option>Secrétaire 2</option>
-                            <option>Secrétaire 3</option>
-                            <option>Secrétaire 4</option>
+                        <select name="Role">
+                            <option value="1">Secrétaire</option>
+                            <option value="2">Huissier</option>
                         </select>
                     </div>
                     <div class="row-reverse col-xs-5 col-sm-5 col-md-5 col-lg-5">
@@ -73,6 +87,38 @@
                 </div>
             </div>
         <div class="row">
+            <div class="CreationConstat" style="display:none;margin-top:15px;">
+                    <div id="messageCreationConstat"></div>
+                        <select name="Clients" id="Clients" class="form-control">
+                        </select>
+                    <button type="button" id="con-creer-envoi" class="btn-ok btn btn-default  col-xs-5 col-sm-5 col-md-5 col-lg-5" style="float:right" onclick="CreationClient()">
+                        <span class="glyphicon glyphicon glyphicon-plus-sign"></span> Valider
+                    </button>
+                    <button type="button" id="btn-return-con" class="btn-return-con btn btn-default  col-xs-5 col-sm-5 col-md-5 col-lg-5" >
+                        <span class="glyphicon glyphicon-chevron-left"></span> Retour
+                    </button>
+            </div>
+            <div class="ModificationConstat" style="display:none;margin-top:15px;">
+                    <div id="messageModificationConstat"></div>
+                    <form id="form-con-val" class="form-control" style="height:100%">
+                        <select name="IdConstat" id="IdConstat" >
+                        </select><br />
+                     
+                        <input name="Fichier" type="file"  />
+                    </form>
+                         <select name="TypeFichier" id="TypeFichier">
+                            <option value="1">Fichier</option>
+                            <option value="2">Word</option>
+                        </select>
+                    <div>
+                        <button type="button" id="con-val-envoi" class="btn-ok btn btn-default  col-xs-5 col-sm-5 col-md-5 col-lg-5" style="float:right" onclick="CreationClient()">
+                        <span class="glyphicon glyphicon glyphicon-plus-sign"></span> Valider
+                    </button>
+                    <button type="button" class="btn-return-con btn btn-default  col-xs-5 col-sm-5 col-md-5 col-lg-5" >
+                        <span class="glyphicon glyphicon-chevron-left"></span> Retour
+                    </button>
+                        </div>
+                </div>
             <div id="lesconstats"></div>
 
             </div>
@@ -81,19 +127,159 @@
 </div>
 </div>
 <script type="text/javascript">
+    SelectListeClients();
+    SelectListeConstats();
+    $('#con-creer-envoi').click(function () {
+        var données = {};
+        données.IdClient = $('#Clients').val();
+        console.log($('#Clients').val())
+        $.post('/Api/Constat/Creer', données, function (réponse) {
+            alert('Constat crée');
+            window.location="Constat"
+        });
+    });
+    
+    $('#con-rech-envoi').click(function () {
+        var données = {};
+        données.Texte = $('#constat-text').val();
+        données.NuméroPage = 1;
+        données.NombreDElémentsParPage = 100;
+        $.get('/Api/Constat/Recherche', données, function (réponse) {
+            console.log(réponse);
+        });
+    });
 
+    $('#dl-fic-envoi2').click(function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Api/Constat/Telecharger?IdConstat=' + $('#dl-fic-con2').val() + '&IdFichier=' + $('#dl-fic-fic2').val(), true);
+        xhr.responseType = 'arraybuffer';
+
+        xhr.onload = function (e) {
+            if (this.status == 200) {;
+                var blob = new Blob([this.response], { type: "application/octet-stream" });
+                var url = URL.createObjectURL(blob);
+                var audio = document.createElement("audio");
+                audio.id = 'audio1';
+                audio.src = url;
+                audio.height = 60;
+                audio.onload = function (e) {
+                    window.URL.revokeObjectURL(this.src);
+                };
+                document.getElementById('dl-aud').appendChild(audio);
+                $(audio).prop('controls', true);
+                audio.play();
+            }
+        };
+
+        xhr.send();
+    });
+
+    $('#con-val-envoi').click(function () {
+        var TypeFichier = $('#TypeFichier').val();
+        console.log(TypeFichier);
+        if (TypeFichier == 1) {
+            var formData = new FormData($('#form-con-val')[0]);
+            $.ajax({
+                url: '../Api/Constat/Ajouter/Fichier',
+                type: 'POST',
+                xhr: function () {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    }
+                    return myXhr;
+                },
+                success: function (réponse) {
+                    $('#resultat').html(JSON.stringify(réponse));
+                },
+                error: function () {
+                    $('#resultat').html('Erreur upload');
+                },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+        if (TypeFichier == 2) {
+            var formData = new FormData($('#form-con-val')[0]);
+            console.log(formData);
+            $.ajax({
+                url: '../Api/Constat/Valider',
+                type: 'POST',
+                xhr: function () {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                    }
+                    return myXhr;
+                },
+                success: function (réponse) {
+                    console.log(réponse);
+                },
+                error: function () {
+                    console.log('Erreur upload');
+                },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+
+            });
+        }
+    });
+
+
+    $(function () {
+        $("#btn-cre-constat").on("click", function () {
+            $(".constatgeneral").each(function () {
+                $(this).slideUp(200);
+            });
+            $('.CreationConstat').slideToggle(200);
+        });
+    });
+
+    $(function () {
+        $(".btn-cre-constat").on("click", function () {
+            $(".constatgeneral").each(function () {
+                $(this).slideUp(200);
+            });
+            $('.CreationConstat').slideToggle(200);
+        });
+    });
+
+
+
+    $(function () {
+        $(".btn-return-con").on("click", function () {
+            console.log("Yo");
+            $(".constatgeneral").each(function () {
+                $(this).slideToggle(200);
+            });
+            $('.CreationConstat').slideUp(200);
+        });
+    });
 
     $(function() {
         $('#datepickerdebut').datepicker({
             language: 'fr'
         });
     });
+
+    $('#dec-envoi').click(function () {
+        $.post('../Api/Authentification/Deconnecter', function (réponse) {
+            console.log(JSON.parse(réponse));
+            window.location = "/";
+        });
+    });
+
     $(function() {
         $('#datepickerfin').datepicker({
             language: 'fr'
         });
     });
-
+    var Pages = 1;
+    ChargerListeConstats(Pages);
     var offsetconstat = $('.constatgeneral:last').offset();
     var load=false;
     $(window).scroll(function(){
@@ -103,9 +289,10 @@
             load=true;
             $('.loadmore').show();
             $.ajax({
-                success:function(data){
-                    ChargerListeConstats();
-
+                success: function (data) {
+                    Pages++;
+                    ChargerListeConstats(Pages);
+                    console.log("Page++");
                     $('.loadmore').fadeOut(500);
                 }
 
