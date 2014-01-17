@@ -206,7 +206,6 @@ function TelechargerFichier(IdConstat, IdFichier) {
     données.IdConstat = IdConstat;
     données.IdFichier = IdFichier;
     var URL = '/Api/Constat/Telecharger?IdConstat=' + données.IdConstat + '&IdFichier=' + données.IdFichier;
-    window.open(URL, '_blank');
     $('div#fichier' + IdFichier).append("<a href=" + URL + " source='_blank'>Téléchargez</a>");
     
     return URL;
